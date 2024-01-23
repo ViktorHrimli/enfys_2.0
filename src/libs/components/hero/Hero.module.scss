@@ -1,0 +1,84 @@
+.section {
+    width: 100%;
+    min-height: 550px;
+    height: 100vh;
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero_line_color_green {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 107px;
+    height: 100%;
+    background: linear-gradient(315deg, rgba(32, 148, 135, 0.30) 0.16%, rgba(130, 229, 204, 0.30) 99.24%, rgba(130, 229, 204, 0.30) 99.84%);
+}
+
+.hero_line_color_red {
+    position: absolute;
+    top: 0;
+    left: 84px;
+    width: 143px;
+    height: 100%;
+    background: linear-gradient(315deg, rgba(202, 3, 3, 0.30) 0.06%, rgba(249, 45, 45, 0.30) 99.94%);
+}
+
+.hero_line_color_yellow {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    width: 143px;
+    height: 100%;
+    background: linear-gradient(315deg, rgba(255, 138, 0, 0.30) 0.1%, rgba(251, 222, 31, 0.30) 99.3%, rgba(251, 222, 31, 0.30) 99.9%);
+}
+
+.title {
+    z-index: 2;
+    color: #FFF;
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+}   
+
+.description {
+    z-index: 2;
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+    max-width: 652px;
+}
+
+.bacground {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.20);
+}
+
+.bacground_img {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+}
+
+.img {
+    object-fit: cover;
+    object-position: center;
+}

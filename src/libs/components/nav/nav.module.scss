@@ -1,0 +1,79 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.list_text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 28px;
+  // margin-bottom: 28px;
+}
+
+.list_icon {
+  display: flex;
+  gap: 14px;
+}
+
+.link {
+    display: flex;
+      align-items: center;
+      gap: 5px;
+    &:hover {
+      color: #eb4441;
+    }
+}
+
+.title {
+  color: #FAEEEE;
+  font-family: "Mariupol", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.text {
+  color: #FAEEEE;
+  font-family: "Mariupol", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #FF8A00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  width: 224px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #FFF;
+  padding-left: 12px;
+  outline: none;
+  background: rgba(130, 229, 204, 0.00);
+  color: #fff;
+
+  &::placeholder{
+    color: #fff;
+  }
+}
