@@ -35,8 +35,6 @@
 }
 
 
-
-
 .btn {
     // z-index: 5;
     display: flex;
@@ -45,8 +43,8 @@
     align-items: center;
     gap: 6px;
     background: transparent;
+    cursor: pointer;
 }
-
 
 
 .line {
