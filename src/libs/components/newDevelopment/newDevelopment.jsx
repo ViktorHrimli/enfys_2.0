@@ -43,7 +43,7 @@ export default function NewDevelopment() {
               >
                 {isChangeOne ? "дивитися всі" : "детальніше"}</button>
             </li>
-            <li className={styles.link} >
+            <li className={styles.item}>
                 <Image 
                   src={CardTwo}
                   alt="pay"
