@@ -13,13 +13,13 @@ const montserrat = Nunito({ subsets: ["cyrillic"] });
 export default async function RootLayout({ children }) {
 
   return (
-    <html lang="de-DE">
+    <html lang="uk-UK">
       <body className={montserrat.className}>
         <Header />
         <main className={styles.page}>
           {children}
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
