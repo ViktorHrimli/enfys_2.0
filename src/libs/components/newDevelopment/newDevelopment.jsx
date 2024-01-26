@@ -23,7 +23,10 @@ export default function NewDevelopment() {
         <div style={{marginBottom: "20px"}}>
           <ul className={styles.list}>
             <li className={`${styles.link} ${styles.link_one}`}
-              style={isChangeOne ? { position: "absolute", width: "100%", zIndex: "3" } : {}}
+              style={isChangeOne
+                ? { position: "absolute", left: "0", transition: "0.5s", marginRight: "auto", width: "100%", zIndex: "3" }
+                : { position: "absolute", left: "0", transition: "0.5s" }
+              }
               onMouseMove={()=> setIsChangeOne(true)}
               onMouseLeave={()=> setIsChangeOne(false)}
             >
@@ -39,8 +42,10 @@ export default function NewDevelopment() {
                 />
               </div>}
               <button className={styles.btn}
-                style={isChangeOne ? { rotate: "-90deg", transition: "0.5s", left: "-96px", bottom: "184px" } : {transition: "0.5s"}}
-              >
+                style={isChangeOne
+                  ? { rotate: "-90deg", transition: "0.5s", left: "-96px", bottom: "184px" }
+                  : { transition: "0.5s" }}>
+                
                 {isChangeOne ? "дивитися всі" : "детальніше"}</button>
             </li>
             <li className={styles.item}>
@@ -53,7 +58,9 @@ export default function NewDevelopment() {
                 />
             </li>
             <li className={`${styles.link} ${styles.link_two}`}
-              style={isChangeTwo ? { position: "absolute", width: "100%", zIndex: "3" } : {}}
+              style={isChangeTwo
+                ? { position: "absolute", right: "0", transition: "0.5s", marginRight: "auto", width: "100%", zIndex: "3" }
+                : { position: "absolute", right: "0", transition: "0.5s" }}
               onMouseMove={()=> setIsChangeTwo(true)}
               onMouseLeave={()=> setIsChangeTwo(false)}
             >
@@ -64,11 +71,14 @@ export default function NewDevelopment() {
                 {isChangeTwo ? "дивитися всі" : "детальніше"}</button>
 
               <p className={styles.title}
-                style={isChangeTwo ? { rotate: "90deg", transition: "0.5s", position: "absolute", right: "-70px", top: "18px", fontSize: "24px" } : {transition: "0.5s"}}
+                style={isChangeTwo
+                  ? { rotate: "90deg", transition: "0.5s", position: "absolute", right: "-70px", top: "18px", fontSize: "24px" }
+                  : { transition: "0.5s" }}
               >хити продажів</p>
+
               {isChangeTwo && <p className={styles.title_after}>не пропусти</p>}
 
-              {!isChangeTwo && <div style={{ position: "absolute", left: "43px", top: "182px" }}>
+              {!isChangeTwo && <div style={{ position: "absolute", right: "16px", top: "182px" }}>
                 <Image
                   src={Bike}
                   alt="Bike"
