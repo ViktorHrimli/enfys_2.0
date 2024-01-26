@@ -12,11 +12,14 @@
 }
 
 .list_text {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 28px;
-  // margin-bottom: 28px;
+  display: none;
+
+  @media screen and (min-height: 750px) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
 }
 
 .list_icon {
@@ -54,6 +57,7 @@
 }
 
 .icon {
+  position: relative;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -75,5 +79,19 @@
 
   &::placeholder{
     color: #fff;
+  }
+}
+
+.arrow {
+  display: none;
+  @media screen and (max-height: 750px) {
+    display: block;
+    position: absolute;
+    right: -35px;
+    top: -2px;
+    transform: rotate(-180deg);
+    cursor: pointer;
+
+    transition: transform 1s;
   }
 }

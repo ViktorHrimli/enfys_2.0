@@ -4,10 +4,9 @@ import Image from "next/image";
 import Nav from "@/libs/components/nav/nav";
 import menuLeft from '@/assets/svg/menu-left.png'
 import menuRight from '@/assets/svg/menu-right.png'
-import Logo from "@/shared/logo";
+// import Logo from "@/shared/logo";
 
-
-
+import logo from "@/assets/svg/logo.svg";
 
 
 export default function Menu({ setIsMenu}) {
@@ -27,7 +26,12 @@ export default function Menu({ setIsMenu}) {
 
       <Nav />
       <div style={{position: "absolute", bottom: "88px", left: "68px"}}>
-        <Logo />
+        <Image
+          src={logo}
+          alt="pay"
+          priority={true}
+          loading="eager"
+        />
       </div>
 
       <div style={{position: "absolute", bottom: "0", right: "0"}}>
