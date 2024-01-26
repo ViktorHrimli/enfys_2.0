@@ -16,7 +16,6 @@ export default function NewDevelopment() {
   const [isChangeOne, setIsChangeOne] = useState(false);
   const [isChangeTwo, setIsChangeTwo] = useState(false);
 
-
   return (
     <section className={styles.section}> 
       <div className={styles.container}>
