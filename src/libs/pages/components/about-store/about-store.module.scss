@@ -1,45 +1,139 @@
 .section {
-  width:1000px;
+  width: 100%;
   margin: 0 auto;
-  outline: 1px solid tomato;
-  position:relative;
+  height: 1400px;
+  padding-top: 110px;
+  padding-left: 20px;
+  padding-right: 20px;
 
+  @media (min-width: 768px) {
+    height: 900px;
+    padding-left: 92px;
+    padding-right: 92px;
+  }
+  @media (min-width: 1024px) {
+    height: 1050px;
+    padding-left: 92px;
+    padding-right: 92px;
+  }
+  @media (min-width: 1280px) {
+    height: 1200px;
+    padding-left: 92px;
+    padding-right: 92px;
+  }
+  @media (min-width: 1440px) {
+    height: 1100px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 }
+
 .container{
-  width: 700px;
-  margin: 0 auto;
-  outline: 1px solid; 
-  height: 2000px;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  @media (min-width: 1440px) {
+    gap: 76px;
+  }
 }
-.about_title{
-  font-family: "Nunito" sans-serif;
-  font-size: 40px;
+
+.container_text {
+  @media (min-width: 1280px) {
+    width: 50%;
+  }
+}
+
+.about_title {
+  font-family: "Nunito", sans-serif;
   font-weight: 700;
   line-height: 1.37;
   letter-spacing: 0em;
   text-align: left;
-  height: 274px;
-  width: 646px;
-  position: absolute;
-  top: 50px;
-  left: 50px;
+  color: #209487;
+  font-size: 24px;
+  margin-bottom: 40px;
+
+  @media (min-width: 1280px) {
+    font-size: 40px;
+  }
 }
-.about_text{
-  font-family: "Mariupol" sans-serif;
-  font-size: 28px;
+
+.about_text {
+  font-family: "Mariupol", sans-serif;
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0em;
-  height: 459px;
-  width: 646px;
-  text-align: left;
-  position: absolute;
-}
-.image_container{
-  height: 49px;
-  width: 64px;
-}
-.btn{
 
+  color: #171717;
+  font-size: 16px;
+
+  @media (min-width: 1280px) {
+    font-size: 28px;
+  }
+}
+
+.image_container {
+  position: relative;
+  @media (min-width: 768px) {
+    height: 300px;
+    overflow: hidden;
+  }
+  @media (min-width: 1024px) {
+    height: 500px;
+  }
+  @media (min-width: 1280px) {
+    width: 518px;
+    height: 900px;
+    margin-top: 15px;
+  } 
+  @media (min-width: 1440px) {
+    width: 518px;
+    height: 700px;
+    margin-top: 0px;
+  }
+}
+
+.img {
+  
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    object-position: 0px -200px;
+  }
+  @media (min-width: 1280px) {
+    object-fit: cover;
+    height: 900px;
+  }
+  @media (min-width: 1440px) {
+    height: 700px;
+  }
+}
+
+.container_btn {
+  height: 100%;
+  position: relative;
+}
+
+.btn {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50% , 50%);
+  width: 220px;
+  height: 50px;
+  border: 1px solid rgb(249, 45, 45);
+  border-radius: 8px;
+  color: rgb(249, 45, 45);
+
+  transition: 0.5s;
+  background-color: rgb(255, 255, 255);
+  font-family: "Mariupol", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 19px;
+  text-transform: uppercase;
+
+  &:hover {
+    background: rgb(249, 45, 45);
+    color: rgb(255, 255, 255);
+  }
 }
