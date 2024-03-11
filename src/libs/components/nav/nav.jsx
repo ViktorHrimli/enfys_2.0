@@ -35,7 +35,7 @@ const social = [
 
 import {shop, strollers, furniture, accessories, transport, textile, toys, backpacks} from '@/shared/list'
 
-export default function Nav() {
+export default function Nav({setIsMenu}) {
   const [isStrollers, setIsStrollers] = useState(false);
   const [isFurniture, setIsFurniture] = useState(false);
   const [isAccessories, setIsAccessories] = useState(false);
@@ -89,7 +89,7 @@ export default function Nav() {
       <ul className={styles.list}>
         {shop.map((item, id) => (
           <li key={id}>
-            <Link href={item.link} className={styles.title}>{item.title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={item.link} className={styles.title}>{item.title}</Link>
           </li>
         ))}
       </ul>
@@ -98,7 +98,7 @@ export default function Nav() {
       {strollers.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isStrollers ? { transform: "rotate( 0deg)" } : {}}
               onClick={strollersArrow}
               className={styles.arrow}
@@ -112,7 +112,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isStrollers ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -122,7 +122,7 @@ export default function Nav() {
       {furniture.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isFurniture ? { transform: "rotate( 0deg)" } : {}}
               onClick={furnitureArrow}
               className={styles.arrow}
@@ -136,7 +136,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isFurniture ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -146,7 +146,7 @@ export default function Nav() {
       {accessories.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isAccessories ? { transform: "rotate( 0deg)" } : {}}
               onClick={accessoriesArrow}
               className={styles.arrow}
@@ -160,7 +160,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isAccessories ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -173,7 +173,7 @@ export default function Nav() {
         {transport.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isTransport ? { transform: "rotate( 0deg)" } : {}}
               onClick={transportArrow}
               className={styles.arrow}
@@ -187,7 +187,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isTransport ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -197,7 +197,7 @@ export default function Nav() {
         {textile.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isTextile ? { transform: "rotate( 0deg)" } : {}}
               onClick={textileArrow}
               className={styles.arrow}
@@ -211,7 +211,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isTextile ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -219,12 +219,12 @@ export default function Nav() {
         ))}
       {toys.map(({title, link, list}, id) => (
         <li key={id}>
-          <Link href={link} className={styles.title}>{title}</Link>
+          <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
         </li>
         ))}
       {backpacks.map(({title, link, list}, id) => (
         <li key={id}>
-          <Link href={link} className={styles.title}>{title}</Link>
+          <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
         </li>
         ))}
       </ul>

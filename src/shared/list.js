@@ -1,7 +1,7 @@
 export const shop = [
   {
     title: "про магазин",
-    link: "/",
+    link: "/about",
   },
   {
     title: "відгуки",
@@ -9,7 +9,7 @@ export const shop = [
   },
   {
     title: "контакти",
-    link: "/",
+    link: "/contacts",
   },
 ];
 

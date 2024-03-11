@@ -60,9 +60,12 @@
 }
 
 .logo {
-    margin-top: 50%;
     width: 200px;
     height: 96px;
+
+    @media (max-width: 767px) {
+            margin-top: 100%;
+        }
 }
 
 .title {
@@ -87,12 +90,13 @@
     font-weight: 800;
     line-height: normal;
     text-transform: uppercase;
-    width: 224px;
-    padding-top: 30%;
+    max-width: 224px;
 
     @media screen and (min-width: 768px) {
         max-width: 652px;
         font-size: 48px;
+        padding-top: 0;
+        margin-bottom: 60px;
     }
 }
 
