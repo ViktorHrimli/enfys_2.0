@@ -24,7 +24,7 @@ export default function Menu({ setIsMenu}) {
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="white" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"/></svg>
       </div>
 
-      <Nav />
+      <Nav setIsMenu={ setIsMenu } />
       <div style={{position: "absolute", bottom: "88px", left: "68px"}}>
         <Image
           src={logo}
