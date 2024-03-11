@@ -11,7 +11,6 @@ import Youtube from '@/assets/svg/youtube.png'
 import Locomotive from '@/assets/svg/locomotive.png'
 
 
-
 export default function NewDevelopment() {
   const [isChangeOne, setIsChangeOne] = useState(false);
   const [isChangeTwo, setIsChangeTwo] = useState(false);
@@ -21,12 +20,9 @@ export default function NewDevelopment() {
       <div className={styles.container}>
         <div style={{marginBottom: "20px"}}>
           <ul className={styles.list}>
-            <li className={`${styles.link} ${styles.link_one}`}
-              style={isChangeOne
-                ? { position: "absolute", left: "0", transition: "0.5s", marginRight: "auto", width: "100%", zIndex: "3" }
-                : { position: "absolute", left: "0", transition: "0.5s" }
-              }
-              onMouseMove={()=> setIsChangeOne(true)}
+            <li className={`${styles.link} ${styles.link_one} ${isChangeOne && styles.link_one_animation_desc}`}
+              
+              onMouseMove={() => setIsChangeOne(true)}
               onMouseLeave={()=> setIsChangeOne(false)}
             >
               <p className={styles.text_one}>Нові надходження</p>
@@ -35,17 +31,18 @@ export default function NewDevelopment() {
                 <Image
                   src={CardOne}
                   alt="pay"
-                  style={{ marginLeft: "84px" }}
+                  fill
                   priority={true}
                   loading="eager"
+                  className={styles.img_card_two}
                 />
               </div>}
-              <button className={styles.btn}
-                style={isChangeOne
-                  ? { rotate: "-90deg", transition: "0.5s", left: "-96px", bottom: "184px" }
-                  : { transition: "0.5s" }}>
-                
-                {isChangeOne ? "дивитися всі" : "детальніше"}</button>
+
+              <button className={`${styles.btn_desc} ${isChangeOne && styles.btn_desc_animation}`}>
+                {isChangeOne ? "дивитися всі" : "детальніше"}
+              </button>
+              <button className={styles.btn}>дивитися всі</button>
+
             </li>
             <li className={styles.item}>
                 <Image 
@@ -56,36 +53,32 @@ export default function NewDevelopment() {
                   style={{width: "390px", height: "475px"}}
                 />
             </li>
-            <li className={`${styles.link} ${styles.link_two}`}
-              style={isChangeTwo
-                ? { position: "absolute", right: "0", transition: "0.5s", marginRight: "auto", width: "100%", zIndex: "3" }
-                : { position: "absolute", right: "0", transition: "0.5s" }}
+
+            <li className={`${styles.link} ${styles.link_two} ${isChangeTwo && styles.link_two_animation_desc}`}
               onMouseMove={()=> setIsChangeTwo(true)}
               onMouseLeave={()=> setIsChangeTwo(false)}
             >
-              <button className={`${styles.btn_two}`}
-                style={isChangeTwo ? { rotate: "-90deg", transition: "0.5s", right: "-94px", top: "230px" } : {transition: "0.5s"}}
-                
-              >
+              <button className={`${styles.btn_two_desc} ${isChangeTwo && styles.btn_two_desc_animation }`}>
                 {isChangeTwo ? "дивитися всі" : "детальніше"}</button>
-
-              <p className={styles.title}
-                style={isChangeTwo
-                  ? { rotate: "90deg", transition: "0.5s", position: "absolute", right: "-70px", top: "18px", fontSize: "24px" }
-                  : { transition: "0.5s" }}
+              
+              <button className={styles.btn} style={{color: "#fff", background: "#F92D2D"}}>дивитися всі</button>
+              
+              <p className={`${styles.title} 
+              ${isChangeTwo && styles.title_animations_desc}`}
               >хити продажів</p>
 
               {isChangeTwo && <p className={styles.title_after}>не пропусти</p>}
 
-              {!isChangeTwo && <div style={{ position: "absolute", right: "16px", top: "182px" }}>
+              <div className={!isChangeTwo && styles.img_animation}>
                 <Image
                   src={Bike}
                   alt="Bike"
+                  fill
                   priority={true}
                   loading="eager"
-                  style={{ width: "332px", height: "315px" }}
+                  className={styles.img_bike}
                 />
-              </div>}
+              </div>
             </li>
           </ul>
         </div>

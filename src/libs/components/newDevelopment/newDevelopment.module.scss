@@ -5,7 +5,11 @@
 }
 
 .container {
-  padding: 100px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  @media screen and (min-width: 1024px) {
+    padding: 100px;
+  }
 }
 
 .list {
@@ -17,27 +21,88 @@
 }
 
 .link {
+  width: 320px;
+  height: 576px;
   position: relative;
-  width: 390px;
-  height: 475px;
+  padding: 30px 20px;
+
+  @media screen and (min-width: 1024px) {
+    width: 390px;
+    height: 475px;
+  }
 }
 
 .link_one {
   background: #209487;
-  padding-top: 16px;
-  padding-left: 16px;
+  
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    left: 0;
+    transition: 0.5s;
+
+    padding-top: 16px;
+    padding-left: 16px;
+  }
+}
+
+.link_one_animation_desc {
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    left: 0;
+    transition: 0.5s;
+    margin-right: auto;
+    width: 100%;
+    z-index: 3;
+  }
 }
 
 .link_two {
   background: #FF8A00;
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    right: 0;
+    transition: 0.5s;
+  }
 }
 
-// .item {
-//   display: none;
-//   @media screen and (min-width: 1440px) {
-//     display: block;
-//   }
-// }
+.link_two_animation_desc {
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    right: 0;
+    transition: 0.5s;
+    margin-right: auto;
+    width: 100%;
+    z-index: 3;
+  }
+}
+
+.img_animation {
+  display: none;
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    right: 16px;
+    top: 182px;
+  }
+}
+
+.img_bike {
+  display: none;
+  
+  @media screen and (min-width: 1024px) {
+    display: block;
+    width: 332px;
+    height: 315px;
+  }
+}
+
+.img_card_two {
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    display: block;
+    margin-left: 84px;
+  }
+}
 
 .text_one {
   color: #FFF;
@@ -60,86 +125,168 @@
 
 .title {
   color: #FFF;
-  text-align: center;
-  font-size: 44px;
+  text-align: end;
+  font-size: 24px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
   text-transform: uppercase;
-  transform: rotate(-90deg);
 
+  @media screen and (min-width: 1024px) {
+  transform: rotate(-90deg);
+  text-align: center;
   position: absolute;
   top: 205px;
   right: 148px;
   width: 400px;
-}
-
-.title_after {
-  color: #FFF;
-  font-family: "Mariupol", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-transform: uppercase;
-  position: absolute;
-  right: 22px;
-  top: 50px;
-}
-
-.btn {
   transition: 0.5s;
-  position: absolute;
-  left: 16px;
-  bottom: 38px;
-  display: inline-flex;
-  padding: 16px 70px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  background: #FFF;
-  border: none;
-  color: #FF8A00;
-  
-  font-family: "Mariupol", sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-transform: uppercase;
-
-  &:hover {
-    color: #FFF;
-    background:  #FF8A00;
+  font-size: 44px;
   }
 }
 
-.btn_two {
-  transition: 0.5s;
-  position: absolute;
-  right: 28px;
-  top: 38px;
-  display: inline-flex;
-  padding: 16px 70px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  background: #FFF;
-  border: none;
-  color: #FF8A00;
+.title_animations_desc {
+  @media screen and (min-width: 1024px) {
+    transform: rotate(0deg);
+      transition: 0.5s;
+      position: absolute;
+      right: -70px;
+      top: 18px;
+      font-size: 24px;
+  }
+}
 
-  font-family: "Mariupol", sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-transform: uppercase;
+.title_after {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: end;
+  line-height: 15px;
 
-  &:hover {
+  @media screen and (min-width: 1024px) {
     color: #FFF;
-    background: #F92D2D;
+    font-family: "Mariupol", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    position: absolute;
+    right: 22px;
+    top: 50px;
+  }
+}
+
+.btn {
+  display: none;
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    left: 16px;
+    bottom: 38px;
+    display: inline-flex;
+    padding: 16px 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    color: #FFF;
+    border: none;
+    background: #FF8A00;
+
+    font-family: "Mariupol", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: 0.5s;
+  }
+}
+
+.btn_desc {
+  display: none;
+  @media screen and (min-width: 1024px) {
+    transition: 0.5s;
+    position: absolute;
+    left: 16px;
+    bottom: 38px;
+    display: inline-flex;
+    padding: 16px 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #FFF;
+    border: none;
+    color: #FF8A00;
+    
+    font-family: "Mariupol", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: 0.5s;
+
+    &:hover {
+      color: #FFF;
+      background:  #FF8A00;
+    }
+  }
+}
+
+.btn_desc_animation {
+  @media screen and (min-width: 1024px) {
+    transform: rotate(-90deg);
+    transition: 0.5s;
+    left: -96px;
+    bottom: 184px;
+  }
+}
+
+.btn_two_desc {
+  display: none;
+  @media screen and (min-width: 1024px) {
+    transition: 0.5s;
+    position: absolute;
+    right: 28px;
+    top: 38px;
+    display: inline-flex;
+    padding: 16px 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #FFF;
+    border: none;
+    color: #FF8A00;
+
+    font-family: "Mariupol", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: 0.5s;
+
+    &:hover {
+      color: #FFF;
+      background: #F92D2D;
+    }
+  }
+}
+
+.btn_two_desc_animation {
+  @media screen and (min-width: 1024px) {
+    transform: rotate(-90deg);
+    transition: 0.5s;
+    right: -94px;
+    top: 230px;
+  }
+}
+
+.item {
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: block;
   }
 }
 
