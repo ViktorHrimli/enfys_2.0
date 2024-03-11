@@ -1,3 +1,45 @@
 .section {
-  height: 600px;
+  width:1000px;
+  margin: 0 auto;
+  outline: 1px solid tomato;
+  position:relative;
+
+}
+.container{
+  width: 700px;
+  margin: 0 auto;
+  outline: 1px solid; 
+  height: 2000px;
+  position: relative;
+}
+.about_title{
+  font-family: "Nunito" sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.37;
+  letter-spacing: 0em;
+  text-align: left;
+  height: 274px;
+  width: 646px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+.about_text{
+  font-family: "Mariupol" sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0em;
+  height: 459px;
+  width: 646px;
+  text-align: left;
+  position: absolute;
+}
+.image_container{
+  height: 49px;
+  width: 64px;
+}
+.btn{
+
 }
