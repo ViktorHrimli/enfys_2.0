@@ -3,12 +3,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 18px;
+  @media (max-width: 767px) {
+    align-content: flex-start;
+  }
 }
 
 .list {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 18px;
+    @media (min-width: 768px) {
+      gap: 40px;
+    }
 }
 
 .list_text {
@@ -25,6 +32,7 @@
 .list_icon {
   display: flex;
   gap: 14px;
+  margin-top: auto;
 }
 
 .link {
@@ -67,8 +75,21 @@
   align-items: center;
 }
 
+.input_container {
+  width: 200px;
+  position: absolute;
+  top: 30px;
+  left: 20px;
+
+  @media (min-width: 768px) {
+    width: 224px;
+    position: relative;
+    margin-top: 28px;
+  }
+}
+
 .input {
-  width: 224px;
+  width: 200px;
   height: 32px;
   border-radius: 8px;
   border: 1px solid #FFF;
@@ -76,6 +97,10 @@
   outline: none;
   background: rgba(130, 229, 204, 0.00);
   color: #fff;
+
+  @media (min-width: 768px) {
+    width: 224px;
+  }
 
   &::placeholder{
     color: #fff;
@@ -95,3 +120,5 @@
     transition: transform 1s;
   }
 }
+
+
