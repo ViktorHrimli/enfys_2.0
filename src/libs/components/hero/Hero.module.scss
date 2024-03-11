@@ -10,39 +10,57 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 20px;
+
+    @media screen and (min-width: 768px) {
+        justify-content: center;
+    }
 }
 
 .hero_line_color_green {
     position: absolute;
     top: 0;
     left: 0;
-    width: 107px;
+    width: 34px;
     height: 100%;
     background: linear-gradient(315deg, rgba(32, 148, 135, 0.30) 0.16%, rgba(130, 229, 204, 0.30) 99.24%, rgba(130, 229, 204, 0.30) 99.84%);
+
+    @media screen and (min-width: 768px) {
+        width: 107px;
+    }
 }
 
 .hero_line_color_red {
     position: absolute;
     top: 0;
-    left: 84px;
-    width: 143px;
+    left: 22px;
+    width: 34px;
     height: 100%;
     background: linear-gradient(315deg, rgba(202, 3, 3, 0.30) 0.06%, rgba(249, 45, 45, 0.30) 99.94%);
+    
+    @media screen and (min-width: 768px) {
+        left: 84px;
+        width: 143px;
+    }
 }
 
 .hero_line_color_yellow {
     position: absolute;
     top: 0;
-    left: 200px;
-    width: 143px;
+    left: 44px;
+    width: 34px;
     height: 100%;
     background: linear-gradient(315deg, rgba(255, 138, 0, 0.30) 0.1%, rgba(251, 222, 31, 0.30) 99.3%, rgba(251, 222, 31, 0.30) 99.9%);
+
+    @media screen and (min-width: 768px) {
+        left: 200px;
+        width: 143px;
+    }
 }
 
 .logo {
+    margin-top: 50%;
     width: 200px;
     height: 96px;
 }
@@ -50,23 +68,32 @@
 .title {
     z-index: 2;
     color: #FFF;
+    font-size: 24px;
     text-align: center;
-    font-size: 48px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
     text-transform: uppercase;
+    @media screen and (min-width: 768px) {
+        font-size: 48px;
+    }
 }   
 
 .description {
     z-index: 2;
     text-align: center;
-    font-size: 48px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
     text-transform: uppercase;
-    max-width: 652px;
+    width: 224px;
+    padding-top: 30%;
+
+    @media screen and (min-width: 768px) {
+        max-width: 652px;
+        font-size: 48px;
+    }
 }
 
 .bacground {
