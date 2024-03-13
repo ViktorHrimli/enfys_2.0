@@ -76,7 +76,7 @@ export default function Footer() {
                 </Link>
                 </li>
               ))}
-                <li className={styles.icon}>
+                {/* <li className={styles.icon}>
                 <div style={{position: "relative", cursor: "pointer"}}>
                   <Image 
                       src={language}
@@ -97,7 +97,7 @@ export default function Footer() {
                       style={{width: "25px", height: "25px"}}
                     />
                 </div>
-              </li>
+              </li> */}
             </ul>
 
             <ul>
