@@ -5,7 +5,7 @@ export const shop = [
   },
   {
     title: "відгуки",
-    link: "/",
+    link: "/reviews",
   },
   {
     title: "контакти",

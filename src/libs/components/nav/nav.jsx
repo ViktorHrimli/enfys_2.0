@@ -228,8 +228,7 @@ export default function Nav({setIsMenu}) {
         </li>
         ))}
       </ul>
-      <div>
-
+      <div >
         {/* icon */}
       <ul className={styles.list_icon}>
         {social.map(({icon, link}, id) => (

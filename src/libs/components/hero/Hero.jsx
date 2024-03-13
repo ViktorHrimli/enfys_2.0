@@ -8,6 +8,8 @@ import style from "./Hero.module.scss";
 import Img from "@/assets/svg/hero.png";
 import ImgAbout from "@/assets/svg/hero-about.png";
 import ImgContacts from "@/assets/svg/hero-contacts.png";
+import ImgReviews from "@/assets/svg/reviews-hero.png";
+
 
 
 import logo from "@/assets/svg/logo.svg";
@@ -17,6 +19,7 @@ import Line from "@/shared/line";
 const homeText = "НАСОЛОДЖУЙСЯ МАТЕРИНСТВОМ з ENFyS";
 const aboutText = "ENFyS - це ідеальне поєднання ціни та якості";
 const contactsText = "зв’яжіться з нами - з радістю доможемо";
+const reviewsText = "відгуки про магазин";
 
 
 export default function Hero() {
@@ -37,6 +40,11 @@ export default function Hero() {
       case "contacts":
         setIsHero(ImgContacts);
         setIsHeroText(contactsText)
+        break;
+      
+      case "reviews":
+        setIsHero(ImgReviews);
+        setIsHeroText(reviewsText)
         break;
       
       default:
