@@ -35,7 +35,7 @@ const social = [
 
 import {shop, strollers, furniture, accessories, transport, textile, toys, backpacks} from '@/shared/list'
 
-export default function Nav() {
+export default function Nav({setIsMenu}) {
   const [isStrollers, setIsStrollers] = useState(false);
   const [isFurniture, setIsFurniture] = useState(false);
   const [isAccessories, setIsAccessories] = useState(false);
@@ -89,7 +89,7 @@ export default function Nav() {
       <ul className={styles.list}>
         {shop.map((item, id) => (
           <li key={id}>
-            <Link href={item.link} className={styles.title}>{item.title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={item.link} className={styles.title}>{item.title}</Link>
           </li>
         ))}
       </ul>
@@ -98,7 +98,7 @@ export default function Nav() {
       {strollers.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isStrollers ? { transform: "rotate( 0deg)" } : {}}
               onClick={strollersArrow}
               className={styles.arrow}
@@ -112,7 +112,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isStrollers ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -122,7 +122,7 @@ export default function Nav() {
       {furniture.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isFurniture ? { transform: "rotate( 0deg)" } : {}}
               onClick={furnitureArrow}
               className={styles.arrow}
@@ -136,7 +136,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isFurniture ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -146,7 +146,7 @@ export default function Nav() {
       {accessories.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isAccessories ? { transform: "rotate( 0deg)" } : {}}
               onClick={accessoriesArrow}
               className={styles.arrow}
@@ -160,7 +160,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isAccessories ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -173,7 +173,7 @@ export default function Nav() {
         {transport.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isTransport ? { transform: "rotate( 0deg)" } : {}}
               onClick={transportArrow}
               className={styles.arrow}
@@ -187,7 +187,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isTransport ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -197,7 +197,7 @@ export default function Nav() {
         {textile.map(({title, link, list}, id) => (
         <li key={id}>
           <div style={{display: "flex", position: "relative"}}>
-            <Link href={link} className={styles.title}>{title}</Link>
+            <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
             <svg style={isTextile ? { transform: "rotate( 0deg)" } : {}}
               onClick={textileArrow}
               className={styles.arrow}
@@ -211,7 +211,7 @@ export default function Nav() {
           <ul className={styles.list_text} style={isTextile ? { display: "block", marginTop: "28px" } : {}}>
             {list.map(({item, link}, id) => (
               <li key={id}>
-                <Link href={link} className={styles.text}>{item}</Link>
+                <Link onClick={()=> setIsMenu(false)} href={link} className={styles.text}>{item}</Link>
               </li>
             ))}
           </ul>
@@ -219,17 +219,16 @@ export default function Nav() {
         ))}
       {toys.map(({title, link, list}, id) => (
         <li key={id}>
-          <Link href={link} className={styles.title}>{title}</Link>
+          <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
         </li>
         ))}
       {backpacks.map(({title, link, list}, id) => (
         <li key={id}>
-          <Link href={link} className={styles.title}>{title}</Link>
+          <Link onClick={()=> setIsMenu(false)} href={link} className={styles.title}>{title}</Link>
         </li>
         ))}
       </ul>
-      <div>
-
+      <div >
         {/* icon */}
       <ul className={styles.list_icon}>
         {social.map(({icon, link}, id) => (
@@ -267,7 +266,7 @@ export default function Nav() {
         </li>
       </ul>
       {/* input */}
-        <div style={{position: "relative", width: "224px", marginTop: "28px"}}>
+        <div className={styles.input_container}>
           <svg style={{position: "absolute", right: "12px", top: "4px"}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M15.5 14H14.71L14.43 13.73C15.4439 12.554 16.0011 11.0527 16 9.5C16 8.21442 15.6188 6.95772 14.9046 5.8888C14.1903 4.81988 13.1752 3.98676 11.9874 3.49479C10.7997 3.00282 9.49279 2.87409 8.23192 3.1249C6.97104 3.3757 5.81285 3.99477 4.90381 4.90381C3.99477 5.81285 3.3757 6.97104 3.1249 8.23192C2.87409 9.49279 3.00282 10.7997 3.49479 11.9874C3.98676 13.1752 4.81988 14.1903 5.8888 14.9046C6.95772 15.6188 8.21442 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="white"/>
           </svg>
