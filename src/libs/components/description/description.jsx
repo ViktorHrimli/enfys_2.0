@@ -13,7 +13,7 @@ export default function Description() {
           priority={true}
           loading="eager"
           quality={100}
-          style={{objectFit: "cover", objectPosition: "center", width: "100vw"}}
+          style={{objectFit: "cover", objectPosition: "center", width: "100vw",height:"100%"}}
         />
       <div className={styles.container}>
         <h2 className={styles.title}>Найкращий спосіб зробити дитину хорошою - це зробити її щасливою. Оскар Уайльд</h2>
