@@ -35,7 +35,7 @@ const social = [
 
 import {shop, strollers, furniture, accessories, transport, textile, toys, backpacks} from '@/shared/list'
 
-export default function Nav({setIsMenu}) {
+export default function Nav({ setIsMenu }) {
   const [isStrollers, setIsStrollers] = useState(false);
   const [isFurniture, setIsFurniture] = useState(false);
   const [isAccessories, setIsAccessories] = useState(false);
@@ -86,6 +86,7 @@ export default function Nav({setIsMenu}) {
   return (
     <div className={styles.container}>
       {/* shop */}
+      
       <ul className={styles.list}>
         {shop.map((item, id) => (
           <li key={id}>
@@ -93,6 +94,7 @@ export default function Nav({setIsMenu}) {
           </li>
         ))}
       </ul>
+
       {/* strollers */}
       <ul className={styles.list}>
       {strollers.map(({title, link, list}, id) => (
@@ -116,8 +118,9 @@ export default function Nav({setIsMenu}) {
               </li>
             ))}
           </ul>
-        </li>
+        </li >
       ))}
+        
       {/* furniture */}
       {furniture.map(({title, link, list}, id) => (
         <li key={id}>
@@ -142,6 +145,7 @@ export default function Nav({setIsMenu}) {
           </ul>
         </li>
       ))}
+        
       {/* accessories */}
       {accessories.map(({title, link, list}, id) => (
         <li key={id}>
@@ -166,8 +170,8 @@ export default function Nav({setIsMenu}) {
           </ul>
         </li>
       ))}
-
       </ul>
+
       {/* transport */}
       <ul className={styles.list}>
         {transport.map(({title, link, list}, id) => (
@@ -193,6 +197,7 @@ export default function Nav({setIsMenu}) {
           </ul>
         </li>
         ))}
+
         {/* textile */}
         {textile.map(({title, link, list}, id) => (
         <li key={id}>
@@ -229,6 +234,7 @@ export default function Nav({setIsMenu}) {
         ))}
       </ul>
       <div >
+
         {/* icon */}
       <ul className={styles.list_icon}>
         {social.map(({icon, link}, id) => (
@@ -264,7 +270,8 @@ export default function Nav({setIsMenu}) {
               />
           </div>
         </li>
-      </ul>
+        </ul>
+        
       {/* input */}
         <div className={styles.input_container}>
           <svg style={{position: "absolute", right: "12px", top: "4px"}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
