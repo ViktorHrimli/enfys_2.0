@@ -39,11 +39,16 @@
   color: #FFF;
   text-align: center;
   font-family: "Mariupol", sans-serif;
-  font-size: 36px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   margin-bottom: 48px;
+  z-index: 5;
+   @media (min-width:768px) {
+    font-size: 36px;
+    
+  }
 }
 
 .container_text {
@@ -58,10 +63,14 @@
   display: block;
   color: #FFF;
   font-family: "Mariupol", sans-serif;
-  font-size: 28px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+   @media (min-width:768px) {
+    font-size: 28px;
+    
+  }
 }
 
 .btn {
