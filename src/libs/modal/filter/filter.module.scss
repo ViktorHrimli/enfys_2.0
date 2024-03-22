@@ -1,8 +1,125 @@
-.container {
+
+ .container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: aqua;
+  background-color: #3C372A99;
+  margin: 0 auto;
+  
+}
+
+.modal{
+position: absolute;
+width: 890px;
+height: 388px;
+background: #209487;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+margin: 0 auto;
+
+}
+
+.container_filter{
+margin: 50px;
+position: relative;
+}
+
+.left_box{
+position: absolute;
+top: 50px;
+left: 50px;
+}
+
+.right_box{
+position: absolute;
+top: 50px;
+right: 50px;
+
+}
+.price_box{
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+  
+}
+.price{
+  margin: 10px;
+}
+.sorting_box{
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+padding-bottom: 30px;
+
+
+
+}
+.sorting_text{
+  margin-right: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// -------кнопки--------
+.btn_box{
+position: absolute;
+bottom: 50px;
+left: 50%;
+transform: translate(-50%);
+
+}
+
+.btn_save{
+font-family: "Mariupol", sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 1;
+letter-spacing: 0em;
+width: 137px;
+height: 28px;
+background: #F92D2D;
+color: white;
+border-radius: 6px;
+transition: 0.5s;
+
+
+}
+
+.btn_save:hover{
+  background: white;
+  color:  #F92D2D;
+}
+
+.btn_reset{
+font-family: "Mariupol", sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 1;
+letter-spacing: 0em;
+width: 189px;
+height: 28px;
+border-radius: 6px;
+color: #F92D2D;
+transition: 0.5s;
+margin-left: 50px;
+
+
+
+
+}
+.btn_reset:hover{
+  background: #F92D2D;
+  color:  white;
 }
