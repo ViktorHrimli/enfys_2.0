@@ -15,11 +15,11 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="uk-UK">
       <body className={montserrat.className}>
-        {/* <Header /> */}
+        <Header />
         <main className={styles.page}>
           {children}
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
