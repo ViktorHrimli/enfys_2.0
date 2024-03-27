@@ -6,5 +6,50 @@
 
 .container {
 padding: 100px;
+position: relative;
+
 }
 
+.btn{
+  width: 300px;
+  height: 60px;
+  border: none;
+  border-radius: 0px 8px 8px 0px;
+  background: rgb(32, 148, 135);
+  color: rgb(255, 255, 255);
+  font-family: Mariupol;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 19px;
+  position: absolute;
+  top: 120px;
+  left: 0px;
+  transition: 0.5s;
+
+}
+.btn:hover{
+  background: rgb(255, 255, 255);
+  color:  rgb(32, 148, 135);
+  border: 1px solid rgb(32, 148, 135);
+}
+
+.content{
+  width: 280px;
+  height: 340px;
+  border: 1px solid rgb(32, 148, 135);
+  margin-top: 210px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: black;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+
+}
+.content:hover{
+  box-sizing: border-box;
+  border: 1px solid rgb(32, 148, 135);
+  border-radius: 4px;
+  box-shadow: 0px 12px 27px 0px rgba(112, 112, 112, 0.1),0px 48px 48px 0px rgba(112, 112, 112, 0.09),0px 109px 65px 0px rgba(112, 112, 112, 0.05),0px 193px 77px 0px rgba(112, 112, 112, 0.01),0px 302px 85px 0px rgba(112, 112, 112, 0);
+  background: rgb(32, 148, 135);
+}
