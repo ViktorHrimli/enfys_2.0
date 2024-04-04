@@ -26,6 +26,7 @@ const priceText = "прогулянкові візочки";
 export default function Hero() {
   const [isHero, setIsHero] = useState(Img);
   const [isHeroText, setIsHeroText] = useState(homeText);
+  const [isHeroCards, setIsHeroCards] = useState(false);
 
 
   const path = usePathname().replace("/", "");
@@ -48,14 +49,16 @@ export default function Hero() {
         setIsHeroText(reviewsText)
         break;
       
-      case "price":
+      case "price", "price-card":
         setIsHero(ImgPrice);
-        setIsHeroText(priceText)
+        setIsHeroText(priceText);
+        setIsHeroCards(true);
         break;
       
       default:
         setIsHero(Img);
-        setIsHeroText(homeText)
+        setIsHeroText(homeText);
+        setIsHeroCards(false);
         break;
     }
   }, [path]);
@@ -63,7 +66,7 @@ export default function Hero() {
   return (
     <>
       <section className={style.section}>
-        <div className={style.container} style={path === "price" ? {height: "240px"} : {height: "100vh"}}>
+        <div className={style.container} style={isHeroCards ? {height: "240px"} : {}}>
           <h1 className={style.title} style={{ display: "none" }}>ENFYS</h1>
           <div className={style.hero_line_color_green}></div>
           <div className={style.hero_line_color_red}></div>
@@ -78,10 +81,10 @@ export default function Hero() {
               className={style.logo}
             />
           </div>
-          <p className={style.description} style={path === "price" ? {marginBottom: "0px"} : {}}>{isHeroText}</p>
-        <div className={style.bacground} style={path === "price" ? {height: "240px"} : {height: "100vh"}}></div>
+          <p className={style.description} style={isHeroCards ? {marginBottom: "0px"} : {}}>{isHeroText}</p>
+        <div className={style.bacground} style={isHeroCards ? {height: "240px"} : {}}></div>
 
-        <div className={style.bacground_img} style={path === "price" ? {height: "240px"} : {height: "100vh"}}>
+        <div className={style.bacground_img} style={isHeroCards ? {height: "240px"} : {}}>
           <Image 
             src={isHero}
             alt="Logo"
