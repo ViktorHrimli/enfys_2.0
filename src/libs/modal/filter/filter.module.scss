@@ -1,5 +1,5 @@
 
- .container {
+.container {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,7 +7,7 @@
   height: 100vh;
   background-color: #3C372A99;
   margin: 0 auto;
-  
+  z-index: 5;
 }
 
 .modal{
@@ -29,6 +29,7 @@ padding-right: 90px;
 position: absolute;
 top: 20px;
 right: 20px;
+cursor: pointer;
 }
 
 .container_filter{

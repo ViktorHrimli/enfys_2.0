@@ -1,7 +1,6 @@
 .section {
   width: 100%;
   height: 100%;
-  border: 1px solid tomato;
 }
 
 .container {
@@ -17,7 +16,7 @@ position: relative;
   border-radius: 0px 8px 8px 0px;
   background: rgb(32, 148, 135);
   color: rgb(255, 255, 255);
-  font-family: Mariupol;
+  font-family: "Mariupol", sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 19px;

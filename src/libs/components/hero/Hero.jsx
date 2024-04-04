@@ -9,7 +9,7 @@ import Img from "@/assets/svg/hero.png";
 import ImgAbout from "@/assets/svg/hero-about.png";
 import ImgContacts from "@/assets/svg/hero-contacts.png";
 import ImgReviews from "@/assets/svg/reviews-hero.png";
-
+import ImgPrice from "@/assets/svg/hero-price.png";
 
 
 import logo from "@/assets/svg/logo.svg";
@@ -20,6 +20,7 @@ const homeText = "НАСОЛОДЖУЙСЯ МАТЕРИНСТВОМ з ENFyS";
 const aboutText = "ENFyS - це ідеальне поєднання ціни та якості";
 const contactsText = "зв’яжіться з нами - з радістю доможемо";
 const reviewsText = "відгуки про магазин";
+const priceText = "прогулянкові візочки";
 
 
 export default function Hero() {
@@ -47,6 +48,11 @@ export default function Hero() {
         setIsHeroText(reviewsText)
         break;
       
+      case "price":
+        setIsHero(ImgPrice);
+        setIsHeroText(priceText)
+        break;
+      
       default:
         setIsHero(Img);
         setIsHeroText(homeText)
@@ -57,7 +63,7 @@ export default function Hero() {
   return (
     <>
       <section className={style.section}>
-        <div className={style.container}>
+        <div className={style.container} style={path === "price" ? {height: "240px"} : {height: "100vh"}}>
           <h1 className={style.title} style={{ display: "none" }}>ENFYS</h1>
           <div className={style.hero_line_color_green}></div>
           <div className={style.hero_line_color_red}></div>
@@ -72,10 +78,10 @@ export default function Hero() {
               className={style.logo}
             />
           </div>
-          <p className={style.description}>{isHeroText}</p>
-        <div className={style.bacground}></div>
+          <p className={style.description} style={path === "price" ? {marginBottom: "0px"} : {}}>{isHeroText}</p>
+        <div className={style.bacground} style={path === "price" ? {height: "240px"} : {height: "100vh"}}></div>
 
-        <div className={style.bacground_img}>
+        <div className={style.bacground_img} style={path === "price" ? {height: "240px"} : {height: "100vh"}}>
           <Image 
             src={isHero}
             alt="Logo"
@@ -87,7 +93,7 @@ export default function Hero() {
           />
           </div>
         </div>
-        <div style={{position: 'absolute'}}> 
+        <div style={{position: 'absolute'}} > 
           <Line />
         </div>
       </section>
