@@ -2,7 +2,7 @@ import styles from "./card.module.scss"
 import Image from "next/image"
 
 // -------- demo --------------------------\
-import imgCards from "./img/img-1.png"; // |
+import imgCards from "../about-cards-gallary/img/img-1.png"; // |
 // ----------------------------------------/
 
 export default function Card() {
