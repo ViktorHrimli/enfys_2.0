@@ -1,11 +1,11 @@
 import Hero from "@/libs/components/hero/Hero";
-import PriceList from "@/libs/pages/components/price-list/price-list";
+import Card from "@/libs/pages/components/card/card";
 
 export default async function Home() {
   return (
     <>
-    <Hero />
-    <PriceList />
+      <Hero />
+      <Card />
     </>
   );
 }
