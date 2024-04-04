@@ -1,10 +1,10 @@
 import styles from './filter.module.scss'
 
-export default function Filter({ }) {
+export default function Filter({ setIsOpenFilter }) {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
-      <div className={styles.closed}>
+      <div className={styles.closed} onClick={()=> setIsOpenFilter(false)}>
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"/></svg>
       </div>
         <div className={styles.container_filter}>
@@ -26,24 +26,24 @@ export default function Filter({ }) {
             <p>Бренди</p>
           <div>
             <input type="checkbox" id="Carrello" name="Carrello" />
-            <label for="Carrello">Carrello</label>
+            <label htmlFor="Carrello">Carrello</label>
           </div>
 
           <div>
             <input type="checkbox" id="Lorelli" name="Lorelli" />
-            <label for="Lorelli">Lorelli</label>
+            <label htmlFor="Lorelli">Lorelli</label>
           </div>
           <div>
             <input type="checkbox" id="Tilly" name="Tilly" />
-            <label for="Tilly">Tilly</label>
+            <label htmlFor="Tilly">Tilly</label>
           </div>
           <div>
             <input type="checkbox" id="BabyZz" name="BabyZz" />
-            <label for="BabyZz">BabyZz</label>
+            <label htmlFor="BabyZz">BabyZz</label>
           </div>
           <div>
             <input type="checkbox" id="NINOS" name="NINOS" />
-            <label for="NINOS">NINOS</label>
+            <label htmlFor="NINOS">NINOS</label>
           </div>
         </div>
         </div>
