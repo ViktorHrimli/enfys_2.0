@@ -1,0 +1,190 @@
+.section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  @media screen and (min-width: 320px) {
+  width: 320px;
+  justify-content: center;
+  
+  padding-top: 40px;
+  padding-bottom: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding-left: 92px;
+    padding-right: 92px;
+    gap: 30px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 1024px;
+    padding-left: 5px;
+    padding-right: 5px;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+    padding-left: 92px;
+    padding-right: 92px;
+  }
+}
+
+.container_line {
+  position: absolute;
+  top: 0;
+}
+
+.container_img {
+  position: relative;
+}
+
+.img {
+  width: 400px;
+  height: 192px;
+  margin-bottom: 40px;
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 32px;
+  }
+}
+
+.container_contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 767px) {
+    margin-right: 34px;
+  }
+}
+
+.title_contacts {
+  width: 80px; 
+  height: 17px;
+  font-family: "Mariupol", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #209487;
+  margin-right: 20px;
+}
+
+.text {
+  font-family: "Mariupol", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #171717;
+  margin-right: 10px;
+
+  &:hover {
+    color: #209487;
+  }
+}
+
+.tel_mob {
+  @media screen and (max-width: 767px) {
+    margin-left: 100px;
+    margin-top: 10px;
+  }
+}
+
+.tel_mob_none {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.container_icon {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #FF8A00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// form 
+
+.description {
+  width: 250px;
+  font-family: "Mariupol", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #171717;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  width: 283px;
+  height: 37px; 
+  border-radius: 8px; 
+  border: 1px solid #F92D2D;
+  outline: none;
+  padding-left: 20px;
+
+  &::placeholder {
+    font-family: "Mariupol", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+}
+
+.btn {
+  width: 190px; 
+  height: 47px;
+  padding: 16px, 40px, 16px, 40px; 
+  border-radius: 8px; 
+  font-family: "Mariupol", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+  color: #209487;
+  background-color: transparent;
+  border: 1px solid #209487;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+
+  &:hover {
+    background-color: #209487;
+    color: #fff;
+  }
+}

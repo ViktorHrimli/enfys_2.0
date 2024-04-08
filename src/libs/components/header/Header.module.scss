@@ -1,0 +1,142 @@
+.section {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    @media screen and (max-width: 767px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    @media screen and (min-width: 768px) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+.logo {
+    @media screen and (max-width: 1023px) {
+        display: none;
+    }
+    @media screen and (min-width: 1024px) {
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+}
+
+
+.btn {
+    // z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+
+.line {
+    width: 55px;
+    height: 4px;
+    background-color: #fcfcfc;
+}
+
+.closed_left {
+    width: 55px;
+    height: 4px;
+    background-color: #fcfcfc;
+    transform: rotate(-45deg);
+}
+
+.closed_right {
+    width: 28px;
+    height: 3px;
+    background-color: #fcfcfc;
+    transform: rotate(45deg);
+}
+
+@keyframes touch {
+    0% {
+        transform: scale(1);
+        transform-origin: center center;
+        transition-timing-function: ease-out;
+    }
+
+    10% {
+        transform: scale(0.90);
+        transition-timing-function: ease-in;
+    }
+
+    17% {
+        transform: scale(0.95);
+        transition-timing-function: ease-out;
+    }
+
+    33% {
+        transform: scale(0.85);
+        transition-timing-function: ease-in;
+    }
+
+    45% {
+        transform: scale(1);
+        transition-timing-function: ease-out;
+    }
+}
+
+.social_cantainer {
+    position: fixed;
+    right: 10px;
+    bottom: 80px;
+    height: 140px;
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    @media screen and (min-width: 1024px) {
+        right: 50px;
+        bottom: 120px;
+    }
+}
+
+.icon_whatsapp {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    z-index: 5;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    // transition: all 0.2s ease-in-out;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    background: #c7c5c5;
+    border: 2px solid #c7c5c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // animation: touch 2.5s linear infinite;
+    @media screen and (min-width: 1024px) {
+        right: 50px;
+        bottom: 50px;
+    }
+}
+
+.animation {
+    transition: all 0.2s ease-in-out;
+    animation: touch 2.5s linear infinite;
+}
