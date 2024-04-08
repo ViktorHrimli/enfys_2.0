@@ -51,6 +51,13 @@
   }
 }
 
+.fullsreen {
+  position: absolute;
+  right: -7px;
+  bottom: -7px;
+  cursor: pointer;
+}
+
 .list {
   display: flex;
   flex-direction: column;
