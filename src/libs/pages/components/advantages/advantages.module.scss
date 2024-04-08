@@ -1,0 +1,57 @@
+.section {
+  width: 100%;
+  background-color: #FF8A00;
+  padding-top: 52px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 76px;
+
+  @media (min-width: 768px) {
+    padding-top: 86px;
+    padding-left: 128px;
+    padding-right: 128px;
+    padding-bottom: 56px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-family: "Mariupol", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 34.66px;
+  text-align: center;
+  margin-bottom: 48px;
+  max-width: 880px;
+  @media (min-width: 768px) {
+  font-size: 36px;
+  }
+}
+
+.text {
+  font-family: "Mariupol", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 26.96px;
+  text-align: left;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marker {
+  width: 7px;
+  height: 7px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+

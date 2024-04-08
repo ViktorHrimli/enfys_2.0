@@ -49,7 +49,13 @@ export default function Hero() {
         setIsHeroText(reviewsText)
         break;
       
-      case "price", "price-card":
+      case "price":
+        setIsHero(ImgPrice);
+        setIsHeroText(priceText);
+        setIsHeroCards(true);
+        break;
+      
+      case "price-card":
         setIsHero(ImgPrice);
         setIsHeroText(priceText);
         setIsHeroCards(true);
@@ -78,6 +84,7 @@ export default function Hero() {
               priority={true}
               loading="eager"
               quality={100}
+              style={isHeroCards ? {marginTop: "10%"} : {}}
               className={style.logo}
             />
           </div>
