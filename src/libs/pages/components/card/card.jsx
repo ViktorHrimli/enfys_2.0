@@ -14,6 +14,7 @@ export default function Card() {
           <div className={styles.left_orange}></div>
           <div className={styles.left_red}></div>
         </div>
+        
         <div className={styles.right_box}>
           <div className={styles.right_red}></div>
           <div className={styles.right_yello}></div>
