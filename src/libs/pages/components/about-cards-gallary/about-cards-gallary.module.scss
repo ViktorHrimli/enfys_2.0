@@ -1,68 +1,130 @@
 .section {
+  position: relative;
   width: 100%;
   height: auto;
-  padding: 100px;
+  padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 768px) {
+    padding: 100px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 80px;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    gap: 112px;
+  }
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 26px;
+  width: 100%;
+  @media (min-width: 768px) {
+    gap: 42px;
+    width: 50%;
+  }
 }
 
 .img {
   position: relative;
-  width: 460px;
-  height: 580px;
+  width: 80%;
+  // height: 100%;
+
+  @media (min-width: 768px) {
+    width: 450px;
+    height: 580px;
+  }
+  @media (min-width: 780px) {
+    width: 460px;
+    height: 580px;
+  }
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+  @media (min-width: 768px) {
+    gap: 20px;
+  }
 }
 
 .items {
   position: relative;
-  width: 76px;
-  height: 100px;
   border: 1px solid #209487;
-  border-radius: 8px;
   overflow: hidden;
+  border-radius: 4px;
   padding: 4px;
   background-color: white;
   cursor: pointer;
+  width: 30px;
+  height: 40px;
+
+  @media (min-width: 768px) {
+    width: 76px;
+    height: 100px;
+    border-radius: 8px;
+  }
+}
+
+.bacground {
+  background: #D9D9D999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .container_text {
-  width: 40%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 28px;
+  @media (min-width: 1024px) {
+    width: 40%;
+  }
 }
 
 .title {
   font-family: "Nunito", sans-serif;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 38.19px;
+  line-height: 27.28px;
   text-align: left;
   color: #171717;
+  @media (min-width: 768px) {
+    font-size: 28px;
+    line-height: 38.19px;
+  }
 }
 
 .art {
   font-family: "Mariupol" , sans-serif;
-  font-size: 14px;
+  font-size: 8px;
   font-weight: 400;
   line-height: 13.48px;
   text-align: left;
   color: #747171;
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.container_price {
+  display: flex;
+  justify-content: space-between;
 }
 
 .price {
@@ -84,20 +146,29 @@
   text-align: left;
   color: #BCBCBC;
   text-decoration: line-through;
+  margin-top: 4px;
 }
 
 .text {
   color: black;
   font-family: "Mariupol", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 19.26px;
   text-align: left;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+  
+  span {
+    color: #209487;
+    cursor: pointer;
+  }
 }
 
 .btn {
-  width: 300px;
-  height: 60px;
+  width: 144px;
+  height: 40px;
   border-radius: 8px;
   background: #F92D2D;
   border: 1px solid #F92D2D;
@@ -110,6 +181,13 @@
   margin-left: auto;
   margin-right: auto;
   transition: 0.5s;
+  margin-top: 50px;
+
+  @media (min-width: 768px) {
+    width: 300px;
+    height: 60px;
+    margin-top: 70px;
+  }
 
   &:hover{
     color: #F92D2D;

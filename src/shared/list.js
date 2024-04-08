@@ -16,15 +16,15 @@ export const shop = [
 export const strollers = [
   {
     title: "Коляски та автокрісла",
-    link: "/",
+    link: "/price",
     list: [
       {
         item: "універсальні коляски",
-        link: "/",
+        link: "/price",
       },
       {
         item: "прогулянкові коляски",
-        link: "/",
+        link: "/price",
       },
       {
         item: "автокрісла",
