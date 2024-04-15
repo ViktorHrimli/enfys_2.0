@@ -1,11 +1,14 @@
 .section {
   padding: 100px;
-  width: 2000px;
+  width: 100%;
+
 }
 
 .box {
   display: flex;
   align-content: space-between;
+  margin-right: auto;
+  margin-left: auto;
 }
 //  ---------left---------
 
