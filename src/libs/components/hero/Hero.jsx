@@ -24,12 +24,16 @@ const priceText = "прогулянкові візочки";
 
 
 export default function Hero() {
+  const [isClient, setIsClient] = useState(false);
+
   const [isHero, setIsHero] = useState(Img);
   const [isHeroText, setIsHeroText] = useState(homeText);
   const [isHeroCards, setIsHeroCards] = useState(false);
 
 
   const path = usePathname().replace("/", "");
+
+  const priceCard = path.includes("price");
 
   useEffect(() => {
     switch (path) {
@@ -49,18 +53,6 @@ export default function Hero() {
         setIsHeroText(reviewsText)
         break;
       
-      case "price":
-        setIsHero(ImgPrice);
-        setIsHeroText(priceText);
-        setIsHeroCards(true);
-        break;
-      
-      case "price-card":
-        setIsHero(ImgPrice);
-        setIsHeroText(priceText);
-        setIsHeroCards(true);
-        break;
-      
       default:
         setIsHero(Img);
         setIsHeroText(homeText);
@@ -69,44 +61,55 @@ export default function Hero() {
     }
   }, [path]);
 
+  useEffect(() => {
+    switch (true) { 
+      case priceCard:
+        setIsHero(ImgPrice);
+        setIsHeroText(priceText);
+        setIsHeroCards(true);
+      break;
+    }
+    setIsClient(true);
+  }, [])
+
   return (
     <>
-      <section className={style.section}>
-        <div className={style.container} style={isHeroCards ? {height: "240px"} : {}}>
+      {isClient && <section className={style.section}>
+        <div className={style.container} style={isHeroCards ? { height: "240px" } : {}}>
           <h1 className={style.title} style={{ display: "none" }}>ENFYS</h1>
           <div className={style.hero_line_color_green}></div>
           <div className={style.hero_line_color_red}></div>
           <div className={style.hero_line_color_yellow}></div>
-          <div style={{position: "relative", zIndex: "3"}}>
-            <Image 
+          <div style={{ position: "relative", zIndex: "3" }}>
+            <Image
               src={logo}
               alt="Logo"
               priority={true}
               loading="eager"
               quality={100}
-              style={isHeroCards ? {marginTop: "10%"} : {}}
+              style={isHeroCards ? { marginTop: "10%" } : {}}
               className={style.logo}
             />
           </div>
-          <p className={style.description} style={isHeroCards ? {marginBottom: "0px"} : {}}>{isHeroText}</p>
-        <div className={style.bacground} style={isHeroCards ? {height: "240px"} : {}}></div>
+          <p className={style.description} style={isHeroCards ? { marginBottom: "0px" } : {}}>{isHeroText}</p>
+          <div className={style.bacground} style={isHeroCards ? { height: "240px" } : {}}></div>
 
-        <div className={style.bacground_img} style={isHeroCards ? {height: "240px"} : {}}>
-          <Image 
-            src={isHero}
-            alt="Logo"
-            fill
-            priority={true}
-            loading="eager"
-            quality={100}
-            className={style.img}
-          />
+          <div className={style.bacground_img} style={isHeroCards ? { height: "240px" } : {}}>
+            <Image
+              src={isHero}
+              alt="Logo"
+              fill
+              priority={true}
+              loading="eager"
+              quality={100}
+              className={style.img}
+            />
           </div>
         </div>
-        <div style={{position: 'absolute'}} > 
+        <div style={{ position: 'absolute' }} >
           <Line />
         </div>
-      </section>
+      </section>}
     </>
   );
 }

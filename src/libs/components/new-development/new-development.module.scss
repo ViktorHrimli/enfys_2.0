@@ -21,7 +21,7 @@
 }
 
 .link {
-  width: 320px;
+  width: 100%;
   height: 576px;
   position: relative;
   padding: 30px 20px;
@@ -34,7 +34,7 @@
 
 .link_one {
   background: #209487;
-  
+  overflow: hidden;
   @media screen and (min-width: 1024px) {
     position: absolute;
     left: 0;
@@ -42,6 +42,7 @@
 
     padding-top: 16px;
     padding-left: 16px;
+    z-index: 5;
   }
 }
 
@@ -52,12 +53,49 @@
     transition: 0.5s;
     margin-right: auto;
     width: 100%;
-    z-index: 3;
+    z-index: 7;
+    overflow: hidden;
+    
+  }
+}
+
+.gallery_left_tel {
+  display: block;
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.gallery_left {
+  display: none;
+  @media (min-width: 1024px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  
+    overflow-y: scroll;
+    top: 30px;
+    padding-left: 170px;
+    padding-right: 90px;
+  }
+}
+
+.gallery_left_tel {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  overflow-y: scroll;
+  top: 30px;
+
+  @media (min-width: 1024px) {
+    display: none;
   }
 }
 
 .link_two {
   background: #FF8A00;
+  overflow: hidden;
   @media screen and (min-width: 1024px) {
     position: absolute;
     right: 0;
@@ -72,22 +110,51 @@
     transition: 0.5s;
     margin-right: auto;
     width: 100%;
-    z-index: 3;
+    z-index: 5;
+  }
+}
+
+.gallery_right {
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  
+    overflow-y: scroll;
+    padding-left: 52px;
+    padding-right: 170px;
+  }
+}
+
+.gallery_right_tel {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  overflow-y: scroll;
+
+  @media (min-width: 1024px) {
+    display: none;
   }
 }
 
 .img_animation {
   display: none;
   @media screen and (min-width: 1024px) {
+    display: block;
     position: absolute;
     right: 16px;
     top: 182px;
+    width: 332px;
+    height: 315px;
   }
 }
 
 .img_bike {
   display: none;
-  
+  width: 332px;
+  height: 315px;
   @media screen and (min-width: 1024px) {
     display: block;
     width: 332px;
@@ -95,8 +162,27 @@
   }
 }
 
+.img_card_centr {
+  position: relative;
+  width: 390px;
+  height: 475px;
+  @media (max-width: 767px) {
+    height: 0;
+  }
+}
+
+.img_centr {
+  display: none;
+
+  @media screen and (min-width: 1280px) {
+    display: block;
+  }
+}
+
+
 .img_card_two {
   display: none;
+  z-index: 5;
 
   @media screen and (min-width: 1024px) {
     display: block;
@@ -114,6 +200,7 @@
 }
 
 .text_two {
+  position: absolute;
   color: #FFF;
   font-family: "Mariupol", sans-serif;
   font-size: 16px;
@@ -156,6 +243,8 @@
 }
 
 .title_after {
+  position: absolute;
+  right: 20px;
   font-size: 16px;
   font-weight: 400;
   text-align: end;
@@ -177,7 +266,7 @@
 
 .btn {
   display: none;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1023px) {
     position: absolute;
     left: 16px;
     bottom: 38px;
@@ -203,6 +292,7 @@
 
 .btn_desc {
   display: none;
+  z-index: 5;
   @media screen and (min-width: 1024px) {
     transition: 0.5s;
     position: absolute;
@@ -244,6 +334,7 @@
 
 .btn_two_desc {
   display: none;
+    z-index: 5;
   @media screen and (min-width: 1024px) {
     transition: 0.5s;
     position: absolute;
@@ -292,28 +383,206 @@
 
 .wow {
   width: 100%;
-  height: 334px;
-  border: 1px solid red;
+  height: 800px;
   margin-bottom: 20px;
+  position: relative;
+  background-color: #FBDE1F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    padding-top: 30px;
+    height: 512px;
+  }
+  @media (min-width: 1440px) {
+    height: 334px;
+  }
+}
+
+.wow_img_desc {
+  display: none;
+  @media (min-width: 1440px) {
+    display: block;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+.wow_img_mob {
+  display: none;
+
+  @media (max-width: 1439px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+.wow_title_container {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.wow_title {
+  font-size: 120px;
+  font-weight: 700;
+  line-height: 130.94px;
+  text-align: center;
+  color: #000000;
+  z-index: 2;
+  position: relative;
+  margin-right: 18px;
+
+  @media (min-width: 768px) {
+    font-size: 96px;
+  }
+
+  span {
+    position: absolute;
+    top: 2px;
+    left: -5px;
+    color: #FFFFFF;
+  }
+}
+
+.wow_title_text{
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 32.74px;
+  text-align: center;
+  color: #000000;
+  z-index: 2;
+  position: relative;
+
+  @media (min-width: 768px) {
+    font-size: 48px;
+    line-height: 65.47px;
+  }
+
+  span {
+      position: absolute;
+      left: -2px;
+      color: #FFFFFF;
+
+      @media (min-width: 768px) {
+        top: 5px;
+      }
+    }
+}
+
+.wow_descriptions_container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: space-evenly;
+  margin-top: 146px;
+  // width: 100%;
+  padding-left: 54px;
+  padding-right: 54px;
+
+  @media (min-width: 768px) {
+    width: 700px;
+    margin-top: 70px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+  }
+  @media (min-width: 1440px) {
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: start;
+  }
+}
+
+.wow_descriptions_items {
+  color: #209487;
+  text-align: start;
+  z-index: 2;
+
+
+  @media (min-width: 768px) {
+    text-align: center;
+  }
+
+  h3{
+    font-family: "Mariupol", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 26.96px;
+    margin-bottom: 12px;
+    width: 223px;
+
+    @media (min-width: 1024px) {
+      font-size: 28px;
+    }
+  }
+
+  p{
+    font-family: 'Mariupol', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 15.41px;
+    width: 224px;
+
+    @media (min-width: 1024px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.wow_descriptions_items:nth-child(even) {
+  text-align: center;
+  margin-left: auto;
+  @media (max-width: 767px) {
+    text-align: end;
+  }
 }
 
 .youtube {
   display: flex;
+  flex-direction: column-reverse;
+  gap: 5px;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 }
 
 .img {
-  width: 820px;
+  width: 100%;
   height: 200px;
-  margin-right: 30px;
+
+  @media (min-width: 1024px) {
+    width: 820px;
+    margin-right: 30px;
+  }
 }
 
 .video {
   position: relative;
-  width: 390px;
+  width: 100%;
   height: 200px;
   padding-top: 16px;
   padding-left: 20px;
   background: #209487;
+
+  @media (min-width: 1024px) {
+    width: 390px;
+  }
 }
 
 .video_text {
@@ -324,6 +593,8 @@
   font-weight: 900;
   line-height: normal;
   text-transform: uppercase;
+  position: relative;
+  z-index: 5;
 }
 
 .video_btn {
@@ -351,5 +622,15 @@
   &:hover {
     color: #FFF;
     background: #F92D2D;
+  }
+}
+
+.display_none {
+  display: none;
+}
+
+.tab_none {
+  @media (min-width: 740px) and (max-width: 1023px) {
+    display: none;
   }
 }
