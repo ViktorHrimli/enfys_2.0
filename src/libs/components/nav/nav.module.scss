@@ -1,12 +1,21 @@
 .container {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  align-content: flex-start;
   gap: 18px;
   z-index: 40;
-  @media (max-width: 767px) {
-    align-content: flex-start;
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    // max-height: 630px;
+  }
+  @media (min-width: 1024px) {
+    justify-content: space-between;
+    flex-direction: row;
+    max-height: 650px;
+  }
+  @media (min-width: 1440px) {
+    gap: 110px;
   }
 }
 
@@ -14,7 +23,7 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       gap: 40px;
     }
 }
@@ -22,12 +31,21 @@
 .list_text {
   display: none;
 
-  @media screen and (min-height: 750px) {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 28px;
+  @media screen and (min-height: 769px) {
+    @media (min-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+    }
   }
+}
+
+.list_text_animations {
+  display: flex;
+  margin-top: 12px;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .list_icon {
@@ -48,11 +66,14 @@
 .title {
   color: #FAEEEE;
   font-family: "Mariupol", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-transform: uppercase;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 }
 
 .text {
@@ -109,17 +130,54 @@
 }
 
 .arrow {
-  display: none;
-  @media screen and (max-height: 750px) {
-    display: block;
-    position: absolute;
-    right: -35px;
-    top: -2px;
-    transform: rotate(-180deg);
-    cursor: pointer;
+  transform: rotate(-180deg);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
 
-    transition: transform 1s;
+  transition: transform 1s;
+
+  @media (min-width: 1024px) {
+    width: 34px;
+    @media screen and (min-height: 750px) {
+      display: none;
+    }
+  }
+}
+
+.arrow_icon {
+  @media (min-width: 1024px) {
+    width: 15px;
+    height: 10px;
   }
 }
 
 
+.margin_top_icon {
+  margin-top: auto;
+  @media (min-width: 768px) and (max-width: 1023px) {
+    position: absolute;
+    top: 90px;
+    right: 90px;
+  }
+  @media (min-width: 1024px) {
+    position: absolute;
+    right: 100px;
+    bottom: 100px;
+  }
+  @media (min-width: 1440px) {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    margin-top: 0;
+  }
+}
+
+.icon_mob {
+  margin-left: auto;
+  @media (min-width: 768px) {
+    margin-left: 0;
+  }
+}

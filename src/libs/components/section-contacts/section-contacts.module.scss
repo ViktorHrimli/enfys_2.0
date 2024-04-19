@@ -74,6 +74,8 @@
 }
 
 .btn {
+  width: 160px;
+  height: 40px;
   transition: 0.5s;
   display: inline-flex;
   padding: 20px 111px;
@@ -91,6 +93,11 @@
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
+
+  @media (min-width: 768px) {
+    width: 324px;
+    height: 60px;
+  }
 
   &:hover {
     background: #209487;
