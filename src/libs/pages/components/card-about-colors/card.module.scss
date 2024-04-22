@@ -1,0 +1,394 @@
+.section {
+  padding-bottom: 163px;
+  padding-top: 107px;
+  width: 100%;
+}
+
+.p {
+  width: 255px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  gap: 24px;
+  position: relative;
+  padding-bottom: 230px;
+
+  font-family: "Mariupol", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 23.11px;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    padding-bottom: 0;
+    flex-direction: row;
+  }
+  @media (min-width: 1440px) {
+    width: 1140px;
+  }
+}
+
+//  ---------left---------
+
+.left_box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  align-items: center;
+  
+}
+
+.left_green{
+  position: relative;
+  width: 100%;
+  height: 352px;
+  background: #209487;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+
+  img {
+    width: 200px;
+    height: 260px;
+    @media (min-width: 768px) {
+      width: 396px;
+      height: 517px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 506px;
+    height: 607px;
+  }
+}
+
+.left_text_green {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #55525299;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+
+  @media (min-width: 768px) {
+    opacity: 0;
+  }
+
+}
+
+.left_green:hover .left_text_green {
+  @media (min-width: 768px) {
+    opacity: 1;
+  }
+}
+
+.left_orange{
+  width: 100%;
+  background: #FF8A00;
+  position: relative;
+
+  
+  img {
+      width: 361px;
+      height: 505px;
+    }
+
+  @media (min-width: 768px) {
+    width: 506px;
+    height: 607px;
+  }
+}
+
+.left_text_orange {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #55525299;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+
+  @media (min-width: 768px) {
+      opacity: 0;
+  }
+}
+
+.left_orange:hover .left_text_orange {
+  @media (min-width: 768px) {
+    opacity: 1;
+  }
+}
+
+.box_hover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: #F92D2D solid 1px;
+}
+
+.left_red{
+  position: relative;
+  background: #F92D2D;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (min-width: 768px) {
+    width: 506px;
+    height: 264px;
+    transition: 0.5s;
+  }
+
+  img {
+    @media (min-width: 768px) {
+      position: absolute;
+      top: 10px;
+    }
+  } 
+}
+
+
+
+.left_text_red {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #55525299;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  
+  @media (min-width: 768px) {
+    opacity: 0;
+  }
+}
+
+.box_hover:hover .left_text_red {
+  @media (min-width: 768px) {
+    opacity: 1;
+  }
+}
+
+.box_hover:hover img {
+  @media (min-width: 768px) {
+    width: 283px;
+    height: 246px;
+  }
+}
+
+// ----------right-------
+
+.right_box {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+  @media (min-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.right_red{
+  width: 100%;
+  height: 178px;
+  background: #F92D2D;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+      width: 207px;
+      height: 178px;
+      
+      @media (min-width: 768px) {
+        width: 552px;
+        height: 431px;
+        position: absolute;
+        bottom: 0;
+        left: 11px;
+      }
+    }
+
+  @media (min-width: 768px) {
+    width: 609px;
+    height: 367px;
+  }
+}
+
+.right_text_red {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #55525299;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  @media (min-width: 768px) {
+    opacity: 0;
+  }
+}
+
+.right_red:hover .right_text_red {
+  @media (min-width: 768px) {
+    opacity: 1;
+  }
+}
+
+.right_yello{
+  position: relative;
+  width: 100%;
+  height: 303px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  background: #FBDE1F;
+  @media (min-width: 768px) {
+    width: 609px;
+  }
+}
+
+.right_text_yello {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #55525299;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  @media (min-width: 768px) {
+    opacity: 0;
+  }
+}
+
+.right_yello:hover .right_text_yello {
+  @media (min-width: 768px) {
+    opacity: 1;
+  }
+}
+
+.right_green{
+  position: relative;
+  width: 100%;
+  height: 303px;
+  background: #209487;
+  img{
+    margin-left: auto;
+  }
+
+  @media (min-width: 768px) {
+    width: 609px;
+    height: 303px;
+  }
+}
+
+.right_text_green {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #55525299;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  @media (min-width: 768px) {
+    opacity: 0;
+  }
+}
+
+.right_green:hover .right_text_green {
+  @media (min-width: 768px) {
+    opacity: 1;
+  }
+}
+
+.right_yello_bottom{
+  position: relative;
+  width: 100%;
+  height: 352px;
+  background: #FBDE1F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img{
+    width: 175px;
+    height: 274px;
+
+    @media (min-width: 768px) {
+      width: 435px;
+      height: 687px;
+    }
+  }
+  @media (min-width: 768px) {
+    width: 609px;
+    height: 829px;
+  }
+}
+
+.right_text_yello_bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #55525299;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  @media (min-width: 768px) {
+    opacity: 0;
+  }
+}
+
+.right_yello_bottom:hover .right_text_yello_bottom {
+  @media (min-width: 768px) {
+    opacity: 1;
+  }
+}
+
+.text_container {
+  font-family: "Mariupol", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30.81px;
+  text-align: left;
+  color: #171717;
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  @media (min-width: 768px) {
+    font-size: 32px;
+    left: 0;
+  }
+}

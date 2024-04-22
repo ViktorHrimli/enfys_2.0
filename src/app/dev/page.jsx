@@ -1,9 +1,9 @@
-import Reviews from "@/libs/modal/reviews/reviews";
+import ThenkYou from "@/libs/modal/thank-you/thank-you";
 
 export default async function Home() {
   return (
     <>
-      <Reviews />
+      <ThenkYou />
     </>
   );
 }

@@ -3,45 +3,13 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './price-list.module.scss';
 import Filter from '@/libs/modal/filter/filter';
-import img from '@/assets/svg/card-demo.png';
-import img2 from '@/assets/svg/bike.png';
+
 import Link from 'next/link';
+import AboutCards from '../about-cards-gallary/about-cards-gallary';
 
 
-const card = [
-  {
-    img: img,
-    title: "Коляска універсальна CARRELLO Epica CRL-8511 (3в1) Almond Beige (Каррелло Епіка)",
-    price: "17 213",
-    oldPrice: "18665"
-  },
-  {
-    img: img2,
-    title: "Коляска універсальна CARRELLO Epica CRL-8511 (3в1) Almond Beige (Каррелло Епіка)",
-    price: "17 213",
-    oldPrice: "18665"
-  },
-  {
-    img: img,
-    title: "Cтілець для годування CARRELLO Indigo CRL-8402 Graphite Black (Карело Індіго)",
-    price: "4205",
-    oldPrice: "4716"
-  },
-  {
-    img: img,
-    title: "Коляска універсальна CARRELLO Epica CRL-8511 (3в1) Almond Beige (Каррелло Епіка)",
-    price: "17 213",
-    oldPrice: "18665"
-  },
-  {
-    img: img,
-    title: "Коляска універсальна CARRELLO Epica CRL-8511 (3в1) Almond Beige (Каррелло Епіка)",
-    price: "17 213",
-    oldPrice: "18665"
-  }
-];
 
-export default function PriceList({ }) {
+export default function PriceList({data}) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isOnBtn, setIsOnBtn] = useState(false);
 
@@ -49,6 +17,7 @@ export default function PriceList({ }) {
   const [isScroll, setIsScroll] = useState(
   typeof window !== "undefined" ? window.scrollY : 0
   );
+
 
   useEffect(() => {
     if (isOpenFilter) {
@@ -76,22 +45,23 @@ export default function PriceList({ }) {
           </button>
 
           <ul className={styles.card_container}>
-            {card.map(({ img, title, price, oldPrice }, id) => (
+            {data.map((item, id) => (
               <li key={id} className={styles.content}>
-                <Link className={styles.link} href="/price/34">
+                <Link className={styles.link} href={`price/${id}`}>
                 <div className={styles.img}>
                   <Image 
-                    src={img}
+                    src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}` }
                     alt="image"
                     priority={true}
                     loading="eager"
+                    fill
                     quality={100}
                   />
                 </div>
-                <h2 className={styles.title}>{title}</h2>
+                <h2 className={styles.title}>{item.attributes.title}</h2>
                   <div className={styles.price_container}>
-                    <p className={styles.price}>{price} ГРИВЕНЬ</p>
-                    <p className={styles.old_price}>{oldPrice} ГРИВЕНЬ</p>
+                    <p className={styles.price}>{item.attributes.price} ГРИВЕНЬ</p>
+                    <p className={styles.old_price}>{item.attributes.oldPrice} ГРИВЕНЬ</p>
                   </div>
                 </Link>
                 <button className={styles.btn_card} >купити</button>

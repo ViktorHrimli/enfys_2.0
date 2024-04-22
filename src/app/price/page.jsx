@@ -1,11 +1,13 @@
 import Hero from "@/libs/components/hero/Hero";
 import PriceList from "@/libs/pages/components/price-list/price-list";
 
-export default async function Home() {
+export default async function PagePrice() {
+  var { data } = await (await fetch('https://www.admin-enfys.space/api/tests?populate=*')).json()
+
   return (
     <>
     <Hero />
-    <PriceList />
+      <PriceList data={data}/>
     </>
   );
 }

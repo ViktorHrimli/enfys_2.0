@@ -5,6 +5,16 @@ const nextConfig = {
     locales: ["uk-UA", "ru"],
     localeDetection: false,
   },
+
+  images: {
+    formats: ["image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.admin-enfys.space",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

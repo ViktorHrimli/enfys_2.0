@@ -28,11 +28,13 @@ export default function AboutStore() {
   const [isDescriptionTwo, setIsDescriptionTwo] = useState(homeDescription);
 
   const path = usePathname().replace("/", "");
+  const priceCard = path.includes("price");
+
 
   useEffect(() => {
-    switch (path) {
+    switch (true) {
 
-      case "price-card":
+      case priceCard:
         setIsImg(cardPrice);
         setIsTitle(priceCardTitle);
         setIsDescription(priceCardDescription);
@@ -40,17 +42,8 @@ export default function AboutStore() {
         setIsSection(true);
         setIsBtn(false);
         break;
-
-      default:
-        setIsImg(baby);
-        setIsBtn(true);
-        setIsTitle(homeTitle);
-        setIsDescription(homeDescription);
-        setIsSection(false);
-        setIsDescriptionTwo("");
-        break;
     }
-  }, [path]);
+  }, []);
   return (
     <section className={isSection ? styles.section : styles.section_home}>
       <div className={styles.container}> 
