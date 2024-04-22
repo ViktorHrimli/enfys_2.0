@@ -1,8 +1,12 @@
 "use client"
-import styles from "./reviews.module.scss"
-import {reviews} from "@/shared/reviews"
+import { useState } from "react";
+import styles from "./reviews.module.scss";
+import { reviews } from "@/shared/reviews";
+import ReviewsModal from "@/libs/modal/reviews/reviews";
 
 export default function Reviews() {
+  const [isChange, setIsChange] = useState(false);
+
   return (
     <>
       <ul className={styles.contant}>
@@ -15,7 +19,8 @@ export default function Reviews() {
           ))
         }
       </ul>
-      <a href="/contacts" className={styles.btn}>надіслати відгук</a>
+      <button className={styles.btn} onClick={() => setIsChange(true)}>надіслати відгук</button>
+      {isChange && <ReviewsModal setIsChange={setIsChange} />}
     </>
   )
 }

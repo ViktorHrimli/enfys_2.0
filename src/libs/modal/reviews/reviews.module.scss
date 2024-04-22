@@ -1,23 +1,29 @@
 .container {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: #3C372A99;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
 }
 
 .content {
   width: 739px;
   height: 505px;
-  opacity: 0px;
   background: #FF8A00;
   position: relative;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 }
 
 .header {
-  position: absolute;
   width: 355px;
   height: 27px;
   font-family: "Nunito", sans-serif;
@@ -25,60 +31,60 @@
   font-weight: 800;
   line-height: 27.28px;
   text-align: center;
-  top: 72px;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
-.input_nme {
-  position: absolute;
+.input_name {
   width: 355px;
   height: 50px;
   border-radius: 8px;
-  border: 1px 0px 0px 0px;
   font-family: "Mariupol", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 19.26px;
   border: 1px solid #FFFFFF;
-  top: 110px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 25px;
+  color: #FAF7F1;
   background: transparent;
   outline: none;
-  padding-left: 5px;
+  padding: 15px 24px;
 
-
+  &::placeholder {
+    font-family: "Mariupol", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 19.26px;
+    color: #FAF7F1;
+  }
 }
 
 .input_comit {
-  position: absolute;
   width: 355px;
-  height: 150.92px;
+  height: 150px;
   border-radius: 8px;
-  border: 1px 0px 0px 0px;
   font-family: "Mariupol", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 19.26px;
   border: 1px solid #FFFFFF;
-  top: 250px;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background: transparent;
   outline: none;
-  padding-left: 5px;
+  resize: none;
+  padding: 15px 24px;
+  color: #FAF7F1;
 
+  &::placeholder {
+    font-family: "Mariupol", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 19.26px;
+    color: #FAF7F1;
+  }
 }
 
 
 .btn {
-  position: absolute;
   background: #F92D2D;
-  width: Hug (332px)px;
-  height: Hug (59px)px;
-  padding: 20px 111px 20px 111px; 
+  width: 332px;
+  height: 59px;
   border-radius: 8px;
   color: white;
   font-family: "Mariupol", sans-serif;
@@ -86,31 +92,32 @@
   font-weight: 500;
   line-height: 19.26px;
   transition: 300ms;
-  bottom: 55px;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border: none;
-
-
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .btn:hover {
   background:white;
   color: #F92D2D;
 }
-.btn_close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  color: #F92D2D;
-  transition: 300ms;
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  border: none;
-  transform: rotate(0);
-}
-.btn_close:hover {
-  color: #00ff04;
-  transform: rotate(180deg);
 
+
+.closed {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  transition: 0.5s;
+  transform: rotate(0deg);
+  cursor: pointer;
+
+  &:hover {
+    transform: rotate(180deg);
+    color:  #F92D2D;
+  }
 }
+
+
+

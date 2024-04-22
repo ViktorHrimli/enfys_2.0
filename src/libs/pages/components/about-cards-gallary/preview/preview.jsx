@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import styles from './preview.module.scss'
 
-export default function Preview({gallery, setIsPreview, galleryLength, setIsGallery }) { 
+export default function Preview({data, keyId, setIsPreview, galleryLength, setIsGallery }) { 
   const [index, setIndex] = useState(0);
   const max = galleryLength - 1;
 
@@ -12,19 +12,20 @@ export default function Preview({gallery, setIsPreview, galleryLength, setIsGall
       setIndex(index + 1);
     }
     else {
-      setIsGallery(gallery[max].img)
+      setIsGallery(`https://www.admin-enfys.space${data[keyId].attributes.gallery.data[max].attributes.url}`)
     }
   }
 
   const arrowPrrev = () => {
     if(index === 0) {
-      setIsGallery(gallery[0].img);
+      setIsGallery(`https://www.admin-enfys.space${data[keyId].attributes.gallery.data[0].attributes.url}`);
     } else {
       setIndex(index - 1);
     }
   }
   return (
     <div className={styles.container}>
+      <div style={{width: "100vw", height: "100vh", position: "absolute", left: "0", top: "0"}} onClick={() => setIsPreview(false)}></div>
       <div className={styles.closed} onClick={() => setIsPreview(false)}>
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"/></svg>
       </div>
@@ -33,11 +34,13 @@ export default function Preview({gallery, setIsPreview, galleryLength, setIsGall
       </div>
       <div className={styles.img}>
         <Image 
-          src={gallery[index].img}
+          src={`https://www.admin-enfys.space${data[keyId].attributes.gallery.data[index].attributes.url}`}
           alt="image"
           priority={true}
           loading="eager"
           quality={100}
+          width={100}
+          height={100}
           style={{objectFit: "contain", width: "100%", height: "100%"}}
         />
       </div>
