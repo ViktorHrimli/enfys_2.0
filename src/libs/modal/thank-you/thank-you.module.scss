@@ -1,5 +1,60 @@
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: aqua;
+  background: #3C372A99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.contant{
+  width: 739px;
+  height: 274px;
+  background: #FF8A00;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 72px;
+  gap: 16px;
+}
+
+.closed {
+  position: absolute;
+  right: 43px;
+  top: 24px;
+  transition: 0.5s;
+  transform: rotate(0deg);
+  cursor: pointer;
+
+  &:hover {
+    transform: rotate(180deg);
+    color:  #F92D2D;
+  }
+}
+.header {
+  font-family: "Nunito" sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 27.28px;
+}
+.inform {
+  font-family: "Mariupol" sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 19.26px;
+  text-align: center;
+  width: 450px;
+  height: 38px;
+
+
+}
+.post_scriptum{
+  position: absolute;
+  font-family: "Mariupol" sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 15.41px;
+  left: 25px;
+  bottom: 32px;
 }
