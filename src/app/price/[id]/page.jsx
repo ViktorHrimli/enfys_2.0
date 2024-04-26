@@ -13,7 +13,7 @@ export default async function PageCard(id) {
       <Hero />
       <AboutCards data={data} id={id} />
       <Conditions />
-      <AboutStore />
+      <AboutStore data={data} id={id} />
       <Advantages />
       <Card />
     </>

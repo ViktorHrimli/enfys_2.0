@@ -7,7 +7,7 @@ export default async function PagePrice() {
   return (
     <>
     <Hero />
-      <PriceList data={data}/>
+      <PriceList data={data} />
     </>
   );
 }

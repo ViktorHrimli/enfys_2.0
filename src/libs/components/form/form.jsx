@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './form.module.scss'
 
-function ContactForm() {
+function ContactForm({setIsThenkyou}) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -84,7 +84,7 @@ function ContactForm() {
           Я прочитав/ла та погоджуюся з Політикою конфедиційності.
         </label>
       </div>
-      <button type="submit" className={styles.btn}>Відправити</button>
+      <button type="submit" className={styles.btn} onClick={()=> setIsThenkyou(true)}>Відправити</button>
     </form>
   );
 }

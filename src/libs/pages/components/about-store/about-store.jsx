@@ -8,18 +8,11 @@ import baby from "@/assets/svg/baby.png";
 import cardPrice from "@/assets/svg/card-price.png"
 
 
-
-
 const homeTitle = "Наш магазин, за фактом, це marketplace, де будь-який покупець зможе вибрати все, що йому потрібно.";
 const homeDescription = "При цьому кожна продукція має сертифіковану якість. І тепер немає необхідності відвідувати різноманітні традиційні магазини, витрачати час на черги і поїздку до потрібного місця, адже користуючись нашими послугами, Ви зможете придбати товар, не виходячи з дому. Будучи, наприклад, на обіді, в транспорті, в відрядженні - в будь-який час і незалежно від свого місцезнаходження оглянути наш електронний каталог, вибрати цікавить і здійснити замовлення. А так як інтернет-магазинах немає потреби в оренді торговельного майданчика, а також в утриманні великого штату співробітників-продавців, ми продаємо вироби з найбільш оптимальною і демократичною вартістю. Тому покупку товару у нас зможе дозволити собі кожен без навантаження на свій бюджет і фінанси."
 
-const priceCardTitle = "Опис Коляска універсальна CARRELLO Epica CRL-8511 (3в1) Almond Beige (Каррелло Епіка)";
-const priceCardDescription = "Більшість батьків, як тільки дізнаються що у них скоро з'явиться малюк, починають мскать де і яку дитячу коляску купити.  Пропонуємо вам вашій увазі універсальну всесезонну дитячу коляску Carrello Epica 3 в 1. "
-const priceCardDescriptionTwo = "CARRELLO Epica CRL - 8509 / 1 - це легка в управлінні і комфортна коляска з народження і до 3 - 4 років.Коляска чудово підійде для прогулянок і поїздок в будь - яку пору року.Дитячу коляску 2 в 1 CARRELLO Epica CRL - 8509(Каррелл Епіка) вигідно відрізняють від інших колясок 2 в 1 її легка вага і компактна рама прогулянкової коляски.Купуючи дану модель, ви купуєте дуже зручну, простору і маневрену коляску з люлькою для перенесення, яка незабаром(по досягненню дитини більше 6 місяців) перетвориться на повноцінну зручну прогулянкову коляску - книжку з великим посадковим місцем.Прогулянковий блок можна буде ставити по ходу і проти ходу руху, що дозволить возити дитину обличчям до мами максимально довго.Одинарні поворотні колеса з PU забезпечать вам комфортні прогулянки по міських вулицях і парках.Коляска дуже легко і зручно складається для транспортування або зберігання";
 
-
-
-export default function AboutStore() {
+export default function AboutStore({data, id}) {
   const [isImg, setIsImg] = useState(baby);
   const [isBtn, setIsBtn] = useState(true);
   const [isSection, setIsSection] = useState(false);
@@ -30,6 +23,14 @@ export default function AboutStore() {
   const path = usePathname().replace("/", "");
   const priceCard = path.includes("price");
 
+  const keyId = id.params.id;
+  
+  // fech
+  const priceCardTitle = "ОПИС: " + data[id.params.id].attributes.title;
+  const priceCardPreDescription = data[id.params.id].attributes.preAbout;
+  const priceCardDescription = data[id.params.id].attributes.about;
+
+
 
   useEffect(() => {
     switch (true) {
@@ -38,21 +39,23 @@ export default function AboutStore() {
         setIsImg(cardPrice);
         setIsTitle(priceCardTitle);
         setIsDescription(priceCardDescription);
-        setIsDescriptionTwo(priceCardDescriptionTwo);
+        setIsDescriptionTwo(priceCardPreDescription);
         setIsSection(true);
         setIsBtn(false);
         break;
     }
   }, []);
+
   return (
-    <section className={isSection ? styles.section : styles.section_home}>
+    <section className={isSection ? styles.section : styles.section_home} id="about-card">
       <div className={styles.container}> 
         <div className={styles.container_text}>
           <h2 className={styles.about_title}>{isTitle}</h2>
           <p className={styles.about_text} style={{marginBottom: "30px"}}>
-            {isDescription}
+            {isDescriptionTwo}
           </p>
-          <p className={styles.about_text}>{isDescriptionTwo}</p>
+            
+          <p className={styles.about_text}>{isDescription}</p>
         </div>
           <div className={styles.container_btn}>
             <div className={styles.image_container}>
