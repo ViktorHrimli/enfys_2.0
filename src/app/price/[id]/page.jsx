@@ -6,14 +6,14 @@ import Card from "@/libs/pages/components/card-about-colors/card";
 import Conditions from "@/libs/pages/components/conditions/conditions";
 
 export default async function PageCard(id) {
-  var { data } = await (await fetch('https://www.admin-enfys.space/api/tests?populate=*', {cache: 'no-cache'})).json()
+  var { data } = await (await fetch('https://www.admin-enfys.space/api/tests?populate=*', { cache: 'no-cache' })).json();
 
   return (
     <>
       <Hero />
       <AboutCards data={data} id={id} />
       <Conditions />
-      <AboutStore />
+      <AboutStore data={data} id={id} />
       <Advantages />
       <Card />
     </>

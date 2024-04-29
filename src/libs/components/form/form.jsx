@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './form.module.scss'
 
-function ContactForm() {
+export default function ContactForm({setIsThenkyou}) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -22,10 +22,19 @@ function ContactForm() {
     e.preventDefault();
     // Отправка данных формы
     console.log(formData);
+    setIsThenkyou(true);
+    setFormData({
+      name: '',
+      phone: '',
+      subject: '',
+      email: '',
+      agree: false,
+    })
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
+      <div className={styles.form_container}>
       <div className={styles.container_input}>
         <input
           className={styles.input}
@@ -37,19 +46,6 @@ function ContactForm() {
           required
           placeholder='Ім’я'
         />
-      <input
-          className={`${styles.input} ${styles.input_desc}`}
-          type="text"
-          id="subject"
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          required
-          placeholder='Тема повідомлення'
-        />
-      </div>
-
-      <div className={styles.container_input}>
         <input
           className={styles.input}
           type="tel"
@@ -59,9 +55,10 @@ function ContactForm() {
           onChange={handleChange}
           required
           placeholder='Телефон'
-        />
+          />
+      
         <input
-          className={`${styles.input} ${styles.input_desc}`}
+          className={`${styles.input}`}
           type="email"
           id="email"
           name="email"
@@ -70,8 +67,26 @@ function ContactForm() {
           required
           placeholder='Email'
         />
+        
       </div>
       <div>
+      <textarea
+          className={`${styles.input} ${styles.input_desc} ${styles.taxtarea}`}
+          type="text"
+          id="subject"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          required
+          placeholder='Тема повідомлення'
+        />
+        </div>
+      </div>
+        
+      <div className={styles.chack}>
+        <label htmlFor="agree" className={styles.text_chack}>
+          Я прочитав/ла та погоджуюся з Політикою конфедиційності.
+        </label>
         <input
           type="checkbox"
           id="agree"
@@ -80,13 +95,8 @@ function ContactForm() {
           onChange={handleChange}
           required
         />
-        <label htmlFor="agree" className={styles.text_chack}>
-          Я прочитав/ла та погоджуюся з Політикою конфедиційності.
-        </label>
-      </div>
-      <button type="submit" className={styles.btn}>Відправити</button>
+        </div>
+      <button type="submit" className={styles.btn} onClick={handleSubmit}>Відправити</button>
     </form>
   );
 }
-
-export default ContactForm;

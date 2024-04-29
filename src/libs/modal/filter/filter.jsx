@@ -1,4 +1,6 @@
 import styles from './filter.module.scss'
+import Image from 'next/image';
+import checked from "@/assets/svg/check.svg";
 
 export default function Filter({ setIsOpenFilter }) {
   return (
@@ -16,36 +18,77 @@ export default function Filter({ setIsOpenFilter }) {
                 <option value="від дорогих до дешевих" >від дорогих до дешевих</option>
               </select>
             </div>
-            <p>ЦІНА</p>
+            <p className={styles.sorting_text}>ЦІНА</p>
             <div className={styles.price_box}>
               <div className={styles.price}>від <input className={styles.style_input} type="number" /></div>
               <div className={styles.price}>до <input  className={styles.style_input}type="number" /></div>
             </div>
           </div>
           <div className={styles.right_box}>
-            <p>Бренди</p>
-          <div>
-            <input type="checkbox" id="Carrello" name="Carrello" />
-            <label htmlFor="Carrello">Carrello</label>
-          </div>
-
-          <div>
-            <input type="checkbox" id="Lorelli" name="Lorelli" />
-            <label htmlFor="Lorelli">Lorelli</label>
-          </div>
-          <div>
-            <input type="checkbox" id="Tilly" name="Tilly" />
-            <label htmlFor="Tilly">Tilly</label>
-          </div>
-          <div>
-            <input type="checkbox" id="BabyZz" name="BabyZz" />
-            <label htmlFor="BabyZz">BabyZz</label>
-          </div>
-          <div>
-            <input type="checkbox" id="NINOS" name="NINOS" />
-            <label htmlFor="NINOS">NINOS</label>
-          </div>
-        </div>
+            <p className={styles.sorting_text}>Бренд</p>
+            <div className={styles.container_input}>
+              <label htmlFor="Carrello" className={styles.custom_checkbox}>
+                <input type="checkbox" id="Carrello" name="Carrello" />
+                <span className={styles.checkmark}>
+                  <Image 
+                    src={checked}
+                    alt="img"
+                    priority={true}
+                    loading="eager"
+                  />
+                </span>
+                Carrello
+              </label>
+              <label htmlFor="Lorelli" className={styles.custom_checkbox}>
+                <input type="checkbox" id="Lorelli" name="Lorelli" />
+                <span className={styles.checkmark}>
+                  <Image 
+                    src={checked}
+                    alt="img"
+                    priority={true}
+                    loading="eager"
+                  />
+                </span>
+                Lorelli
+              </label>
+              <label htmlFor="Tilly" className={styles.custom_checkbox}>
+                <input type="checkbox" id="Tilly" name="Tilly" />
+                <span className={styles.checkmark}>
+                  <Image 
+                    src={checked}
+                    alt="img"
+                    priority={true}
+                    loading="eager"
+                  />
+                </span>
+                Tilly
+              </label>
+              <label htmlFor="BabyZz" className={styles.custom_checkbox}>
+                <input type="checkbox" id="BabyZz" name="BabyZz" />
+                <span className={styles.checkmark}>
+                  <Image 
+                    src={checked}
+                    alt="img"
+                    priority={true}
+                    loading="eager"
+                  />
+                </span>
+                BabyZz
+              </label>
+              <label htmlFor="NINOS" className={styles.custom_checkbox}>
+                <input type="checkbox" id="NINOS" name="NINOS" />
+                <span className={styles.checkmark}>
+                  <Image 
+                    src={checked}
+                    alt="img"
+                    priority={true}
+                    loading="eager"
+                  />
+                </span>
+                  NINOS
+              </label>
+            </div>
+            </div>
         </div>
           <div className={styles.btn_box}>
           <button className={styles.btn_save} >
