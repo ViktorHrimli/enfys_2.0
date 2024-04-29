@@ -11,7 +11,9 @@ export default function FormSection() {
   const [isContent, setIsContent] = useState(false);
   const [isTitle, setIsTitle] = useState(true);
   const [isThenkyou, setIsThenkyou] = useState(false);
-
+  const [isScroll, setIsScroll] = useState(
+    typeof window !== "undefined" ? window.scrollY : 0
+  );
 
   const path = usePathname().replace("/", "");
 
@@ -29,6 +31,24 @@ export default function FormSection() {
         break;
     }
   }, [path]);
+
+
+  useEffect(() => {
+    if (isThenkyou) {
+      setIsScroll(window.scrollY);
+
+      document.body.style.overflow = "hidden";
+      document.body.style.maxHeight = "100vh";
+    }
+    
+    window.scrollTo(0, isScroll);
+
+    return () => {
+      document.body.style.overflowX = "hidden";
+      document.body.style.maxHeight = "";
+    };
+  }, [isThenkyou]);
+
 
   return (
     <>

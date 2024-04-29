@@ -44,6 +44,7 @@
 .list_text_animations {
   display: flex;
   margin-top: 12px;
+  margin-left: 12px;
   flex-direction: column;
   gap: 6px;
 }
@@ -135,22 +136,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;
+  width: 15px;
+  margin-left: 15px;
 
   transition: transform 1s;
 
   @media (min-width: 1024px) {
-    width: 34px;
+    width: 24px;
     @media screen and (min-height: 750px) {
       display: none;
     }
-  }
-}
-
-.arrow_icon {
-  @media (min-width: 1024px) {
-    width: 15px;
-    height: 10px;
   }
 }
 

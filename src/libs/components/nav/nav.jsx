@@ -110,6 +110,7 @@ export default function Nav({ setIsMenu }) {
                 src={arrow}
                 alt="arrow"
                 priority={true}
+                fill
                 loading="eager"
                 quality={100}
                 className={styles.arrow_icon}
@@ -138,6 +139,7 @@ export default function Nav({ setIsMenu }) {
                 src={arrow}
                 alt="arrow"
                 priority={true}
+                fill
                 loading="eager"
                 quality={100}
                 className={styles.arrow_icon}
@@ -165,6 +167,7 @@ export default function Nav({ setIsMenu }) {
               <Image 
                 src={arrow}
                 alt="arrow"
+                fill
                 priority={true}
                 loading="eager"
                 quality={100}
@@ -197,6 +200,7 @@ export default function Nav({ setIsMenu }) {
                   alt="arrow"
                   priority={true}
                   loading="eager"
+                  fill
                   quality={100}
                   className={styles.arrow_icon}
                 />
@@ -225,6 +229,7 @@ export default function Nav({ setIsMenu }) {
                   alt="arrow"
                   priority={true}
                   loading="eager"
+                  fill
                   quality={100}
                   className={styles.arrow_icon}
                 />
