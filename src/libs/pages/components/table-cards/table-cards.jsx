@@ -12,10 +12,10 @@ export default function TableCards({ data, id }) {
           {tableList.map(({ title, value }, id) => (
             <li key={id} className={styles.item}>
               <div className={styles.text}>
-                {title}
+                <p>{title}</p>
               </div>
               <div className={styles.value}>
-                {value}
+                <p>{value}</p>
               </div>
             </li>
           ))}
