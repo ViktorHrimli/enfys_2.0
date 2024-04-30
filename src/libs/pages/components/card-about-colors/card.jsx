@@ -42,7 +42,6 @@ export default function Card() {
             </div>
           </div>
           <div className={styles.left_red}>
-            <div className={styles.box_hover}>
               <Image 
                 src={imgCardsSix}
                 alt="image"
@@ -50,7 +49,6 @@ export default function Card() {
                 loading="eager"
                 quality={100}
               />
-            </div>
             <div className={styles.left_text_red}>
               <p className={styles.p} >Внутрішня оббивка люльки знімна, виконана з бавовни, приємна на дотик, володіє воздухороникністю і швидко сохне.  У комплекті матрацик для малюка.</p>
             </div>

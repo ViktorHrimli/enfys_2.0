@@ -1,0 +1,97 @@
+.section {
+  width: 100%;
+  background-color: #209487;
+}
+
+.container {
+  padding-top: 52px;
+  padding-bottom: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 18px;
+  padding-right: 18px;
+
+  @media (min-width: 768px) {
+    padding-top: 80px;
+    padding-bottom: 88px;
+  }
+}
+
+.title {
+  font-family: "Mariupol", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 34.66px;
+  text-align: center;
+  color: #FAF7F1;
+  margin-bottom: 58px;
+  width: 276px;
+
+  @media (min-width: 768px) {
+    font-size: 36px;
+    width: 900px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.item {
+  display: flex;
+  font-family: "Mariupol", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 19.26px;
+  text-align: left;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+.text {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #FAF7F1;
+  border-left: 1px solid #FAF7F1;
+  border-right: 1px solid #FAF7F1;
+  width: 60%;
+  min-height: 30px;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+    min-height: 40px;
+  }
+  @media (min-width: 1440px) {
+    width: 693px;
+  }
+}
+
+.item:last-child {
+  border-bottom: 1px solid #FAF7F1;
+}
+
+.value {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #FAF7F1;
+  border-right: 1px solid #FAF7F1;
+  width: 40%;
+  min-height: 30px;
+
+  @media (min-width: 768px) {
+    width: 472px;
+    min-height: 40px;
+  }
+}
