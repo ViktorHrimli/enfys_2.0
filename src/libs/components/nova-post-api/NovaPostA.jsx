@@ -2,11 +2,17 @@
 import { useState, useEffect } from "react";
 
 const NovaPostA = () => {
-  const [isCity, setisCity] = useState("");
   const [data, setData] = useState([]);
+
+  const [theRegion, setTheRegion] = useState("");
+  const [dataRegion, setdataRegion] = useState([]);
+
   const [wareHouseRef, setWareHouseRef] = useState("");
   const [postOffice, setPostOffice] = useState("");
+
   const [cityRef, setCityRef] = useState("");
+  const [isCity, setisCity] = useState("");
+
   const [postOfficesData, setPostOfficesData] = useState([]);
   const [office, setOffice] = useState("");
 
@@ -56,6 +62,8 @@ const NovaPostA = () => {
     setPostOfficesData(data);
   };
 
+  var getRegion = async () => {};
+
   useEffect(() => {
     isCity && setTimeout(() => useCity(isCity), 300);
   }, [isCity]);
@@ -63,6 +71,24 @@ const NovaPostA = () => {
   useEffect(() => {
     postOffice && setTimeout(() => getPostOffice(postOffice), 500);
   }, [postOffice]);
+
+  useEffect(() => {
+    var obj = {
+      apiKey: process.env.NV_API_KEY,
+      modelName: "Address",
+      calledMethod: "getSettlementAreas",
+      methodProperties: {
+        Ref: "",
+      },
+    };
+
+    fetch("https://api.novaposhta.ua/v2.0/json/", {
+      body: JSON.stringify(obj),
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((res) => setdataRegion(res.data));
+  }, []);
 
   return (
     <section
@@ -87,6 +113,24 @@ const NovaPostA = () => {
           color: "black",
         }}
       >
+        {Boolean(dataRegion.length) && (
+          <select
+            name="regionNP"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+            onChange={(event) => setTheRegion(event.target.value)}
+            value={theRegion}
+          >
+            {dataRegion.map((item, id) => (
+              <option key={id} value={item.Description}>
+                {item.Description}
+              </option>
+            ))}
+          </select>
+        )}
+
         <label>
           Місто
           <input
