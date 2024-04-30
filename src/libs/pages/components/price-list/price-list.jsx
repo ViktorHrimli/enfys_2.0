@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 
 
-export default function PriceList({data}) {
+export default function PriceList({data, dollar}) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
 
   const [isScroll, setIsScroll] = useState(
@@ -63,8 +63,8 @@ export default function PriceList({data}) {
                     {data[id].attributes.inStock === "в наявності"
                       ?
                       <p className={styles.price}>
-                        {data[id].attributes.price} ГРИВЕНЬ
-                        <span className={styles.old_price}>{data[id].attributes.oldPrice} ГРИВЕНЬ</span>
+                        {Math.floor(data[id].attributes.price * dollar)} ГРИВЕНЬ
+                        <span className={styles.old_price}>{Math.floor(data[id].attributes.oldPrice * dollar)} ГРИВЕНЬ</span>
                       </p>
                       : 
                         data[id].attributes.inStock === "очікуємо" ?  

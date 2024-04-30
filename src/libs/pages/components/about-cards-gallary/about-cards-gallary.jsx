@@ -9,7 +9,7 @@ import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
 
 
-export default function AboutCardsGallery({ data, id }) {
+export default function AboutCardsGallery({ data, id, dollar }) {
   const [isGallery, setIsGallery] = useState(`https://www.admin-enfys.space${data[id.params.id].attributes.gallery.data[0].attributes.url}`);
   const [isBacground, setIsBacground] = useState(0);
 
@@ -31,7 +31,6 @@ export default function AboutCardsGallery({ data, id }) {
       }
     }
   };
-
 
 
   useEffect(() => {
@@ -56,7 +55,6 @@ export default function AboutCardsGallery({ data, id }) {
 
 
   const keyId = id.params.id;
-  const tableList = data[keyId].attributes.table;
   const galleryLength = data[keyId].attributes.gallery.data.length;
 
   return (
@@ -112,8 +110,8 @@ export default function AboutCardsGallery({ data, id }) {
               {data[id.params.id].attributes.inStock === "в наявності"
               ?
               <p className={styles.price}>
-                  {data[id.params.id].attributes.price} ГРИВЕНЬ
-                <span className={styles.old_price}>{data[id.params.id].attributes.oldPrice} ГРИВЕНЬ</span>
+                  {Math.floor(data[id.params.id].attributes.price * dollar)} ГРИВЕНЬ
+                <span className={styles.old_price}>{Math.floor(data[id.params.id].attributes.oldPrice * dollar)} ГРИВЕНЬ</span>
               </p>
               : 
                 data[id.params.id].attributes.inStock === "очікуємо" ?  
