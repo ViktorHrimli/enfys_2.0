@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
+
 import Image from "next/image";
 import styles from "./about-cards-gallary.module.scss";
 import { getFormById } from "@/shared/getFormById";
@@ -8,7 +9,7 @@ import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
 
 
-export default function AboutCards({ data, id }) {
+export default function AboutCardsGallery({ data, id }) {
   const [isGallery, setIsGallery] = useState(`https://www.admin-enfys.space${data[id.params.id].attributes.gallery.data[0].attributes.url}`);
   const [isBacground, setIsBacground] = useState(0);
 
@@ -127,13 +128,7 @@ export default function AboutCards({ data, id }) {
               <a onClick={handleClickOnDescription}> читати повний опис</a>
             </p>
             <button className={styles.btn}>купити</button>
-            {/* <ul style={{ color: "black" }}>
-              {tableList.map(({ title, value }, id) => (
-                <li key={id}>
-                  {title}
-                  {value}
-                </li>
-              ))}</ul> */}
+            
         </div>
       </div>
       </section>
