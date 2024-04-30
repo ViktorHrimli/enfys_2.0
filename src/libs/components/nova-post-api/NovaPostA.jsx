@@ -7,6 +7,8 @@ const NovaPostA = () => {
   const [wareHouseRef, setWareHouseRef] = useState("");
   const [postOffice, setPostOffice] = useState("");
   const [cityRef, setCityRef] = useState("");
+  const [postOfficesData, setPostOfficesData] = useState([]);
+  const [office, setOffice] = useState("");
 
   var useCity = async (city) => {
     var obj = {
@@ -25,7 +27,6 @@ const NovaPostA = () => {
       method: "POST",
     });
     var { data } = await res.json();
-    console.log(data, "CITY");
     setData(data[0].Addresses);
   };
 
@@ -51,7 +52,8 @@ const NovaPostA = () => {
       method: "POST",
     });
     var { data } = await res.json();
-    console.log(data, "OFFICE");
+
+    setPostOfficesData(data);
   };
 
   useEffect(() => {
@@ -59,10 +61,9 @@ const NovaPostA = () => {
   }, [isCity]);
 
   useEffect(() => {
-    cityRef && postOffice && setTimeout(() => getPostOffice(postOffice), 500);
+    postOffice && setTimeout(() => getPostOffice(postOffice), 500);
   }, [postOffice]);
 
-  console.log(cityRef, "REF");
   return (
     <section
       style={{
@@ -135,10 +136,28 @@ const NovaPostA = () => {
           Вибрати відділення
           <input
             type="text"
-            value={postOffice}
+            value={office || postOffice}
             onChange={(event) => setPostOffice(event.target.value)}
           />
         </label>
+
+        {Boolean(postOfficesData.length) && (
+          <select
+            name="OfficeNP"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+            onChange={(event) => setOffice(event.target.value)}
+            value={office}
+          >
+            {postOfficesData.map((item, id) => (
+              <option key={id} value={item.Description}>
+                {item.Description}
+              </option>
+            ))}
+          </select>
+        )}
       </form>
     </section>
   );
