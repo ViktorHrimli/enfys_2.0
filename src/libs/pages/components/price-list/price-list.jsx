@@ -1,11 +1,15 @@
 "use client"
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
+
+import { useState, useEffect } from 'react';
+import { usePathname } from "next/navigation";
+
 import styles from './price-list.module.scss';
 import Filter from '@/libs/modal/filter/filter';
 
-import Link from 'next/link';
 
+import Link from 'next/link';
+import PartnersIcon from '@/shared/icons/partners';
 
 
 export default function PriceList({data, dollar}) {
@@ -14,6 +18,9 @@ export default function PriceList({data, dollar}) {
   const [isScroll, setIsScroll] = useState(
   typeof window !== "undefined" ? window.scrollY : 0
   );
+
+  const path = usePathname().replace("/", "");
+
 
 
   useEffect(() => {
@@ -45,7 +52,10 @@ export default function PriceList({data, dollar}) {
           <ul className={styles.card_container}>
             {data.map((item, id) => (
               <li key={id} className={styles.content}>
-                <Link className={styles.link} href={`price/${id}`}>
+                <Link className={styles.link} href={`/${path}/${id}`}>
+                <div className={styles.partners_icon}>
+                  <PartnersIcon />
+                </div>
                 <div className={styles.img_container}>
                   <Image 
                     src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}` }

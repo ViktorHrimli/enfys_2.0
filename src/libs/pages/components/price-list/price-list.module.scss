@@ -99,6 +99,20 @@
   }
 }
 
+.partners_icon {
+  display: none;
+  opacity: 0;
+  @media (min-width: 768px) {
+    display: block;
+    position: absolute;
+    top: -5px;
+  }
+}
+
+.content:hover .partners_icon {
+  opacity: 1;
+}
+
 .img_container {
   position: relative;
   
