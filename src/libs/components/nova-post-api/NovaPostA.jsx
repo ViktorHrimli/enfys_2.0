@@ -1,39 +1,38 @@
 "use client";
 import { useState, useEffect } from "react";
 
+import { doFetchOnNovaPost } from "@/shared/helpers/service-post-api";
+
 const NovaPostA = () => {
   const [data, setData] = useState([]);
 
-  const [theRegion, setTheRegion] = useState("");
+  // ОБЛАСТЬ
+  const [theRegionRef, setTheRegionRef] = useState("");
   const [dataRegion, setdataRegion] = useState([]);
 
-  const [wareHouseRef, setWareHouseRef] = useState("");
+  const [theWareHouseRef, setTheWareHouseRef] = useState("");
   const [postOffice, setPostOffice] = useState("");
 
-  const [cityRef, setCityRef] = useState("");
-  const [isCity, setisCity] = useState("");
+  const [theCityRef, setTheCityRef] = useState("");
+  const [theCity, setTheCity] = useState("");
 
   const [postOfficesData, setPostOfficesData] = useState([]);
   const [office, setOffice] = useState("");
 
-  var useCity = async (city) => {
+  var getCity = async (city) => {
     var obj = {
       apiKey: process.env.NV_API_KEY,
       modelName: "Address",
-      calledMethod: "searchSettlements",
+      calledMethod: "getSettlements",
       methodProperties: {
-        CityName: city,
-        Limit: "50",
+        AreaRef: theRegionRef,
         Page: "1",
+        FindByString: city,
+        Limit: "40",
       },
     };
 
-    var res = await fetch("https://api.novaposhta.ua/v2.0/json/", {
-      body: JSON.stringify(obj),
-      method: "POST",
-    });
-    var { data } = await res.json();
-    setData(data[0].Addresses);
+    doFetchOnNovaPost(obj).then((data) => setData(data));
   };
 
   var getPostOffice = async (postOffice) => {
@@ -43,36 +42,20 @@ const NovaPostA = () => {
       calledMethod: "getWarehouses",
       methodProperties: {
         FindByString: postOffice,
-        CityName: cityRef,
+        CityName: theCityRef,
         CityRef: "",
         Page: "1",
         Limit: "150",
         Language: "UA",
-        TypeOfWarehouseRef: wareHouseRef,
+        TypeOfWarehouseRef: theWareHouseRef,
         WarehouseId: "",
       },
     };
 
-    var res = await fetch("https://api.novaposhta.ua/v2.0/json/", {
-      body: JSON.stringify(obj),
-      method: "POST",
-    });
-    var { data } = await res.json();
-
-    setPostOfficesData(data);
+    doFetchOnNovaPost(obj).then((data) => setPostOfficesData(data));
   };
 
-  var getRegion = async () => {};
-
-  useEffect(() => {
-    isCity && setTimeout(() => useCity(isCity), 300);
-  }, [isCity]);
-
-  useEffect(() => {
-    postOffice && setTimeout(() => getPostOffice(postOffice), 500);
-  }, [postOffice]);
-
-  useEffect(() => {
+  var getRegion = () => {
     var obj = {
       apiKey: process.env.NV_API_KEY,
       modelName: "Address",
@@ -82,13 +65,18 @@ const NovaPostA = () => {
       },
     };
 
-    fetch("https://api.novaposhta.ua/v2.0/json/", {
-      body: JSON.stringify(obj),
-      method: "POST",
-    })
-      .then((res) => res.json())
-      .then((res) => setdataRegion(res.data));
-  }, []);
+    doFetchOnNovaPost(obj).then((data) => setdataRegion(data));
+  };
+
+  useEffect(() => getRegion(), []);
+
+  useEffect(() => {
+    theCity && setTimeout(() => getCity(theCity), 300);
+  }, [theCity]);
+
+  useEffect(() => {
+    postOffice && setTimeout(() => getPostOffice(postOffice), 500);
+  }, [postOffice]);
 
   return (
     <section
@@ -120,11 +108,11 @@ const NovaPostA = () => {
               display: "flex",
               flexDirection: "column",
             }}
-            onChange={(event) => setTheRegion(event.target.value)}
-            value={theRegion}
+            onChange={(event) => setTheRegionRef(event.target.value)}
+            value={theCityRef}
           >
             {dataRegion.map((item, id) => (
-              <option key={id} value={item.Description}>
+              <option key={id} value={item.Ref}>
                 {item.Description}
               </option>
             ))}
@@ -136,8 +124,8 @@ const NovaPostA = () => {
           <input
             type="text"
             color="black"
-            value={isCity}
-            onChange={(evn) => setisCity(evn.currentTarget.value)}
+            value={theCity}
+            onChange={(evn) => setTheCity(evn.currentTarget.value)}
           />
         </label>
         {Boolean(data.length) && (
@@ -147,12 +135,12 @@ const NovaPostA = () => {
               display: "flex",
               flexDirection: "column",
             }}
-            onChange={(event) => setCityRef(event.target.value)}
-            value={cityRef}
+            onChange={(event) => setTheCityRef(event.target.value)}
+            value={theCityRef}
           >
             {data.map((item, id) => (
-              <option key={id} value={item.MainDescription}>
-                {item.MainDescription}
+              <option key={id} value={item.Description}>
+                {item.Description}
               </option>
             ))}
           </select>
@@ -161,8 +149,8 @@ const NovaPostA = () => {
         <label>
           Вибрати тип відділення
           <select
-            onChange={(event) => setWareHouseRef(event.target.value)}
-            value={wareHouseRef}
+            onChange={(event) => setTheWareHouseRef(event.target.value)}
+            value={theWareHouseRef}
           >
             <option value="f9316480-5f2d-425d-bc2c-ac7cd29decf0">
               Поштомат
