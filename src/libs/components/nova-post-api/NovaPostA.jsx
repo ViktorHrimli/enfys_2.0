@@ -4,18 +4,17 @@ import { useState, useEffect } from "react";
 import { doFetchOnNovaPost } from "@/shared/helpers/service-post-api";
 
 const NovaPostA = () => {
-  const [data, setData] = useState([]);
-
   // ОБЛАСТЬ
   const [theRegionRef, setTheRegionRef] = useState("");
   const [dataRegion, setdataRegion] = useState([]);
-
-  const [theWareHouseRef, setTheWareHouseRef] = useState("");
-  const [postOffice, setPostOffice] = useState("");
-
+  // ГОРОД
+  const [theCityData, settheCityData] = useState([]);
   const [theCityRef, setTheCityRef] = useState("");
   const [theCity, setTheCity] = useState("");
-
+  // ТИП ВІДДІЛЕННЯ
+  const [theWareHouseRef, setTheWareHouseRef] = useState("");
+  const [postOffice, setPostOffice] = useState("");
+  // ВІДДІЛЕННЯ
   const [postOfficesData, setPostOfficesData] = useState([]);
   const [office, setOffice] = useState("");
 
@@ -32,7 +31,7 @@ const NovaPostA = () => {
       },
     };
 
-    doFetchOnNovaPost(obj).then((data) => setData(data));
+    doFetchOnNovaPost(obj).then((data) => settheCityData(data));
   };
 
   var getPostOffice = async (postOffice) => {
@@ -109,7 +108,7 @@ const NovaPostA = () => {
               flexDirection: "column",
             }}
             onChange={(event) => setTheRegionRef(event.target.value)}
-            value={theCityRef}
+            value={theRegionRef}
           >
             {dataRegion.map((item, id) => (
               <option key={id} value={item.Ref}>
@@ -128,7 +127,7 @@ const NovaPostA = () => {
             onChange={(evn) => setTheCity(evn.currentTarget.value)}
           />
         </label>
-        {Boolean(data.length) && (
+        {Boolean(theCityData.length) && (
           <select
             name="cityNP"
             style={{
@@ -138,7 +137,7 @@ const NovaPostA = () => {
             onChange={(event) => setTheCityRef(event.target.value)}
             value={theCityRef}
           >
-            {data.map((item, id) => (
+            {theCityData.map((item, id) => (
               <option key={id} value={item.Description}>
                 {item.Description}
               </option>
