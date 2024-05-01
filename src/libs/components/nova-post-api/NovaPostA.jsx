@@ -3,10 +3,14 @@ import { useState, useEffect } from "react";
 
 import { doFetchOnNovaPost } from "@/shared/helpers/service-post-api";
 
+var objectStateKeys = {
+  DATA_REGION: "data_region",
+  REGION_REF: "region_ref",
+  REGION_NAME: "region_name",
+};
+
 const NovaPostA = () => {
-  // ОБЛАСТЬ
-  const [theRegionRef, setTheRegionRef] = useState("");
-  const [dataRegion, setdataRegion] = useState([]);
+  const [theMapOptionsState, setTheMapOptionsState] = useState(new Map());
   // ГОРОД
   const [theCityData, settheCityData] = useState([]);
   const [theCityRef, setTheCityRef] = useState("");
@@ -17,6 +21,8 @@ const NovaPostA = () => {
   // ВІДДІЛЕННЯ
   const [postOfficesData, setPostOfficesData] = useState([]);
   const [office, setOffice] = useState("");
+  // OPTIONS
+  const [isToggle, setIsToggle] = useState(false);
 
   var getCity = async (city) => {
     var obj = {
@@ -64,7 +70,11 @@ const NovaPostA = () => {
       },
     };
 
-    doFetchOnNovaPost(obj).then((data) => setdataRegion(data));
+    doFetchOnNovaPost(obj).then((data) =>
+      setTheMapOptionsState((prev) =>
+        prev.set(objectStateKeys.DATA_REGION, data)
+      )
+    );
   };
 
   useEffect(() => getRegion(), []);
@@ -98,25 +108,52 @@ const NovaPostA = () => {
           flexDirection: "column",
           marginBottom: "100px",
           color: "black",
+          paddingTop: "100px",
         }}
       >
-        {Boolean(dataRegion.length) && (
-          <select
-            name="regionNP"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-            onChange={(event) => setTheRegionRef(event.target.value)}
-            value={theRegionRef}
-          >
-            {dataRegion.map((item, id) => (
-              <option key={id} value={item.Ref}>
-                {item.Description}
-              </option>
-            ))}
-          </select>
-        )}
+        <label htmlFor="">
+          Виберіть область
+          <input
+            readOnly
+            onClick={() => setIsToggle(!isToggle)}
+            value={theMapOptionsState.get(objectStateKeys.REGION_NAME) || ""}
+          />
+        </label>
+
+        {Boolean(theMapOptionsState.has(objectStateKeys.DATA_REGION)) &&
+          isToggle && (
+            <ul
+              style={{
+                marginTop: "30px",
+                height: "150px",
+                display: "flex",
+                flexDirection: "column",
+                overflow: "scroll",
+              }}
+            >
+              {theMapOptionsState
+                .get(objectStateKeys.DATA_REGION)
+                .map((item, id) => (
+                  <li
+                    key={id}
+                    title={item.Ref}
+                    onClick={(event) =>
+                      theMapOptionsState.set(
+                        objectStateKeys.REGION_REF,
+                        item.Ref
+                      ) &
+                      theMapOptionsState.set(
+                        objectStateKeys.REGION_NAME,
+                        item.Description
+                      ) &
+                      setIsToggle(!isToggle)
+                    }
+                  >
+                    <p>{item.Description}</p>
+                  </li>
+                ))}
+            </ul>
+          )}
 
         <label>
           Місто
