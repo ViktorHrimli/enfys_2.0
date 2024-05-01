@@ -1,4 +1,5 @@
 import Hero from "@/libs/components/hero/Hero";
+import HeroCards from "@/libs/pages/components/hero-cards/hero-cards";
 import PriceList from "@/libs/pages/components/price-list/price-list";
 
 export default async function PagePrice() {
@@ -7,7 +8,7 @@ export default async function PagePrice() {
 
   return (
     <>
-    <Hero />
+      <HeroCards />
       <PriceList data={data} dollar={dollar} />
     </>
   );

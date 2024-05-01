@@ -16,7 +16,7 @@ export const shop = [
 export const strollers = [
   {
     title: "Коляски та автокрісла",
-    link: "/price",
+    link: "/kolyaski-ta-avtokrisla",
     list: [
       {
         item: "універсальні коляски",
@@ -41,7 +41,7 @@ export const strollers = [
 export const furniture = [
   {
     title: "ДИТЯЧІ МЕБЛІ",
-    link: "/",
+    link: "dityachi-mebli",
     list: [
       {
         item: "ліжечка",
@@ -70,7 +70,7 @@ export const furniture = [
 export const accessories = [
   {
     title: "АКСЕСУАРИ",
-    link: "/",
+    link: "/aksesuari",
     list: [
       {
         item: "дощовики",
@@ -99,7 +99,7 @@ export const accessories = [
 export const transport = [
   {
     title: "Дитячий транспорт",
-    link: "/",
+    link: "/dityachij-transport",
     list: [
       {
         item: "велосипеди і самокати",
@@ -124,7 +124,7 @@ export const transport = [
 export const textile = [
   {
     title: "Дитячий текстиль",
-    link: "/",
+    link: "/dityachij-tekstil",
     list: [
       {
         item: "постільні комплекти",
@@ -161,13 +161,13 @@ export const textile = [
 export const toys = [
   {
     title: "Іграшки та килимки",
-    link: "/",
+    link: "/igrashki-ta-kilimki",
   },
 ];
 
 export const backpacks = [
   {
     title: "Рюкзаки та слінги",
-    link: "/",
+    link: "/ryukzaki ta slingi",
   },
 ];
