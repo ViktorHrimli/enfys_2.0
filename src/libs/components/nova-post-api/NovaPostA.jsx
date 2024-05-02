@@ -12,12 +12,30 @@ var objectStateKeys = {
   CITY_NAME: "city_name",
 };
 
+var initialState = {
+  data_region: [],
+  region_ref: "",
+  region_name: "",
+  data_city: [],
+  city_ref: "",
+  city_name: "",
+  post_office_data: [],
+  post_office: "",
+};
+
 var reducerNp = (state, payload) => {
   switch (payload.keys) {
-    case value:
-      break;
+    case objectStateKeys.DATA_REGION:
+      return { ...state, data_region: payload.data };
+
+    case objectStateKeys.REGION_REF:
+      return { ...state, region_ref: payload.data };
+
+    case objectStateKeys.REGION_NAME:
+      return { ...state, region_name: payload.data };
 
     default:
+      return state;
       break;
   }
 };
@@ -25,7 +43,7 @@ var reducerNp = (state, payload) => {
 const NovaPostA = () => {
   const [theMapOptionsState, setTheMapOptionsState] = useState(new Map());
 
-  var [state, dispatch] = useReducer(first, second);
+  var [state, dispatch] = useReducer(reducerNp, initialState);
   // ГОРОД
   const [theCityData, settheCityData] = useState([]);
   const [theCityRef, setTheCityRef] = useState("");
@@ -39,6 +57,7 @@ const NovaPostA = () => {
   // OPTIONS
   const [isToggle, setIsToggle] = useState(false);
 
+  console.log();
   var getCity = async (city) => {
     var obj = {
       apiKey: process.env.NV_API_KEY,
@@ -58,6 +77,7 @@ const NovaPostA = () => {
     );
   };
 
+  console.log(state[objectStateKeys.REGION_NAME]);
   var getPostOffice = async (postOffice) => {
     var obj = {
       apiKey: process.env.NV_API_KEY,
@@ -89,9 +109,7 @@ const NovaPostA = () => {
     };
 
     doFetchOnNovaPost(obj).then((data) =>
-      setTheMapOptionsState((prev) =>
-        prev.set(objectStateKeys.DATA_REGION, data)
-      )
+      dispatch({ data: data, keys: objectStateKeys.DATA_REGION })
     );
   };
 
@@ -139,44 +157,42 @@ const NovaPostA = () => {
           <input
             readOnly
             onClick={() => setIsToggle(!isToggle)}
-            value={theMapOptionsState.get(objectStateKeys.REGION_NAME) || ""}
+            value={state[objectStateKeys.REGION_NAME]}
           />
         </label>
 
-        {Boolean(theMapOptionsState.has(objectStateKeys.DATA_REGION)) &&
-          isToggle && (
-            <ul
-              style={{
-                marginTop: "30px",
-                height: "150px",
-                display: "flex",
-                flexDirection: "column",
-                overflow: "scroll",
-              }}
-            >
-              {theMapOptionsState
-                .get(objectStateKeys.DATA_REGION)
-                .map((item, id) => (
-                  <li
-                    key={id}
-                    title={item.Ref}
-                    onClick={(event) =>
-                      theMapOptionsState.set(
-                        objectStateKeys.REGION_REF,
-                        item.Ref
-                      ) &
-                      theMapOptionsState.set(
-                        objectStateKeys.REGION_NAME,
-                        item.Description
-                      ) &
-                      setIsToggle(!isToggle)
-                    }
-                  >
-                    <p>{item.Description}</p>
-                  </li>
-                ))}
-            </ul>
-          )}
+        {Boolean(state[objectStateKeys.DATA_REGION].length) && isToggle && (
+          <ul
+            style={{
+              marginTop: "30px",
+              height: "150px",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "scroll",
+            }}
+          >
+            {state[objectStateKeys.DATA_REGION].map((item, id) => (
+              <li
+                key={id}
+                title={item.Ref}
+                onClick={(event) => {
+                  dispatch({
+                    data: item.ref,
+                    keys: objectStateKeys.REGION_REF,
+                  });
+                  dispatch({
+                    data: item.Description,
+                    keys: objectStateKeys.REGION_NAME,
+                  });
+
+                  setIsToggle(!isToggle);
+                }}
+              >
+                <p>{item.Description}</p>
+              </li>
+            ))}
+          </ul>
+        )}
 
         <label>
           Місто
