@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 
 import { doFetchOnNovaPost } from "@/shared/helpers/service-post-api";
 
@@ -7,10 +7,25 @@ var objectStateKeys = {
   DATA_REGION: "data_region",
   REGION_REF: "region_ref",
   REGION_NAME: "region_name",
+  DATA_CITY: "data_city",
+  CITY_REF: "city_ref",
+  CITY_NAME: "city_name",
+};
+
+var reducerNp = (state, payload) => {
+  switch (payload.keys) {
+    case value:
+      break;
+
+    default:
+      break;
+  }
 };
 
 const NovaPostA = () => {
   const [theMapOptionsState, setTheMapOptionsState] = useState(new Map());
+
+  var [state, dispatch] = useReducer(first, second);
   // ГОРОД
   const [theCityData, settheCityData] = useState([]);
   const [theCityRef, setTheCityRef] = useState("");
@@ -30,14 +45,17 @@ const NovaPostA = () => {
       modelName: "Address",
       calledMethod: "getSettlements",
       methodProperties: {
-        AreaRef: theRegionRef,
+        AreaRef: theMapOptionsState.get(objectStateKeys.CITY_REF),
         Page: "1",
         FindByString: city,
         Limit: "40",
       },
     };
 
-    doFetchOnNovaPost(obj).then((data) => settheCityData(data));
+    // doFetchOnNovaPost(obj).then((data) => settheCityData(data));
+    doFetchOnNovaPost(obj).then((data) =>
+      setTheMapOptionsState((prev) => prev.set(objectStateKeys.DATA_CITY, data))
+    );
   };
 
   var getPostOffice = async (postOffice) => {
@@ -80,8 +98,13 @@ const NovaPostA = () => {
   useEffect(() => getRegion(), []);
 
   useEffect(() => {
-    theCity && setTimeout(() => getCity(theCity), 300);
-  }, [theCity]);
+    console.log("DO");
+    theMapOptionsState.has(objectStateKeys.CITY_NAME) &&
+      setTimeout(
+        () => getCity(theMapOptionsState.get(objectStateKeys.CITY_NAME)),
+        300
+      );
+  }, [theMapOptionsState.get(objectStateKeys.CITY_NAME)]);
 
   useEffect(() => {
     postOffice && setTimeout(() => getPostOffice(postOffice), 500);
@@ -160,11 +183,16 @@ const NovaPostA = () => {
           <input
             type="text"
             color="black"
-            value={theCity}
-            onChange={(evn) => setTheCity(evn.currentTarget.value)}
+            value={theMapOptionsState.get(objectStateKeys.CITY_NAME)}
+            defaultValue={""}
+            onChange={(event) => {
+              setTheMapOptionsState((prev) =>
+                prev.set(objectStateKeys.CITY_NAME, event.currentTarget.value)
+              );
+            }}
           />
         </label>
-        {Boolean(theCityData.length) && (
+        {theMapOptionsState.has(objectStateKeys.DATA_CITY) && (
           <select
             name="cityNP"
             style={{
@@ -174,11 +202,13 @@ const NovaPostA = () => {
             onChange={(event) => setTheCityRef(event.target.value)}
             value={theCityRef}
           >
-            {theCityData.map((item, id) => (
-              <option key={id} value={item.Description}>
-                {item.Description}
-              </option>
-            ))}
+            {theMapOptionsState
+              .get(objectStateKeys.DATA_CITY)
+              .map((item, id) => (
+                <option key={id} value={item.Description}>
+                  {item.Description}
+                </option>
+              ))}
           </select>
         )}
 
