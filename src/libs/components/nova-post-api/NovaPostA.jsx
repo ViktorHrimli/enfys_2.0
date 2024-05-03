@@ -34,6 +34,14 @@ var reducerNp = (state, payload) => {
     case objectStateKeys.REGION_NAME:
       return { ...state, region_name: payload.data };
 
+    case objectStateKeys.CITY_NAME:
+      return { ...state, city_name: payload.data };
+
+    case objectStateKeys.DATA_CITY:
+      return { ...state, data_city: payload.data };
+
+    case objectStateKeys.CITY_REF:
+      return { ...state, city_ref: payload.data };
     default:
       return state;
       break;
@@ -41,13 +49,7 @@ var reducerNp = (state, payload) => {
 };
 
 const NovaPostA = () => {
-  const [theMapOptionsState, setTheMapOptionsState] = useState(new Map());
-
   var [state, dispatch] = useReducer(reducerNp, initialState);
-  // ГОРОД
-  const [theCityData, settheCityData] = useState([]);
-  const [theCityRef, setTheCityRef] = useState("");
-  const [theCity, setTheCity] = useState("");
   // ТИП ВІДДІЛЕННЯ
   const [theWareHouseRef, setTheWareHouseRef] = useState("");
   const [postOffice, setPostOffice] = useState("");
@@ -56,28 +58,26 @@ const NovaPostA = () => {
   const [office, setOffice] = useState("");
   // OPTIONS
   const [isToggle, setIsToggle] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  console.log();
   var getCity = async (city) => {
     var obj = {
       apiKey: process.env.NV_API_KEY,
       modelName: "Address",
       calledMethod: "getSettlements",
       methodProperties: {
-        AreaRef: theMapOptionsState.get(objectStateKeys.CITY_REF),
+        AreaRef: state[objectStateKeys.REGION_REF],
         Page: "1",
         FindByString: city,
         Limit: "40",
       },
     };
 
-    // doFetchOnNovaPost(obj).then((data) => settheCityData(data));
     doFetchOnNovaPost(obj).then((data) =>
-      setTheMapOptionsState((prev) => prev.set(objectStateKeys.DATA_CITY, data))
+      dispatch({ data: data, keys: objectStateKeys.DATA_CITY })
     );
   };
 
-  console.log(state[objectStateKeys.REGION_NAME]);
   var getPostOffice = async (postOffice) => {
     var obj = {
       apiKey: process.env.NV_API_KEY,
@@ -85,7 +85,7 @@ const NovaPostA = () => {
       calledMethod: "getWarehouses",
       methodProperties: {
         FindByString: postOffice,
-        CityName: theCityRef,
+        CityName: state[objectStateKeys.CITY_REF],
         CityRef: "",
         Page: "1",
         Limit: "150",
@@ -116,13 +116,10 @@ const NovaPostA = () => {
   useEffect(() => getRegion(), []);
 
   useEffect(() => {
-    console.log("DO");
-    theMapOptionsState.has(objectStateKeys.CITY_NAME) &&
-      setTimeout(
-        () => getCity(theMapOptionsState.get(objectStateKeys.CITY_NAME)),
-        300
-      );
-  }, [theMapOptionsState.get(objectStateKeys.CITY_NAME)]);
+    var city = state[objectStateKeys.CITY_NAME];
+
+    Boolean(city) && setTimeout(() => getCity(city), 300);
+  }, [state[objectStateKeys.CITY_NAME]]);
 
   useEffect(() => {
     postOffice && setTimeout(() => getPostOffice(postOffice), 500);
@@ -177,7 +174,7 @@ const NovaPostA = () => {
                 title={item.Ref}
                 onClick={(event) => {
                   dispatch({
-                    data: item.ref,
+                    data: item.Ref,
                     keys: objectStateKeys.REGION_REF,
                   });
                   dispatch({
@@ -199,33 +196,44 @@ const NovaPostA = () => {
           <input
             type="text"
             color="black"
-            value={theMapOptionsState.get(objectStateKeys.CITY_NAME)}
-            defaultValue={""}
+            value={state[objectStateKeys.CITY_NAME]}
             onChange={(event) => {
-              setTheMapOptionsState((prev) =>
-                prev.set(objectStateKeys.CITY_NAME, event.currentTarget.value)
-              );
+              dispatch({
+                data: event.currentTarget.value,
+                keys: objectStateKeys.CITY_NAME,
+              });
             }}
           />
         </label>
-        {theMapOptionsState.has(objectStateKeys.DATA_CITY) && (
-          <select
+        {Boolean(state[objectStateKeys.DATA_CITY].length) && (
+          <ul
             name="cityNP"
             style={{
+              marginTop: "30px",
+              height: "150px",
               display: "flex",
               flexDirection: "column",
+              overflow: "scroll",
             }}
-            onChange={(event) => setTheCityRef(event.target.value)}
-            value={theCityRef}
           >
-            {theMapOptionsState
-              .get(objectStateKeys.DATA_CITY)
-              .map((item, id) => (
-                <option key={id} value={item.Description}>
-                  {item.Description}
-                </option>
-              ))}
-          </select>
+            {state[objectStateKeys.DATA_CITY].map((item, id) => (
+              <li
+                key={id}
+                value={item.Description}
+                onClick={(event) => {
+                  dispatch({ data: item.Ref, keys: objectStateKeys.CITY_REF });
+                  dispatch({
+                    data: item.Description,
+                    keys: objectStateKeys.CITY_NAME,
+                  });
+
+                  setIsOpen(!isOpen);
+                }}
+              >
+                {item.Description}
+              </li>
+            ))}
+          </ul>
         )}
 
         <label>
