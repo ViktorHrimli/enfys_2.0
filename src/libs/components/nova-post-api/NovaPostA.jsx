@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, useReducer } from "react";
 
+import { NovaPostList } from "./NovaPostList";
+
 import { doFetchOnNovaPost } from "@/shared/helpers/service-post-api";
 
 var objectStateKeys = {
@@ -94,7 +96,6 @@ const NovaPostA = () => {
         WarehouseId: "",
       },
     };
-
     doFetchOnNovaPost(obj).then((data) => setPostOfficesData(data));
   };
 
@@ -122,7 +123,7 @@ const NovaPostA = () => {
   }, [state[objectStateKeys.CITY_NAME]]);
 
   useEffect(() => {
-    postOffice && setTimeout(() => getPostOffice(postOffice), 500);
+    Boolean(postOffice) && setTimeout(() => getPostOffice(postOffice), 500);
   }, [postOffice]);
 
   return (
@@ -169,10 +170,9 @@ const NovaPostA = () => {
             }}
           >
             {state[objectStateKeys.DATA_REGION].map((item, id) => (
-              <li
+              <NovaPostList
                 key={id}
-                title={item.Ref}
-                onClick={(event) => {
+                onClick={() => {
                   dispatch({
                     data: item.Ref,
                     keys: objectStateKeys.REGION_REF,
@@ -186,7 +186,7 @@ const NovaPostA = () => {
                 }}
               >
                 <p>{item.Description}</p>
-              </li>
+              </NovaPostList>
             ))}
           </ul>
         )}
@@ -217,21 +217,18 @@ const NovaPostA = () => {
             }}
           >
             {state[objectStateKeys.DATA_CITY].map((item, id) => (
-              <li
-                key={id}
-                value={item.Description}
-                onClick={(event) => {
+              <NovaPostList
+                onClick={() => {
                   dispatch({ data: item.Ref, keys: objectStateKeys.CITY_REF });
                   dispatch({
                     data: item.Description,
                     keys: objectStateKeys.CITY_NAME,
                   });
-
                   setIsOpen(!isOpen);
                 }}
               >
                 {item.Description}
-              </li>
+              </NovaPostList>
             ))}
           </ul>
         )}
