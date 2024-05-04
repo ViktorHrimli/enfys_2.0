@@ -5,6 +5,21 @@ import { NovaPostList } from "./NovaPostList";
 
 import { doFetchOnNovaPost } from "@/shared/helpers/service-post-api";
 
+class BaseObj {
+  apiKey = process.env.NV_API_KEY;
+  modelName = "Address";
+  calledMethod = "getSettlementAreas";
+}
+
+var objPrototype = {
+  apiKey: process.env.NV_API_KEY,
+  modelName: "Address",
+  calledMethod: "getSettlementAreas",
+  methodProperties: {
+    Ref: "",
+  },
+};
+
 var objectStateKeys = {
   DATA_REGION: "data_region",
   REGION_REF: "region_ref",
@@ -12,6 +27,11 @@ var objectStateKeys = {
   DATA_CITY: "data_city",
   CITY_REF: "city_ref",
   CITY_NAME: "city_name",
+  POST_OFFICE: "post_office",
+  POST_OFFICE_DATA: "post_office_data",
+  TOGGLE_OFFICE: "office",
+  TOGGLE_CITY: "city",
+  TOGGLE_REGION: "region",
 };
 
 var initialState = {
@@ -44,21 +64,51 @@ var reducerNp = (state, payload) => {
 
     case objectStateKeys.CITY_REF:
       return { ...state, city_ref: payload.data };
+
+    case objectStateKeys.POST_OFFICE:
+      return { ...state, post_office: payload.data };
+
+    case objectStateKeys.POST_OFFICE_DATA:
+      return { ...state, post_office_data: payload.data };
+
     default:
       return state;
       break;
   }
 };
 
+var doToggle = (state, payload) => {
+  switch (payload.keys) {
+    case objectStateKeys.TOGGLE_REGION: {
+      return { ...state, region: payload.data };
+    }
+    case objectStateKeys.TOGGLE_CITY: {
+      return { ...state, office: payload.data };
+    }
+    case objectStateKeys.TOGGLE_OFFICE: {
+      return { ...state, city: payload.data };
+    }
+
+    default:
+      return state;
+  }
+};
+
+var inititalToggle = {
+  office: false,
+  city: false,
+  region: false,
+};
+
 const NovaPostA = () => {
   var [state, dispatch] = useReducer(reducerNp, initialState);
   // ТИП ВІДДІЛЕННЯ
   const [theWareHouseRef, setTheWareHouseRef] = useState("");
-  const [postOffice, setPostOffice] = useState("");
-  // ВІДДІЛЕННЯ
-  const [postOfficesData, setPostOfficesData] = useState([]);
-  const [office, setOffice] = useState("");
   // OPTIONS
+  const [isToggleMenager, dispatchToggle] = useReducer(
+    doToggle,
+    inititalToggle
+  );
   const [isToggle, setIsToggle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -87,16 +137,18 @@ const NovaPostA = () => {
       calledMethod: "getWarehouses",
       methodProperties: {
         FindByString: postOffice,
-        CityName: state[objectStateKeys.CITY_REF],
+        CityName: state[objectStateKeys.CITY_NAME],
         CityRef: "",
         Page: "1",
         Limit: "150",
         Language: "UA",
-        TypeOfWarehouseRef: theWareHouseRef,
+        TypeOfWarehouseRef: "",
         WarehouseId: "",
       },
     };
-    doFetchOnNovaPost(obj).then((data) => setPostOfficesData(data));
+    doFetchOnNovaPost(obj).then((data) =>
+      dispatch({ data: data, keys: objectStateKeys.POST_OFFICE_DATA })
+    );
   };
 
   var getRegion = () => {
@@ -119,12 +171,14 @@ const NovaPostA = () => {
   useEffect(() => {
     var city = state[objectStateKeys.CITY_NAME];
 
-    Boolean(city) && setTimeout(() => getCity(city), 300);
+    Boolean(city) && getCity(city);
   }, [state[objectStateKeys.CITY_NAME]]);
 
   useEffect(() => {
-    Boolean(postOffice) && setTimeout(() => getPostOffice(postOffice), 500);
-  }, [postOffice]);
+    var office = state[objectStateKeys.POST_OFFICE];
+
+    Boolean(office) && getPostOffice(office);
+  }, [state[objectStateKeys.POST_OFFICE]]);
 
   return (
     <section
@@ -150,7 +204,7 @@ const NovaPostA = () => {
           paddingTop: "100px",
         }}
       >
-        <label htmlFor="">
+        <label>
           Виберіть область
           <input
             readOnly
@@ -181,8 +235,6 @@ const NovaPostA = () => {
                     data: item.Description,
                     keys: objectStateKeys.REGION_NAME,
                   });
-
-                  setIsToggle(!isToggle);
                 }}
               >
                 <p>{item.Description}</p>
@@ -218,6 +270,7 @@ const NovaPostA = () => {
           >
             {state[objectStateKeys.DATA_CITY].map((item, id) => (
               <NovaPostList
+                key={id}
                 onClick={() => {
                   dispatch({ data: item.Ref, keys: objectStateKeys.CITY_REF });
                   dispatch({
@@ -233,7 +286,7 @@ const NovaPostA = () => {
           </ul>
         )}
 
-        <label>
+        {/* <label>
           Вибрати тип відділення
           <select
             onChange={(event) => setTheWareHouseRef(event.target.value)}
@@ -249,33 +302,46 @@ const NovaPostA = () => {
               Грузове
             </option>
           </select>
-        </label>
+        </label> */}
 
         <label>
           Вибрати відділення
           <input
             type="text"
-            value={office || postOffice}
-            onChange={(event) => setPostOffice(event.target.value)}
+            value={state[objectStateKeys.POST_OFFICE]}
+            onChange={(event) =>
+              dispatch({
+                data: event.currentTarget.value,
+                keys: objectStateKeys.POST_OFFICE,
+              })
+            }
           />
         </label>
 
-        {Boolean(postOfficesData.length) && (
-          <select
-            name="OfficeNP"
+        {Boolean(state[objectStateKeys.POST_OFFICE_DATA].length) && (
+          <ul
             style={{
+              marginTop: "30px",
+              height: "150px",
               display: "flex",
               flexDirection: "column",
+              overflow: "scroll",
             }}
-            onChange={(event) => setOffice(event.target.value)}
-            value={office}
           >
-            {postOfficesData.map((item, id) => (
-              <option key={id} value={item.Description}>
+            {state[objectStateKeys.POST_OFFICE_DATA].map((item, id) => (
+              <NovaPostList
+                key={id}
+                onClick={() => {
+                  dispatch({
+                    data: item.Description,
+                    keys: objectStateKeys.POST_OFFICE,
+                  });
+                }}
+              >
                 {item.Description}
-              </option>
+              </NovaPostList>
             ))}
-          </select>
+          </ul>
         )}
       </form>
     </section>
