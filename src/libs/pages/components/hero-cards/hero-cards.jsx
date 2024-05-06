@@ -11,9 +11,9 @@ import Line from "@/shared/line";
 
 
 
-export default function HeroCards() {
+export default function HeroCards({ selectedCategory }) {
   const [isClient, setIsClient] = useState(false);
-  const [isHeroText, setIsHeroText] = useState("");
+  const [isHeroText, setIsHeroText] = useState(selectedCategory);
 
   const path = usePathname().replace("/", "");
 

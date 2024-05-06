@@ -20,10 +20,14 @@ export default function Filter({ setIsOpenFilter }) {
             </div>
             <p className={styles.sorting_text}>ЦІНА</p>
             <div className={styles.price_box}>
-              <div className={styles.price}>від <input className={styles.style_input} type="number" /></div>
-              <div className={styles.price}>до <input  className={styles.style_input}type="number" /></div>
+              <div className={styles.price}>
+                <input className={styles.style_input} type="number" placeholder='від' />
+              </div>
+              <div className={styles.price}>
+                <input className={styles.style_input} type="number" placeholder='до' />
+              </div>
             </div>
-          </div>
+            </div>
           <div className={styles.right_box}>
             <p className={styles.sorting_text}>Бренд</p>
             <div className={styles.container_input}>

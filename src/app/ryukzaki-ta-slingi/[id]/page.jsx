@@ -9,10 +9,11 @@ import TableCards from "@/libs/pages/components/table-cards/table-cards";
 export default async function PageCard(id) {
   var { data } = await (await fetch('https://www.admin-enfys.space/api/tests?populate=*', { cache: 'no-cache' })).json();
   var { data: { attributes: { dollar } } } = await (await fetch('https://www.admin-enfys.space/api/course', { cache: 'no-cache' })).json();
+  var selectedCategory = 'РЮКЗАКИ ТА СЛІНГИ';
 
   return (
     <>
-      <HeroCards />
+      <HeroCards selectedCategory={selectedCategory} />
       <AboutCardsGallery data={data} id={id} dollar={dollar} />
       <Conditions />
       <AboutCards data={data} id={id} dollar={dollar} />

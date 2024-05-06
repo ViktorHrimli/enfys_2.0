@@ -20,19 +20,19 @@ export const strollers = [
     list: [
       {
         item: "універсальні коляски",
-        link: "/price",
+        link: "/universalni-kolyaski",
       },
       {
         item: "прогулянкові коляски",
-        link: "/price",
+        link: "/progulyankovi-kolyaski",
       },
       {
         item: "автокрісла",
-        link: "/",
+        link: "/avtokrisla",
       },
       {
         item: "коляски для двійні",
-        link: "/",
+        link: "/kolyaski-dlya-dvijni",
       },
     ],
   },
@@ -41,27 +41,27 @@ export const strollers = [
 export const furniture = [
   {
     title: "ДИТЯЧІ МЕБЛІ",
-    link: "dityachi-mebli",
+    link: "/dityachi-mebli",
     list: [
       {
         item: "ліжечка",
-        link: "/",
+        link: "/lizhechka",
       },
       {
         item: "комоди-пеленатори",
-        link: "/",
+        link: "/komodi-pelenatori",
       },
       {
         item: "крісла-гойдалки",
-        link: "/",
+        link: "/krisla-gojdalki",
       },
       {
         item: "манежи",
-        link: "/",
+        link: "/manezhi",
       },
       {
         item: "стільчики для годування",
-        link: "/",
+        link: "/stilchiki-dlya-goduvannya",
       },
     ],
   },
@@ -74,23 +74,23 @@ export const accessories = [
     list: [
       {
         item: "дощовики",
-        link: "/",
+        link: "/doshoviki",
       },
       {
         item: "москітні сітки",
-        link: "/",
+        link: "/moskitni-sitki",
       },
       {
         item: "сумки та термосумки",
-        link: "/",
+        link: "/sumki-ta-termosumki",
       },
       {
         item: "конверти",
-        link: "/",
+        link: "/konverti",
       },
       {
         item: "муфти",
-        link: "/",
+        link: "/mufti",
       },
     ],
   },
@@ -103,19 +103,19 @@ export const transport = [
     list: [
       {
         item: "велосипеди і самокати",
-        link: "/",
+        link: "/velosipedi-i-samokati",
       },
       {
         item: "дитячі електромобілі",
-        link: "/",
+        link: "/dityachi-elektromobili",
       },
       {
         item: "беговели",
-        link: "/",
+        link: "/begoveli",
       },
       {
         item: "ходунки",
-        link: "/",
+        link: "/hodunki",
       },
     ],
   },
@@ -128,19 +128,19 @@ export const textile = [
     list: [
       {
         item: "постільні комплекти",
-        link: "/",
+        link: "/postilni-komplekti",
       },
       {
         item: "матраци та наматрацники",
-        link: "/",
+        link: "/matraci-ta-namatracniki",
       },
       {
         item: "ковдри та пледи",
-        link: "/",
+        link: "/kovdri-ta-pledi",
       },
       {
         item: "подушки",
-        link: "/",
+        link: "/podushki",
       },
       {
         item: "",
@@ -168,6 +168,6 @@ export const toys = [
 export const backpacks = [
   {
     title: "Рюкзаки та слінги",
-    link: "/ryukzaki ta slingi",
+    link: "/ryukzaki-ta-slingi",
   },
 ];

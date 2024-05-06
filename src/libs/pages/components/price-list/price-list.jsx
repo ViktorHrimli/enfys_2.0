@@ -1,5 +1,7 @@
 "use client"
 import Image from 'next/image';
+import Link from 'next/link';
+
 
 import { useState, useEffect } from 'react';
 import { usePathname } from "next/navigation";
@@ -7,8 +9,6 @@ import { usePathname } from "next/navigation";
 import styles from './price-list.module.scss';
 import Filter from '@/libs/modal/filter/filter';
 
-
-import Link from 'next/link';
 import PartnersIcon from '@/shared/icons/partners';
 
 
@@ -20,8 +20,6 @@ export default function PriceList({data, dollar}) {
   );
 
   const path = usePathname().replace("/", "");
-
-
 
   useEffect(() => {
     if (isOpenFilter) {
@@ -45,9 +43,7 @@ export default function PriceList({data, dollar}) {
       <section className={styles.section}>
         <div className={styles.container}> 
           
-          <button className={styles.btn}
-            onClick={() => setIsOpenFilter(true)}>ФІЛЬТРИ
-          </button>
+          <button className={styles.btn} onClick={() => setIsOpenFilter(true)}>ФІЛЬТРИ</button>
 
           <ul className={styles.card_container}>
             {data.map((item, id) => (
@@ -58,7 +54,7 @@ export default function PriceList({data, dollar}) {
                 </div>
                 <div className={styles.img_container}>
                   <Image 
-                    src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}` }
+                    src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}`}
                     alt="image"
                     priority={true}
                     loading="eager"
