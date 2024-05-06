@@ -1,19 +1,19 @@
 "use client";
 import { useState, useEffect, useReducer } from "react";
+import { debounce, throttle } from "throttle-debounce";
 
-import { NovaPostList } from "./NovaPostList";
 import { DropDownWrapper } from "./DropDownWrapper";
-
+import { NovaPostInput } from "./NovaPostInput";
 import { doFetchOnNovaPost } from "@/shared/helpers/service-post-api";
 
 import { reducerNp } from "./npReducer";
 import { objectStateKeys } from "./enums/keys";
 import { initialState } from "./enums/inittialState";
 
+import style from "./Styles.module.scss";
+
 const NovaPostA = () => {
   var [state, dispatch] = useReducer(reducerNp, initialState);
-  // ТИП ВІДДІЛЕННЯ
-  const [theWareHouseRef, setTheWareHouseRef] = useState("");
 
   const [isToggle, setIsToggle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -137,14 +137,13 @@ const NovaPostA = () => {
           paddingTop: "100px",
         }}
       >
-        <label>
+        <NovaPostInput
+          onClick={() => setIsToggle(!isToggle)}
+          value={state[objectStateKeys.REGION_NAME]}
+          readOnly={true}
+        >
           Виберіть область
-          <input
-            readOnly
-            onClick={() => setIsToggle(!isToggle)}
-            value={state[objectStateKeys.REGION_NAME]}
-          />
-        </label>
+        </NovaPostInput>
 
         {Boolean(state[objectStateKeys.DATA_REGION].length) && isToggle && (
           <ul
@@ -161,25 +160,24 @@ const NovaPostA = () => {
               dataMap={state[objectStateKeys.DATA_REGION]}
               onEvent={onClickOnRegion}
               key="dropDownRegion"
+              classname={style}
             />
           </ul>
         )}
 
-        <label>
+        <NovaPostInput
+          onClick={() => setIsOpen(true)}
+          value={state[objectStateKeys.CITY_NAME]}
+          onChange={(event) => {
+            dispatch({
+              data: event.currentTarget.value,
+              keys: objectStateKeys.CITY_NAME,
+            });
+          }}
+        >
           Місто
-          <input
-            type="text"
-            color="black"
-            value={state[objectStateKeys.CITY_NAME]}
-            onClick={() => setIsOpen(true)}
-            onChange={(event) => {
-              dispatch({
-                data: event.currentTarget.value,
-                keys: objectStateKeys.CITY_NAME,
-              });
-            }}
-          />
-        </label>
+        </NovaPostInput>
+
         {Boolean(state[objectStateKeys.DATA_CITY].length) && isOpen && (
           <ul
             key="listCity"
@@ -199,20 +197,18 @@ const NovaPostA = () => {
           </ul>
         )}
 
-        <label>
+        <NovaPostInput
+          value={state[objectStateKeys.POST_OFFICE]}
+          onClick={() => setIsOpenOffice(true)}
+          onChange={(event) =>
+            dispatch({
+              data: event.currentTarget.value,
+              keys: objectStateKeys.POST_OFFICE,
+            })
+          }
+        >
           Вибрати відділення
-          <input
-            type="text"
-            value={state[objectStateKeys.POST_OFFICE]}
-            onClick={() => setIsOpenOffice(true)}
-            onChange={(event) =>
-              dispatch({
-                data: event.currentTarget.value,
-                keys: objectStateKeys.POST_OFFICE,
-              })
-            }
-          />
-        </label>
+        </NovaPostInput>
 
         {Boolean(state[objectStateKeys.POST_OFFICE_DATA].length) &&
           isOpenOffice && (
@@ -230,6 +226,7 @@ const NovaPostA = () => {
                 dataMap={state[objectStateKeys.POST_OFFICE_DATA]}
                 onEvent={onClickOnPostOffice}
                 key="dropDownOffice"
+                classname=""
               />
             </ul>
           )}
