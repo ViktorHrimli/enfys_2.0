@@ -9,7 +9,7 @@ export default function AboutCards({ data, id }) {
   
   // fech
   const priceCardTitle = "ОПИС: " + data[keyId].attributes.title;
-  const priceCardPreDescription = data[keyId].attributes.preAbout;
+  const priceCardPreDescription = data[keyId].attributes.description;
   const priceCardDescription = data[keyId].attributes.about;
 
   return (

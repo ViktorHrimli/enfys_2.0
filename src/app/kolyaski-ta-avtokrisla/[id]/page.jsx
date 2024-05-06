@@ -1,4 +1,3 @@
-import Hero from "@/libs/components/hero/Hero";
 import AboutCardsGallery from "@/libs/pages/components/about-cards-gallary/about-cards-gallary";
 import AboutCards from "@/libs/pages/components/about-cards/about-cards";
 import Advantages from "@/libs/pages/components/advantages/advantages";
