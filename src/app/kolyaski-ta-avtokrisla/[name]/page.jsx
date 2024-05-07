@@ -6,18 +6,32 @@ import Conditions from "@/libs/pages/components/conditions/conditions";
 import HeroCards from "@/libs/pages/components/hero-cards/hero-cards";
 import TableCards from "@/libs/pages/components/table-cards/table-cards";
 
-export default async function PageCard(id) {
-  var { data } = await (await fetch('https://www.admin-enfys.space/api/tests?populate=*', { cache: 'no-cache' })).json();
-  var { data: { attributes: { dollar } } } = await (await fetch('https://www.admin-enfys.space/api/course', { cache: 'no-cache' })).json();
+export default async function PageCard({ params }) {
+  var { data } = await (
+    await fetch("https://www.admin-enfys.space/api/tests?populate=*", {
+      cache: "no-cache",
+    })
+  ).json();
+  var {
+    data: {
+      attributes: { dollar },
+    },
+  } = await (
+    await fetch("https://www.admin-enfys.space/api/course", {
+      cache: "no-cache",
+    })
+  ).json();
 
+  var name = params.name;
+  console.log(name, "WDAWD");
   return (
     <>
       <HeroCards />
-      <AboutCardsGallery data={data} id={id} dollar={dollar} />
+      <AboutCardsGallery data={data} id={name} dollar={dollar} />
       <Conditions />
-      <AboutCards data={data} id={id} dollar={dollar} />
+      {/* <AboutCards data={data} id={name} dollar={dollar} /> */}
       {/* <Advantages /> */}
-      <TableCards data={data} id={id} />
+      {/* <TableCards data={data} id={name} /> */}
       <Card />
     </>
   );

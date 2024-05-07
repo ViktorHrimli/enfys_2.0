@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
@@ -8,9 +8,16 @@ import { getFormById } from "@/shared/getFormById";
 import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
 
+var skeletoN =
+  "/uploads/Carrello_Bravo_Plus_2023_Ivory_Beige_1_1_d386594b13.jpg";
 
 export default function AboutCardsGallery({ data, id, dollar }) {
-  const [isGallery, setIsGallery] = useState(`https://www.admin-enfys.space${data[id.params.id].attributes.gallery.data[0].attributes.url}`);
+  const [isGallery, setIsGallery] = useState(
+    `https://www.admin-enfys.space${
+      data.find((item) => item.attributes.name === id)?.attributes.gallery
+        .data[0].attributes.url || skeletoN
+    }`
+  );
   const [isBacground, setIsBacground] = useState(0);
 
   const [isPreview, setIsPreview] = useState(false);
@@ -25,13 +32,12 @@ export default function AboutCardsGallery({ data, id, dollar }) {
     event.stopPropagation();
     if (id === 4) {
       if (ulRef.current) {
-        const listItems = ulRef.current.querySelectorAll('li');
+        const listItems = ulRef.current.querySelectorAll("li");
         const lastListItem = listItems[listItems.length - 1];
-        lastListItem.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        lastListItem.scrollIntoView({ behavior: "smooth", block: "end" });
       }
     }
   };
-
 
   useEffect(() => {
     if (isPreview) {
@@ -40,7 +46,7 @@ export default function AboutCardsGallery({ data, id, dollar }) {
       document.body.style.overflow = "hidden";
       document.body.style.maxHeight = "100vh";
     }
-    
+
     window.scrollTo(0, isScroll);
 
     return () => {
@@ -53,18 +59,20 @@ export default function AboutCardsGallery({ data, id, dollar }) {
     getFormById("about-card");
   };
 
-
-  const keyId = id.params.id;
+  const keyId = 1;
   const galleryLength = data[keyId].attributes.gallery.data.length;
 
   return (
     <>
-    <section className={styles.section}>
-      <div className={styles.container}>
-        {/* gallery */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          {/* gallery */}
           <div className={styles.gallery}>
-            <div className={styles.img_container} onClick={()=> setIsPreview(true)}>
-              <Image 
+            <div
+              className={styles.img_container}
+              onClick={() => setIsPreview(true)}
+            >
+              <Image
                 src={isGallery}
                 alt="image"
                 priority={true}
@@ -74,69 +82,91 @@ export default function AboutCardsGallery({ data, id, dollar }) {
                 height={100}
                 className={styles.gallery_img}
               />
-              <svg className={styles.fullsreen} xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24"><path fill="#209487" d="M5 19h2.923q.213 0 .356.144t.144.357t-.144.356t-.356.143H4.808q-.344 0-.576-.232T4 19.192v-3.115q0-.213.144-.356q.144-.144.357-.144q.212 0 .356.144t.143.356zm14.02 0v-2.923q0-.213.143-.356t.357-.144t.356.144q.143.143.143.356v3.115q0 .344-.232.576t-.575.232h-3.116q-.212 0-.356-.144t-.144-.357t.144-.356t.356-.143zM5 5v2.923q0 .213-.144.356t-.357.144t-.356-.144T4 7.923V4.808q0-.344.232-.576T4.808 4h3.115q.213 0 .356.144q.144.144.144.357q0 .212-.144.356T7.923 5zm14.02 0h-2.924q-.212 0-.356-.144t-.144-.357t.144-.356t.356-.143h3.116q.343 0 .575.232t.232.576v3.115q0 .213-.144.356q-.144.144-.356.144q-.213 0-.356-.144t-.144-.356z"/></svg>
-            </div>
-          <div className={styles.container_list}>
-          <ul className={styles.list} ref={ulRef}>
-          {data[keyId].attributes.gallery.data.map(( item , id) => (
-            <li
-              key={id}
-              className={styles.items}
-              onClick={() => setIsGallery(`https://www.admin-enfys.space${data[keyId].attributes.gallery.data[id].attributes.url}`)
-                & setIsBacground(id) & scrollToPosition(event, {id})}>
-              <div className={id === isBacground ?  "" : styles.bacground}></div>
-                <Image 
-                  src={`https://www.admin-enfys.space${item.attributes.url}`}
-                  alt="item"
-                  priority={true}
-                  loading="eager"
-                  quality={100}
-                  width={100}
-                  height={100}
-                  style={{objectFit: "cover"}}
+              <svg
+                className={styles.fullsreen}
+                xmlns="http://www.w3.org/2000/svg"
+                width="42"
+                height="42"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#209487"
+                  d="M5 19h2.923q.213 0 .356.144t.144.357t-.144.356t-.356.143H4.808q-.344 0-.576-.232T4 19.192v-3.115q0-.213.144-.356q.144-.144.357-.144q.212 0 .356.144t.143.356zm14.02 0v-2.923q0-.213.143-.356t.357-.144t.356.144q.143.143.143.356v3.115q0 .344-.232.576t-.575.232h-3.116q-.212 0-.356-.144t-.144-.357t.144-.356t.356-.143zM5 5v2.923q0 .213-.144.356t-.357.144t-.356-.144T4 7.923V4.808q0-.344.232-.576T4.808 4h3.115q.213 0 .356.144q.144.144.144.357q0 .212-.144.356T7.923 5zm14.02 0h-2.924q-.212 0-.356-.144t-.144-.357t.144-.356t.356-.143h3.116q.343 0 .575.232t.232.576v3.115q0 .213-.144.356q-.144.144-.356.144q-.213 0-.356-.144t-.144-.356z"
                 />
-            </li>
-          ))}
-          </ul>
+              </svg>
+            </div>
+            <div className={styles.container_list}>
+              <ul className={styles.list} ref={ulRef}>
+                {data[keyId].attributes.gallery.data.map((item, id) => (
+                  <li
+                    key={id}
+                    className={styles.items}
+                    onClick={() =>
+                      setIsGallery(
+                        `https://www.admin-enfys.space${data[keyId].attributes.gallery.data[id].attributes.url}`
+                      ) &
+                      setIsBacground(id) &
+                      scrollToPosition(event, { id })
+                    }
+                  >
+                    <div
+                      className={id === isBacground ? "" : styles.bacground}
+                    ></div>
+                    <Image
+                      src={`https://www.admin-enfys.space${item.attributes.url}`}
+                      alt="item"
+                      priority={true}
+                      loading="eager"
+                      quality={100}
+                      width={100}
+                      height={100}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-        {/* ------- */}
-        <div className={styles.container_text}>
-            <h2 className={styles.title}>
-              {data[id.params.id].attributes.title}
-          </h2>
-          <span className={styles.art}>Артикул: {data[id.params.id].attributes.articl}</span>
+          {/* ------- */}
+          <div className={styles.container_text}>
+            <h2 className={styles.title}>{data[keyId].attributes.title}</h2>
+            <span className={styles.art}>
+              Артикул: {data[keyId].attributes.articl}
+            </span>
             <div className={styles.container_price}>
-              {data[id.params.id].attributes.inStock === "в наявності"
-              ?
-              <p className={styles.price}>
-                  {Math.floor(data[id.params.id].attributes.price * dollar)} ГРИВЕНЬ
-                <span className={styles.old_price}>{Math.floor(data[id.params.id].attributes.oldPrice * dollar)} ГРИВЕНЬ</span>
-              </p>
-              : 
-                data[id.params.id].attributes.inStock === "очікуємо" ?  
-              <p className={styles.price}>{data[id.params.id].attributes.inStock}</p>
-                  :
-              <p className={styles.price}>{data[id.params.id].attributes.inStock}</p>
-              }
-              
-            <PartnersIcon />
-          </div>
-            <p className={styles.text}>{data[id.params.id].attributes.description}....
+              {data[keyId].attributes.inStock === "в наявності" ? (
+                <p className={styles.price}>
+                  {Math.floor(data[keyId].attributes.price * dollar)} ГРИВЕНЬ
+                  <span className={styles.old_price}>
+                    {Math.floor(data[keyId].attributes.oldPrice * dollar)}{" "}
+                    ГРИВЕНЬ
+                  </span>
+                </p>
+              ) : data[keyId].attributes.inStock === "очікуємо" ? (
+                <p className={styles.price}>{data[keyId].attributes.inStock}</p>
+              ) : (
+                <p className={styles.price}>{data[keyId].attributes.inStock}</p>
+              )}
+
+              <PartnersIcon />
+            </div>
+            <p className={styles.text}>
+              {data[keyId].attributes.description}....
               <a onClick={handleClickOnDescription}> читати повний опис</a>
             </p>
             <button className={styles.btn}>купити</button>
-            
+          </div>
         </div>
-      </div>
       </section>
-      {isPreview && <Preview
-        data={data}
-        keyId={keyId}
-        setIsPreview={setIsPreview}
-        galleryLength={galleryLength}
-        setIsGallery={setIsGallery}
-      />}
-  </>
-  )
+      {isPreview && (
+        <Preview
+          data={data}
+          keyId={keyId}
+          setIsPreview={setIsPreview}
+          galleryLength={galleryLength}
+          setIsGallery={setIsGallery}
+        />
+      )}
+    </>
+  );
 }
