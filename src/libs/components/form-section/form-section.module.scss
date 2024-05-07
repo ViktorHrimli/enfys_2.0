@@ -38,3 +38,27 @@
       text-align: center;
   }
 }
+
+
+.corner_left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90px;
+  transform: scaley(-1);
+  @media (min-width: 1024px) {
+    width: 234px;
+    transform: scaley(1);
+    top: 0;
+  }
+}
+
+.corner_right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90px;
+  @media (min-width: 1024px) {
+    width: 234px;
+  }
+}

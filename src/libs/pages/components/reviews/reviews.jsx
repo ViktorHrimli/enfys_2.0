@@ -1,11 +1,31 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./reviews.module.scss";
 import { reviews } from "@/shared/reviews";
 import ReviewsModal from "@/libs/modal/reviews/reviews";
 
 export default function Reviews() {
   const [isChange, setIsChange] = useState(false);
+
+  const [isScroll, setIsScroll] = useState(
+  typeof window !== "undefined" ? window.scrollY : 0
+  );
+
+  useEffect(() => {
+    if (isChange) {
+      setIsScroll(window.scrollY);
+
+      document.body.style.overflow = "hidden";
+      document.body.style.maxHeight = "100vh";
+    }
+    
+    window.scrollTo(0, isScroll);
+
+    return () => {
+      document.body.style.overflowX = "hidden";
+      document.body.style.maxHeight = "";
+    };
+  }, [isChange]);
 
   return (
     <>

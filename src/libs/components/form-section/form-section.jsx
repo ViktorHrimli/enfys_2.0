@@ -1,8 +1,13 @@
 'use client'
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+
 
 import styles from "./form-section.module.scss";
+import cornerLeft from '@/assets/svg/about-left.svg';
+import cornerRight from '@/assets/svg/about-right.svg';
+
 import Form from "@/libs/components/form/form"
 import Reviews from "@/libs/pages/components/reviews/reviews";
 import ThenkYou from "@/libs/modal/thank-you/thank-you";
@@ -53,20 +58,36 @@ export default function FormSection() {
   return (
     <>
       <section className={styles.section}>
+        <div className={styles.corner_left}>
+        <Image
+          src={cornerLeft}
+          alt="pay"
+          priority={true}
+          loading="eager"
+          quality={100}
+        />
+      </div>
         <div className={styles.container}>
           {isTitle &&
           <h2 className={styles.title}>Будь ласка заповните форму
             <span className={styles.after}>і ми з вами зв’яжемося</span>
           </h2>
           }
-          <div>
             {isContent ?
               <Reviews />
               :
               <Form setIsThenkyou={setIsThenkyou} />
             }
-          </div>
         </div>
+        <div className={styles.corner_right} >
+          <Image
+            src={cornerRight}
+            alt="pay"
+            priority={true}
+            loading="eager"
+            quality={100}
+          />
+      </div>
       </section>
       {isThenkyou && <ThenkYou setIsThenkyou={setIsThenkyou}/>}
     </>
