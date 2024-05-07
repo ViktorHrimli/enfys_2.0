@@ -59,7 +59,7 @@ export default function AboutCardsGallery({ data, id, dollar }) {
     getFormById("about-card");
   };
 
-  const keyId = 1;
+  const keyId = 0;
   const galleryLength = data[keyId].attributes.gallery.data.length;
 
   return (

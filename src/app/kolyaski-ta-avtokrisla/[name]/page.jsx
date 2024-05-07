@@ -6,6 +6,7 @@ import Conditions from "@/libs/pages/components/conditions/conditions";
 import HeroCards from "@/libs/pages/components/hero-cards/hero-cards";
 import TableCards from "@/libs/pages/components/table-cards/table-cards";
 
+
 export default async function PageCard({ params }) {
   var { data } = await (
     await fetch("https://www.admin-enfys.space/api/tests?populate=*", {
@@ -22,16 +23,21 @@ export default async function PageCard({ params }) {
     })
   ).json();
 
+
   var name = params.name;
-  console.log(name, "WDAWD");
+  const digits = name.match(/\d+/g).join('-').toString();
+  var card = data.filter(product => product.attributes.articl === digits);
+
   return (
     <>
       <HeroCards />
-      <AboutCardsGallery data={data} id={name} dollar={dollar} />
+      <AboutCardsGallery data={card} id={name} dollar={dollar} />
       <Conditions />
-      {/* <AboutCards data={data} id={name} dollar={dollar} /> */}
+      <AboutCards data={card} id={name} dollar={dollar} />
       {/* <Advantages /> */}
-      {/* <TableCards data={data} id={name} /> */}
+
+      <TableCards data={card} id={name} />
+
       <Card />
     </>
   );

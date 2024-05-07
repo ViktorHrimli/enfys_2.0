@@ -80,3 +80,50 @@
     display: block;
   }
 }
+
+.corner_left {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 180px;
+  }
+}
+
+.corner_right {
+  display: none;
+  
+  @media (min-width: 768px) {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 180px;
+    transform: scaley(-1);
+  }
+}
+
+.corner_left_mob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.corner_right_mob {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 90px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}

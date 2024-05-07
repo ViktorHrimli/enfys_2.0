@@ -2,30 +2,11 @@
 import Image from "next/image";
 
 
-import left from '@/assets/svg/about-left.png'
-import right from '@/assets/svg/about-right.png'
-
 import styles from './about.module.scss'
 
 export default function About() {
   return (
     <section className={styles.section}>
-      <div className={styles.left}>
-        <Image 
-            src={left}
-            alt="Logo"
-            priority={true}
-            loading="eager"
-          />
-      </div>
-      <div className={styles.right}>
-        <Image 
-          src={right}
-          alt="Logo"
-          priority={true}
-          loading="eager"
-        />
-      </div>
       <div className={styles.container}>
         <h2 className={styles.title}>Enfys.com.ua – найнеобхідніші дитячі товари</h2>
         <div className={styles.container_text}>

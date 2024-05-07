@@ -12,10 +12,12 @@ import WowBack from '@/assets/svg/wow-background.png'
 import WowBackTel from '@/assets/svg/wow-img-mob.png'
 import Youtube from '@/assets/svg/youtube.png'
 import Locomotive from '@/assets/svg/locomotive.png'
-import New from "./demo-cards-new/demo-cards-new";
+import New from "./newArrivals/newArrivals";
+import Top from "./bestSellers/bestSellers";
 
 
-export default function NewDevelopment() {
+
+export default function NewDevelopment({dollar, newArrivals, bestSellers}) {
   const [isChangeOne, setIsChangeOne] = useState(false);
   const [isChangeTwo, setIsChangeTwo] = useState(false);
 
@@ -43,10 +45,10 @@ export default function NewDevelopment() {
               <p className={styles.text_one}>Нові надходження</p>
               <p className={styles.text_two}>новинки 2024 року</p>
               {isChangeOne && <div className={styles.gallery_left}>
-                <New color={"#FF8A00"}/>
+                <New color={"#FF8A00"} newArrivals={newArrivals} dollar={dollar} />
               </div>}
               <div className={styles.gallery_left_tel}>
-                <New color={"#FF8A00"}/>
+                <New color={"#FF8A00"} newArrivals={newArrivals} dollar={dollar} />
               </div>
               {!isChangeOne && <div style={{position: "absolute", width: "378px", height: "365px" }}>
                 <Image
@@ -81,10 +83,10 @@ export default function NewDevelopment() {
 
               {isChangeTwo && <p className={styles.title_after}>не пропусти</p>}
               {isChangeTwo && <div className={styles.gallery_right}>
-                <New color={"#F92D2D"}/>
+                <Top color={"#F92D2D"} bestSellers={bestSellers} dollar={dollar}/>
               </div>}
               <div className={styles.gallery_right_tel}>
-                <New color={"#F92D2D"}/>
+                <Top color={"#F92D2D"} bestSellers={bestSellers} dollar={dollar}/>
               </div>
               <div className={isChangeTwo ? styles.display_none : styles.img_animation}>
                 <Image
