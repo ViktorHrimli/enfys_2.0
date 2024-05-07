@@ -12,53 +12,59 @@ export default function PartnersIcon() {
   return (
     <ul className={styles.list}>
       <li className={styles.items}>
+        <div className={styles.background}></div>
         <Image 
           src={enfysProductBadgeNew}
           alt="New"
           priority={true}
           loading="eager"
           quality={100}
-          style={{objectFit: "cover"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "2"}}
         />
       </li>
-      <li>
+      <li className={styles.items}>
+        <div className={styles.background}></div>
         <Image 
           src={enfysProductBadgeDelivery}
           alt="Delivery"
           priority={true}
           loading="eager"
           quality={100}
-          style={{objectFit: "cover"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "2"}}
+
         />
       </li>
-      <li>
+      <li className={styles.items}>
+        <div className={styles.background}></div>
         <Image 
           src={enfysProductBadgeBest}
           alt="Best"
           priority={true}
           loading="eager"
           quality={100}
-          style={{objectFit: "cover"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "2"}}
         />
       </li>
-      <li>
+      <li className={styles.items}>
+        <div className={styles.background}></div>
         <Image 
           src={payPart}
           alt="Pay"
           priority={true}
           loading="eager"
           quality={100}
-          style={{objectFit: "cover"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "2", marginTop: "1px", width: "32px", height: "32px"}}
         />
       </li>
-      <li>
+      <li className={styles.items}>
+        <div className={styles.background}></div>
         <Image 
           src={enfysProductBadgeWarranty}
           alt="Pay"
           priority={true}
           loading="eager"
           quality={100}
-          style={{objectFit: "cover"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "2"}}
         />
       </li>
     </ul>

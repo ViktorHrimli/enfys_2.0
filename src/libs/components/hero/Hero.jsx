@@ -87,7 +87,7 @@ export default function Hero() {
               priority={true}
               loading="eager"
               quality={100}
-              style={isHeroCards ? { marginTop: "10%" } : {}}
+              // style={isHeroCards ? { marginTop: "10%" } : {}}
               className={style.logo}
             />
           </div>

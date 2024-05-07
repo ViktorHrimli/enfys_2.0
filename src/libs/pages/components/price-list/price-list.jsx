@@ -1,20 +1,25 @@
 "use client"
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from './price-list.module.scss';
-import Filter from '@/libs/modal/filter/filter';
-
 import Link from 'next/link';
 
 
+import { useState, useEffect } from 'react';
+import { usePathname } from "next/navigation";
 
-export default function PriceList({data}) {
+import styles from './price-list.module.scss';
+import Filter from '@/libs/modal/filter/filter';
+
+import PartnersIcon from '@/shared/icons/partners';
+
+
+export default function PriceList({data, dollar}) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
 
   const [isScroll, setIsScroll] = useState(
   typeof window !== "undefined" ? window.scrollY : 0
   );
 
+  const path = usePathname().replace("/", "");
 
   useEffect(() => {
     if (isOpenFilter) {
@@ -38,17 +43,18 @@ export default function PriceList({data}) {
       <section className={styles.section}>
         <div className={styles.container}> 
           
-          <button className={styles.btn}
-            onClick={() => setIsOpenFilter(true)}>ФІЛЬТРИ
-          </button>
+          <button className={styles.btn} onClick={() => setIsOpenFilter(true)}>ФІЛЬТРИ</button>
 
           <ul className={styles.card_container}>
             {data.map((item, id) => (
               <li key={id} className={styles.content}>
-                <Link className={styles.link} href={`price/${id}`}>
+                <Link className={styles.link} href={`/${path}/${id}`}>
+                <div className={styles.partners_icon}>
+                  <PartnersIcon />
+                </div>
                 <div className={styles.img_container}>
                   <Image 
-                    src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}` }
+                    src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}`}
                     alt="image"
                     priority={true}
                     loading="eager"
@@ -63,8 +69,8 @@ export default function PriceList({data}) {
                     {data[id].attributes.inStock === "в наявності"
                       ?
                       <p className={styles.price}>
-                        {data[id].attributes.price} ГРИВЕНЬ
-                        <span className={styles.old_price}>{data[id].attributes.oldPrice} ГРИВЕНЬ</span>
+                        {Math.floor(data[id].attributes.price * dollar)} ГРИВЕНЬ
+                        <span className={styles.old_price}>{Math.floor(data[id].attributes.oldPrice * dollar)} ГРИВЕНЬ</span>
                       </p>
                       : 
                         data[id].attributes.inStock === "очікуємо" ?  
