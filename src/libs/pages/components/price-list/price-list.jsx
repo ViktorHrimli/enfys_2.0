@@ -1,9 +1,8 @@
-"use client"
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
 
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import styles from './price-list.module.scss';
@@ -13,12 +12,11 @@ import PartnersIcon from '@/shared/icons/partners';
 import { slugify } from 'transliteration';
 
 
-
 export default function PriceList({ data, dollar }) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
 
   const [isScroll, setIsScroll] = useState(
-  typeof window !== "undefined" ? window.scrollY : 0
+    typeof window !== "undefined" ? window.scrollY : 0
   );
 
 
@@ -31,7 +29,7 @@ export default function PriceList({ data, dollar }) {
       document.body.style.overflow = "hidden";
       document.body.style.maxHeight = "100vh";
     }
-    
+
     window.scrollTo(0, isScroll);
 
     return () => {
@@ -40,21 +38,21 @@ export default function PriceList({ data, dollar }) {
     };
   }, [isOpenFilter]);
 
-
   return (
     <>
       <section className={styles.section}>
-        <div className={styles.container}> 
-          
-          <button className={styles.btn} onClick={() => setIsOpenFilter(true)}>ФІЛЬТРИ</button>
+        <div className={styles.container}>
+          <button className={styles.btn} onClick={() => setIsOpenFilter(true)}>
+            ФІЛЬТРИ
+          </button>
 
           <ul className={styles.card_container}>
             {data.map((item, id) => {
-              // const ukrainianName = data[id].attributes.title;
-              // const name = slugify(ukrainianName);
+              const ukrainianName = item.attributes.title;
+              const name = slugify(ukrainianName);
               return (
                 <li key={id} className={styles.content}>
-                  <Link className={styles.link} href={`/${path}/${id}`}>
+                  <Link className={styles.link} href={`/${path}/${name}`}>
                     <div className={styles.partners_icon}>
                       <PartnersIcon />
                     </div>
@@ -95,5 +93,5 @@ export default function PriceList({ data, dollar }) {
       </section>
       {isOpenFilter && <Filter setIsOpenFilter={setIsOpenFilter} />}
     </>
-  )
+  );
 }

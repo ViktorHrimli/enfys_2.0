@@ -10,12 +10,12 @@ export default function Top({ color, dollar, bestSellers }) {
       {bestSellers.map((item, id) => {
         const ukrainianText = bestSellers[id].attributes.category;
         const path = slugify(ukrainianText);
-        // const ukrainianName = bestSellers[id].attributes.title;
-        // const name = slugify(ukrainianName);
+        const ukrainianName = bestSellers[id].attributes.title;
+        const name = slugify(ukrainianName);
 
         return(
           <li key={id} className={styles.content}>
-            <Link href={`/${path}/${id}`}>
+            <Link href={`/${path}/${name}`}>
               <div className={styles.img}>
                 <Image
                   src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}`}

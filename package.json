@@ -1,5 +1,5 @@
 {
-  "name": "whitness-store",
+  "name": "enfys-store",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -23,6 +23,7 @@
     "@reduxjs/toolkit": "1.9.5",
     "axios": "^1.6.1",
     "cheerio": "^1.0.0-rc.12",
+    "classnames": "^2.5.1",
     "clsx": "1.2.1",
     "dotenv": "^16.3.1",
     "eslint": "8.45.0",
@@ -47,8 +48,12 @@
     "react-responsive-carousel": "^3.2.23",
     "react-slideshow-image": "^4.3.0",
     "sharp": "^0.32.6",
+
     "transliterate": "^1.0.1",
     "transliteration": "^2.3.5",
+
+    "throttle-debounce": "^5.0.0",
+
     "uuid": "^9.0.1",
     "yet-another-react-lightbox": "^3.15.6"
   },

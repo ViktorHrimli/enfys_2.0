@@ -11,12 +11,13 @@ export default function New({ color, dollar, newArrivals }) {
       {newArrivals.map((item, id) => {
         const ukrainianText = newArrivals[id].attributes.category;
         const path = slugify(ukrainianText);
-        // const ukrainianName = bestSellers[id].attributes.title;
-        // const name = slugify(ukrainianName);
+        
+        const ukrainianName = item.attributes.title;
+        const name = slugify(ukrainianName);
 
         return (
           <li key={id} className={styles.content}>
-            <Link href={`/${path}/${id}`}>
+            <Link href={`/${path}/${name}`}>
               <div className={styles.img}>
                 <Image
                   src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}`}

@@ -1,8 +1,8 @@
 "use client"
 import styles from './table-cards.module.scss'
 
-export default function TableCards({ data, id }) {
-  const keyId = id.params.id;
+export default function TableCards({ data }) {
+  const keyId = 0;
   const tableList = data[keyId].attributes.table;
 
   return (
