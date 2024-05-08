@@ -61,10 +61,10 @@ export default function NewDevelopment({dollar, newArrivals, bestSellers}) {
                 />
               </div>}
 
-              <Link href={"/price"} className={`${styles.btn_desc} ${isChangeOne && styles.btn_desc_animation}`}>
+              <Link href={"novi-nadhodzhennya"} className={`${styles.btn_desc} ${isChangeOne && styles.btn_desc_animation}`}>
                 {isChangeOne ? "дивитися всі" : "детальніше"}
               </Link>
-              <Link href={"/price"} className={styles.btn}>дивитися всі</Link>
+              <Link href={"novi-nadhodzhennya"} className={styles.btn}>дивитися всі</Link>
 
             </li>
             <li className={`${styles.link} ${styles.link_two} ${isChangeTwo && styles.link_two_animation_desc}`}
@@ -72,14 +72,15 @@ export default function NewDevelopment({dollar, newArrivals, bestSellers}) {
               onMouseLeave={()=> setIsChangeTwo(false)}
             >
               
-              <button className={`${styles.btn_two_desc} ${isChangeTwo && styles.btn_two_desc_animation }`}>
-                {isChangeTwo ? "дивитися всі" : "детальніше"}</button>
+              <Link href={"hiti-prodazhiv"} className={`${styles.btn_two_desc} ${isChangeTwo && styles.btn_two_desc_animation }`}>
+                {isChangeTwo ? "дивитися всі" : "детальніше"}
+              </Link>
               
-              <Link className={styles.btn} href={"/price"} style={{color: "#fff", background: "#F92D2D"}}>дивитися всі</Link>
+              <Link className={styles.btn} href={"hiti-prodazhiv"} style={{color: "#fff", background: "#F92D2D"}}>дивитися всі</Link>
               
               <p className={`${styles.title} 
               ${isChangeTwo && styles.title_animations_desc}`}
-              >хити продажів</p>
+              >хіти продажів</p>
 
               {isChangeTwo && <p className={styles.title_after}>не пропусти</p>}
               {isChangeTwo && <div className={styles.gallery_right}>
