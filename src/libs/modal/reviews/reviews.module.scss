@@ -23,6 +23,18 @@
   gap: 24px;
 }
 
+.corner_left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.corner_right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .header {
   width: 355px;
   height: 27px;

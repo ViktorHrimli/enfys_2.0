@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 import style from "./hero-cards.module.scss";
 
@@ -71,7 +72,7 @@ export default function HeroCards({ selectedCategory }) {
           <div className={style.hero_line_color_green}></div>
           <div className={style.hero_line_color_red}></div>
           <div className={style.hero_line_color_yellow}></div>
-          <div className={style.logo_container}>
+          <Link href="/" className={style.logo_container}>
             <Image
               src={logo}
               alt="Logo"
@@ -79,7 +80,7 @@ export default function HeroCards({ selectedCategory }) {
               loading="eager"
               quality={100}
             />
-          </div>
+          </Link>
           <p className={style.description} style={{ marginBottom: "0px" }}>{isHeroText}</p>
           <div className={style.bacground} style={{ height: "240px" }}></div>
 

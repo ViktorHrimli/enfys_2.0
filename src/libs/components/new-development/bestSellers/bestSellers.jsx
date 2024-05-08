@@ -5,6 +5,7 @@ import { slugify } from 'transliteration';
 
 
 export default function Top({ color, dollar, bestSellers }) { 
+  
   return (
     <ul className={styles.list}>
       {bestSellers.map((item, id) => {

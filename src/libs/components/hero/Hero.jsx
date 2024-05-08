@@ -2,8 +2,9 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-
 import style from "./Hero.module.scss";
+import Link from "next/link";
+
 
 import Img from "@/assets/svg/hero.png";
 import ImgAbout from "@/assets/svg/hero-about.png";
@@ -80,7 +81,7 @@ export default function Hero() {
           <div className={style.hero_line_color_green}></div>
           <div className={style.hero_line_color_red}></div>
           <div className={style.hero_line_color_yellow}></div>
-          <div style={{ position: "relative", zIndex: "3" }}>
+          <Link href={"/"} style={{ position: "relative", zIndex: "11" }}>
             <Image
               src={logo}
               alt="Logo"
@@ -90,14 +91,14 @@ export default function Hero() {
               // style={isHeroCards ? { marginTop: "10%" } : {}}
               className={style.logo}
             />
-          </div>
+          </Link>
           <p className={style.description} style={isHeroCards ? { marginBottom: "0px" } : {}}>{isHeroText}</p>
           <div className={style.bacground} style={isHeroCards ? { height: "240px" } : {}}></div>
 
           <div className={style.bacground_img} style={isHeroCards ? { height: "240px" } : {}}>
             <Image
               src={isHero}
-              alt="Logo"
+              alt="Image"
               fill
               priority={true}
               loading="eager"

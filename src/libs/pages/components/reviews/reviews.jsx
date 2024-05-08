@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import styles from "./reviews.module.scss";
 import { reviews } from "@/shared/reviews";
 import ReviewsModal from "@/libs/modal/reviews/reviews";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 export default function Reviews() {
   const [isChange, setIsChange] = useState(false);
@@ -40,7 +42,17 @@ export default function Reviews() {
         }
       </ul>
       <button className={styles.btn} onClick={() => setIsChange(true)}>надіслати відгук</button>
-      {isChange && <ReviewsModal setIsChange={setIsChange} />}
+        <AnimatePresence>
+          {isChange && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                >
+                <ReviewsModal setIsChange={setIsChange} />
+              </motion.div>
+            )}
+        </AnimatePresence>
     </>
   )
 }
