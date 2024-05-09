@@ -1,20 +1,44 @@
 "use client"
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
 
 import Menu from "@/libs/components/menu/menu";
+import logo from "@/assets/svg/logo.svg";
+
 
 
 export default function Header() {
   const [isMenu, setIsMenu] = useState(false);
   const [isSocial, setIsSocial] = useState(false);
 
+  const [isScroll, setIsScroll] = useState(
+  typeof window !== "undefined" ? window.scrollY : 0
+  );
 
   const openMenu = () => {
     setIsMenu(!isMenu)
   }
+
+
+  useEffect(() => {
+    if (isMenu) {
+      setIsScroll(window.scrollY);
+
+      document.body.style.overflow = "hidden";
+      document.body.style.maxHeight = "100vh";
+    }
+    
+    window.scrollTo(0, isScroll);
+
+    return () => {
+      document.body.style.overflowX = "hidden";
+      document.body.style.maxHeight = "";
+    };
+  }, [isMenu]);
 
   // const openSocial = () => {
   //   setIsSocial(!isSocial)
@@ -28,6 +52,17 @@ export default function Header() {
           <div className={styles.line}></div>
           <div className={styles.line}></div>
         </div>
+        {/* <Link href="/" style={{ position: "relative", zIndex: "11" }}>
+            <Image
+              src={logo}
+              alt="Logo"
+              priority={true}
+              loading="eager"
+              quality={100}
+              // style={isHeroCards ? { marginTop: "10%" } : {}}
+              className={styles.logo}
+            />
+          </Link> */}
         <div style={{display: "none"}}>
           <Menu setIsMenu={ setIsMenu } />
         </div>

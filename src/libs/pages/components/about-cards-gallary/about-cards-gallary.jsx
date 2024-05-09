@@ -21,9 +21,7 @@ export default function AboutCardsGallery({ data, id, dollar }) {
   const [isBacground, setIsBacground] = useState(0);
 
   const [isPreview, setIsPreview] = useState(false);
-  const [isScroll, setIsScroll] = useState(
-    typeof window !== "undefined" ? window.scrollY : 0
-  );
+  const [isScroll, setIsScroll] = useState(0);
 
   const ulRef = useRef(null);
 
@@ -59,7 +57,7 @@ export default function AboutCardsGallery({ data, id, dollar }) {
     getFormById("about-card");
   };
 
-  const keyId = 1;
+  const keyId = 0;
   const galleryLength = data[keyId].attributes.gallery.data.length;
 
   return (

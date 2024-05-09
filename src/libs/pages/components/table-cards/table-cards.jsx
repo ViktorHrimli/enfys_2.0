@@ -1,7 +1,8 @@
+"use client"
 import styles from './table-cards.module.scss'
 
-export default function TableCards({ data, id }) {
-  const keyId = id.params.id;
+export default function TableCards({ data }) {
+  const keyId = 0;
   const tableList = data[keyId].attributes.table;
 
   return (
@@ -9,9 +10,7 @@ export default function TableCards({ data, id }) {
       <div className={styles.container}>
         <h2 className={styles.title}>Характеристики: {data[keyId].attributes.title}</h2>
         <ul className={styles.list}>
-          {tableList.map(({ title, value }, id) => {
-            console.log(title);
-            return (
+          {tableList.map(({ title, value }, id) => (
               <li key={id} className={styles.item}>
                 <div className={styles.text}>
                   <p>{title}</p>
@@ -20,7 +19,7 @@ export default function TableCards({ data, id }) {
                   <p>{value}</p>
                 </div>
               </li>
-            )})}
+            ))}
         </ul>
       </div>
     </section>
