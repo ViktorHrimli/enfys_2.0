@@ -6,11 +6,18 @@ import Partners from "@/libs/components/partners/partners";
 import NewDevelopment from "@/libs/components/new-development/new-development";
 
 export default async function Home() {
-  // adadas
+
+  var { data } = await (await fetch('https://www.admin-enfys.space/api/tests?populate=*', { cache: 'no-cache' })).json();
+  var { data: { attributes: { dollar } } } = await (await fetch('https://www.admin-enfys.space/api/course', { cache: 'no-cache' })).json();
+
+  var newArrivals = data.filter(product => product?.attributes?.newArrivals === true);
+  var bestSellers = data.filter(product => product?.attributes?.bestSellers === true);
+
+
   return (
     <>
       <Hero />
-      <NewDevelopment />
+      <NewDevelopment newArrivals={newArrivals} bestSellers={bestSellers} dollar={dollar} />
       <About />
       <Partners />
       <Description />

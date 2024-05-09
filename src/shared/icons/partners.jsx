@@ -19,7 +19,7 @@ export default function PartnersIcon() {
           priority={true}
           loading="eager"
           quality={100}
-          style={{ objectFit: "cover", position: "absolute", zIndex: "2"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "1"}}
         />
       </li>
       <li className={styles.items}>
@@ -30,7 +30,7 @@ export default function PartnersIcon() {
           priority={true}
           loading="eager"
           quality={100}
-          style={{ objectFit: "cover", position: "absolute", zIndex: "2"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "1"}}
 
         />
       </li>
@@ -42,7 +42,7 @@ export default function PartnersIcon() {
           priority={true}
           loading="eager"
           quality={100}
-          style={{ objectFit: "cover", position: "absolute", zIndex: "2"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "1"}}
         />
       </li>
       <li className={styles.items}>
@@ -53,7 +53,7 @@ export default function PartnersIcon() {
           priority={true}
           loading="eager"
           quality={100}
-          style={{ objectFit: "cover", position: "absolute", zIndex: "2", marginTop: "1px", width: "32px", height: "32px"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "1", marginTop: "1px", width: "32px", height: "32px"}}
         />
       </li>
       <li className={styles.items}>
@@ -64,7 +64,7 @@ export default function PartnersIcon() {
           priority={true}
           loading="eager"
           quality={100}
-          style={{ objectFit: "cover", position: "absolute", zIndex: "2"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "1"}}
         />
       </li>
     </ul>

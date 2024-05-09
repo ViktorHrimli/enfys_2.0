@@ -4,10 +4,9 @@ import Image from "next/image"
 import cardPrice from "@/assets/svg/card-price.png"
 
 
-export default function AboutCards({ data, id }) {
-  const keyId = id.params.id;
+export default function AboutCards({ data }) {
+  const keyId = 0;
   
-  // fech
   const priceCardTitle = "ОПИС: " + data[keyId].attributes.title;
   const priceCardPreDescription = data[keyId].attributes.description;
   const priceCardDescription = data[keyId].attributes.about;
