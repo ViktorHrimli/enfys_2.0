@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from "react";
 
-export var LiqpayContext = createContext(null);
+var LiqpayContext = createContext(null);
 
 const useLiqpayContext = () => {
   var props = useContext(LiqpayContext);
@@ -13,4 +13,4 @@ const useLiqpayContext = () => {
   return props;
 };
 
-export { useLiqpayContext };
+export { useLiqpayContext, LiqpayContext };
