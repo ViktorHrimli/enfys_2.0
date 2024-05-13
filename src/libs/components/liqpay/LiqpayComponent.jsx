@@ -8,21 +8,17 @@ import classNames from "classnames";
 
 const LiqpayComponent = ({ children, classname, ...rest }) => {
   const [checkoutForm, setCheckoutForm] = useState("");
-  useEffect(() => {
-    fetch("http://localhost:8888/liqpay/form", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => setCheckoutForm(res));
-  }, []);
 
   return (
     <LiqpayContext.Provider value={{ checkoutForm }}>
       <div
         className={classNames("", classname)}
-        style={{ color: "black" }}
+        style={{
+          color: "black",
+          display: "block",
+          width: "500px",
+          height: "300px",
+        }}
         {...rest}
       >
         {children}

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer, memo, useMemo } from "react";
 // import { debounce, throttle } from "throttle-debounce";
 
 import { DropDownWrapper } from "./DropDownWrapper";
@@ -19,23 +19,26 @@ const NovaPostA = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenOffice, setIsOpenOffice] = useState(false);
 
-  var getCity = async (city) => {
-    var obj = {
-      apiKey: process.env.NV_API_KEY,
-      modelName: "Address",
-      calledMethod: "getSettlements",
-      methodProperties: {
-        AreaRef: state[objectStateKeys.REGION_REF],
-        Page: "1",
-        FindByString: city,
-        Limit: "40",
-      },
-    };
+  var getCity = useMemo(
+    () => async (city) => {
+      var obj = {
+        apiKey: process.env.NV_API_KEY,
+        modelName: "Address",
+        calledMethod: "getSettlements",
+        methodProperties: {
+          AreaRef: state[objectStateKeys.REGION_REF],
+          Page: "1",
+          FindByString: city,
+          Limit: "40",
+        },
+      };
 
-    doFetchOnNovaPost(obj).then((data) =>
-      dispatch({ data: data, keys: objectStateKeys.DATA_CITY })
-    );
-  };
+      doFetchOnNovaPost(obj).then((data) =>
+        dispatch({ data: data, keys: objectStateKeys.DATA_CITY })
+      );
+    },
+    []
+  );
 
   var getPostOffice = async (postOffice) => {
     var obj = {
@@ -55,19 +58,22 @@ const NovaPostA = () => {
     );
   };
 
-  var getRegion = () => {
-    var obj = {
-      apiKey: process.env.NV_API_KEY,
-      modelName: "Address",
-      calledMethod: "getSettlementAreas",
-      methodProperties: {
-        Ref: "",
-      },
-    };
-    doFetchOnNovaPost(obj).then((data) =>
-      dispatch({ data: data, keys: objectStateKeys.DATA_REGION })
-    );
-  };
+  var getRegion = useMemo(
+    () => () => {
+      var obj = {
+        apiKey: process.env.NV_API_KEY,
+        modelName: "Address",
+        calledMethod: "getSettlementAreas",
+        methodProperties: {
+          Ref: "",
+        },
+      };
+      doFetchOnNovaPost(obj).then((data) =>
+        dispatch({ data: data, keys: objectStateKeys.DATA_REGION })
+      );
+    },
+    []
+  );
 
   var onClickOnRegion = (item) => {
     setIsToggle(!isToggle);
@@ -235,4 +241,6 @@ const NovaPostA = () => {
   );
 };
 
-export { NovaPostA };
+var MeMoNovaPost = memo(NovaPostA);
+
+export { MeMoNovaPost };

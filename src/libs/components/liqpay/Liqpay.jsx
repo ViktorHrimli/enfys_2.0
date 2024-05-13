@@ -1,4 +1,5 @@
 "use client";
+import { memo, useState, useEffect } from "react";
 import { LiqpayObject } from "./LiqpayComponent";
 
 const Liqpay = () => {
@@ -9,5 +10,7 @@ const Liqpay = () => {
     </LiqpayObject>
   );
 };
+
+var MemoLiqpay = memo(Liqpay);
 
 export { Liqpay };
