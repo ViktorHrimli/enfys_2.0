@@ -6,8 +6,6 @@ import cornerRightOrange from '@/assets/svg/corner-right-orange.svg';
 import cornerLeftOrange from '@/assets/svg/corner-left-orange.svg';
 
 
-
-
 export default function ReviewsModal({setIsChange}) {
   return (
     <div className={styles.container}>

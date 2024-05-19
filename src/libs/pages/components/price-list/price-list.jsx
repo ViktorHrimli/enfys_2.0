@@ -19,7 +19,6 @@ export default function PriceList({ data, dollar }) {
     typeof window !== "undefined" ? window.scrollY : 0
   );
 
-
   const path = usePathname().replace("/", "");
 
   useEffect(() => {
@@ -48,11 +47,15 @@ export default function PriceList({ data, dollar }) {
 
           <ul className={styles.card_container}>
             {data.map((item, id) => {
-              const ukrainianName = item.attributes.title;
-              const name = slugify(ukrainianName);
+              const ukrainianArt = item.attributes.articl;
+              const nameArt = slugify(ukrainianArt);
+
+              // const ukrainianName = item.attributes.title;
+              // const name = slugify(ukrainianName);
+
               return (
                 <li key={id} className={styles.content}>
-                  <Link className={styles.link} href={`/${path}/${name}`}>
+                  <Link className={styles.link} href={`/${path}/${nameArt}`}>
                     <div className={styles.partners_icon}>
                       <PartnersIcon />
                     </div>
