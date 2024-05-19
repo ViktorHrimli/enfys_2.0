@@ -8,16 +8,11 @@ import { getFormById } from "@/shared/getFormById";
 import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
 
-var skeletoN =
-  "/uploads/Carrello_Bravo_Plus_2023_Ivory_Beige_1_1_d386594b13.jpg";
-
-export default function AboutCardsGallery({ data, id, dollar }) {
+export default function AboutCardsGallery({ data, dollar }) {
   const [isGallery, setIsGallery] = useState(
-    `https://www.admin-enfys.space${
-      data.find((item) => item.attributes.name === id)?.attributes.gallery
-        .data[0].attributes.url || skeletoN
-    }`
+    `https://www.admin-enfys.space${data[0].attributes.gallery.data[0].attributes.url}`
   );
+
   const [isBacground, setIsBacground] = useState(0);
 
   const [isPreview, setIsPreview] = useState(false);

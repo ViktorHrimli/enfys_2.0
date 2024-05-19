@@ -11,7 +11,7 @@ export default function Top({ color, dollar, bestSellers }) {
       {bestSellers.map((item, id) => {
         const ukrainianText = bestSellers[id].attributes.category;
         const path = slugify(ukrainianText);
-        const ukrainianName = bestSellers[id].attributes.title;
+        const ukrainianName = bestSellers[id].attributes.articl;
         const name = slugify(ukrainianName);
 
         return(
