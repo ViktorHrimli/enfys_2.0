@@ -36,6 +36,7 @@
     "lottie-web": "^5.12.2",
     "negotiator": "^0.6.3",
     "next": "^13.4.12",
+    "next-auth": "^4.24.7",
     "next-intl": "^2.20.2",
     "next-seo": "^6.1.0",
     "node-fetch": "^3.3.2",
