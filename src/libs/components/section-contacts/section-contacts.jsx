@@ -1,7 +1,11 @@
 'use client'
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
+import cornerRightOrange from '@/assets/svg/corner-right-orange-big.svg';
+import cornerLeftOrange from '@/assets/svg/corner-left-orange-big.svg';
+
 
 import styles from './section-contacts.module.scss';
 
@@ -53,7 +57,23 @@ export default function Contacts() {
 
   return (
     <section className={styles.section}>
-      <div className={styles.left}>
+       <div className={styles.corner_left}>
+          <Image
+            src={cornerLeftOrange}
+            alt="cornerLeft"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.corner_right}>
+          <Image
+            src={cornerRightOrange}
+            alt="cornerRight"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+      {/* <div className={styles.left}>
         <svg xmlns="http://www.w3.org/2000/svg" width="234" height="184" viewBox="0 0 234 184" fill="none">
           <path d="M213.581 38.5677C225.686 25.6881 233 0 233 0H-1V184C-1 184 15.1121 168.941 26.1867 159.895C48.0247 142.059 66.5565 137.49 86.3859 118.114C104.206 100.701 103.153 83.8912 123.282 68.2969C150.988 46.833 190.28 63.3583 213.581 38.5677Z" fill="#E5A356"/>
         </svg>
@@ -62,7 +82,7 @@ export default function Contacts() {
         <svg xmlns="http://www.w3.org/2000/svg" width="234" height="184" viewBox="0 0 234 184" fill="none">
           <path d="M19.4191 38.5677C7.31357 25.6881 0 0 0 0H234V184C234 184 217.888 168.941 206.813 159.895C184.975 142.059 166.444 137.49 146.614 118.114C128.794 100.701 129.847 83.8912 109.718 68.2969C82.0118 46.833 42.7199 63.3583 19.4191 38.5677Z" fill="#E5A356"/>
         </svg>
-      </div>
+      </div>  */}
       <div className={styles.container}>
         <h2 className={styles.title}>{isTitle}</h2>
         <div className={styles.container_text}>

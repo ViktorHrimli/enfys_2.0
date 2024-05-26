@@ -28,6 +28,18 @@
     gap: 16px;
   }
 }
+.corner_left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.corner_right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 
 .closed {
   position: absolute;
