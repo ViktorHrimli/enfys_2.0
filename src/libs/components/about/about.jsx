@@ -1,5 +1,8 @@
 'use client'
 import Image from "next/image";
+import cornerRightGreen from '@/assets/svg/corner-right-green.svg';
+import cornerLeftGreen from '@/assets/svg/corner-left-green.svg';
+
 
 
 import styles from './about.module.scss'
@@ -7,7 +10,24 @@ import styles from './about.module.scss'
 export default function About() {
   return (
     <section className={styles.section}>
+      <div className={styles.corner_left}>
+          <Image
+            src={cornerLeftGreen}
+            alt="cornerLeft"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.corner_right}>
+          <Image
+            src={cornerRightGreen}
+            alt="cornerRight"
+            priority={true}
+            loading="eager"
+          />
+        </div>
       <div className={styles.container}>
+
         <h2 className={styles.title}>Enfys.com.ua – найнеобхідніші дитячі товари</h2>
         <div className={styles.container_text}>
           <p className={styles.text}>{"Народження малюка – радісна подія. Але вона пов'язана з безліччю турбот, які в основному полягають в необхідності закупити велику кількість речей для догляду за новонародженим."}</p>
