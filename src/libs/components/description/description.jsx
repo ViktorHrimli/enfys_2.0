@@ -3,6 +3,7 @@ import Image from 'next/image'
 import description from '@/assets/svg/description.png'
 import styles from './description.module.scss'
 
+
 export default function Description() { 
   return (
     <section className={styles.section}>
