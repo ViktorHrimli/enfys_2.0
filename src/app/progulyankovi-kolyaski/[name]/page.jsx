@@ -15,15 +15,17 @@ export default async function PageCard({ params }) {
   var name = params.name;
   const digits = name.match(/\d+/g).join('-').toString();
   var card = data.filter(product => product.attributes.articl === digits);
+  
+
 
   return (
     <>
       <HeroCards selectedCategory={selectedCategory} />
-      <AboutCardsGallery data={card} id={name} dollar={dollar} />
+      <AboutCardsGallery data={card} dollar={dollar} />
       <Conditions />
-      <AboutCards data={card} id={name} dollar={dollar} />
+      <AboutCards data={card} dollar={dollar} />
       {/* <Advantages /> */}
-      <TableCards data={card} id={name} />
+      <TableCards data={card} />
       <Card />
     </>
   );

@@ -2,11 +2,13 @@
 import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./about-cards-gallary.module.scss";
 import { getFormById } from "@/shared/getFormById";
 
 import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
+import Pay from "@/libs/modal/modal-pay/modal-pay";
 
 export default function AboutCardsGallery({ data, dollar }) {
   const [isGallery, setIsGallery] = useState(
@@ -17,6 +19,11 @@ export default function AboutCardsGallery({ data, dollar }) {
 
   const [isPreview, setIsPreview] = useState(false);
   const [isScroll, setIsScroll] = useState(0);
+  const [isPay, setIsPay] = useState(false);
+
+  const [storedItems, setStoredItems] = useState([]);
+
+
 
   const ulRef = useRef(null);
 
@@ -39,6 +46,12 @@ export default function AboutCardsGallery({ data, dollar }) {
       document.body.style.overflow = "hidden";
       document.body.style.maxHeight = "100vh";
     }
+    else if (isPay) {
+      setIsScroll(window.scrollY);
+
+      document.body.style.overflow = "hidden";
+      document.body.style.maxHeight = "100vh";
+    }
 
     window.scrollTo(0, isScroll);
 
@@ -46,7 +59,7 @@ export default function AboutCardsGallery({ data, dollar }) {
       document.body.style.overflowX = "hidden";
       document.body.style.maxHeight = "";
     };
-  }, [isPreview]);
+  }, [isPreview, isPay]);
 
   const handleClickOnDescription = () => {
     getFormById("about-card");
@@ -54,6 +67,33 @@ export default function AboutCardsGallery({ data, dollar }) {
 
   const keyId = 0;
   const galleryLength = data[keyId].attributes.gallery.data.length;
+
+  const ImageCard = `https://www.admin-enfys.space${data[0].attributes.gallery.data[0].attributes.url}`;
+  const TitleCards = data[keyId].attributes.title;
+  const PriceCards = Math.floor(data[keyId].attributes.price * dollar);
+  const QuantityCards = 1;
+
+  useEffect(() => {
+    var localeData = JSON.parse(localStorage.getItem("storedItems"));
+    localeData && setStoredItems(localeData);
+  }, []);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    setIsPay(true);
+
+    const existingData = JSON.parse(localStorage.getItem("storedItems")) || [];
+    const newCardData = {
+      ImageCards: ImageCard,
+      TitleCards: TitleCards,
+      PriceCards: PriceCards,
+      QuantityCards: QuantityCards,
+    };
+    
+    const updatedData = [...existingData, newCardData];
+    setStoredItems(updatedData);
+    localStorage.setItem("storedItems", JSON.stringify(updatedData));
+  };
 
   return (
     <>
@@ -147,7 +187,8 @@ export default function AboutCardsGallery({ data, dollar }) {
               {data[keyId].attributes.description}....
               <a onClick={handleClickOnDescription}> читати повний опис</a>
             </p>
-            <button className={styles.btn}>купити</button>
+            <button className={styles.btn} onClick={handleClick}>купити</button>
+
           </div>
         </div>
       </section>
@@ -160,6 +201,12 @@ export default function AboutCardsGallery({ data, dollar }) {
           setIsGallery={setIsGallery}
         />
       )}
+      {isPay &&(
+        <Pay
+          setIsPay={setIsPay}
+          storedItems={storedItems}
+          setStoredItems={setStoredItems}
+        />)}
     </>
   );
 }

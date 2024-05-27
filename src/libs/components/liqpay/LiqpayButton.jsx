@@ -19,7 +19,7 @@ biIgOiAiZGVzY3JpcHRpb24gdGV4dCIsICJvcmRlcl9pZCIgOiAib3JkZXJfaWRfMSIgfQ=="
         name="signature"
         value="QvJD5u9Fg55PCx/Hdz6lzWtYwcI="
       />
-      <input type="image" src="//static.liqpay.ua/buttons/payUk.png" />
+      <input type="image"  src="//static.liqpay.ua/buttons/payUk.png" />
     </form>
   );
 };

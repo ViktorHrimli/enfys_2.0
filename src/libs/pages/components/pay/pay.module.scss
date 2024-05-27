@@ -1,0 +1,186 @@
+.section {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container_form {
+  padding-left: 80px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 720px;
+}
+
+.container_cards {
+  width: 561px;
+  height: 505px;
+  background: #209487;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 42px;
+  padding-bottom: 18px;
+}
+
+.title {
+  font-family: "Mariupol", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 26.96px;
+  text-align: start;
+  color: #171717;
+  margin-bottom: 24px;
+  width: 262px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.container_input {
+  display: flex;
+  gap: 60px;
+}
+
+.input {
+  width: 300px;
+  height: 50px;
+  border-radius: 8px ;
+  border: 1px solid #209487;
+  padding-left: 22px;
+}
+
+.delivery {
+  display: flex;
+  gap: 90px;
+}
+
+.container_contant {
+  width: 511px;
+  height: 235px;
+  background: #FAF7F1;
+  border-radius: 4px;
+  padding-left: 16px;
+  padding-top: 20px;
+  padding-right: 18px;
+  padding-bottom: 18px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.list {
+  overflow: auto;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+}
+
+.item_img {
+  width: 50px;
+  height: 58px;
+  object-fit: cover;
+  margin-right: 24px;
+}
+
+.item_title {
+  width: 169px;
+  height: 52px;
+  font-family: "Mariupol", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 12.52px;
+  text-align: left;
+  color: #171717;
+  margin-top: 10px;
+}
+
+.item_text {
+  // font-family: "Mariupol", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 11.55px;
+  text-align: left;
+  color: #747171;
+  margin-bottom: 10px;
+}
+
+.item_description {
+  display: flex;
+  margin-left: 270px;
+  gap: 90px;
+  position: absolute;
+  top: 10px;
+}
+
+.container_price {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.price {
+  font-family: "Mariupol", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 13.48px;
+  text-align: left;
+  color: #F92D2D;
+}
+
+.text {
+  font-family: "Mariupol", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 13.48px;
+  text-align: left;
+  color: #171717;
+  text-transform: uppercase;
+}
+
+.container_btn {
+  font-family: "Mariupol", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 11.55px;
+  text-transform: uppercase;
+  display: flex;
+  gap: 32px;
+}
+
+.btn_edit {
+  width: 238px;
+  height: 39px;
+  border-radius: 8px;
+  border: none;
+  background: #FAF7F1;
+  color: #F92D2D;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 11.55px;
+  transition: 0.5s;
+
+  &:hover {
+    color: #FAF7F1;
+    background-color: #F92D2D;
+  }
+}

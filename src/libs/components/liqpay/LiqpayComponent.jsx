@@ -16,8 +16,8 @@ const LiqpayComponent = ({ children, classname, ...rest }) => {
         style={{
           color: "black",
           display: "block",
-          width: "500px",
-          height: "300px",
+          // width: "500px",
+          // height: "300px",
         }}
         {...rest}
       >

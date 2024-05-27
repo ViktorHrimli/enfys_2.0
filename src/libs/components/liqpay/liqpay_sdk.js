@@ -123,7 +123,7 @@ export class LiqPay {
         '<script type="text/javascript" src="https://static.liqpay.ua/libjs/sdk_button.js"></script>' +
         '<sdk-button label="' +
         buttonText +
-        '" background="#77CC5D" onClick="submit()"></sdk-button>' +
+        '"background="#F92D2D", color="#FAF7F1", onClick="submit()"></sdk-button>' +
         "</form>"
       );
     };

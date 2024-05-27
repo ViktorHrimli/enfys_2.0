@@ -7,13 +7,14 @@ import { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
 
 import Menu from "@/libs/components/menu/menu";
-import logo from "@/assets/svg/logo.svg";
-
+import Pay from "@/libs/modal/modal-pay/modal-pay";
 
 
 export default function Header() {
   const [isMenu, setIsMenu] = useState(false);
   const [isSocial, setIsSocial] = useState(false);
+  const [storedItems, setStoredItems] = useState([]);
+  const [isPay, setIsPay] = useState(false);
 
   const [isScroll, setIsScroll] = useState(
   typeof window !== "undefined" ? window.scrollY : 0
@@ -24,10 +25,20 @@ export default function Header() {
   }
 
 
+  useEffect(() => { 
+  const existingData = JSON.parse(localStorage.getItem("storedItems")) || [];
+    setStoredItems(existingData);
+  },[])
+
+
   useEffect(() => {
     if (isMenu) {
       setIsScroll(window.scrollY);
 
+      document.body.style.overflow = "hidden";
+      document.body.style.maxHeight = "100vh";
+    }
+    else if (isPay) {
       document.body.style.overflow = "hidden";
       document.body.style.maxHeight = "100vh";
     }
@@ -38,13 +49,14 @@ export default function Header() {
       document.body.style.overflowX = "hidden";
       document.body.style.maxHeight = "";
     };
-  }, [isMenu]);
+  }, [isMenu, isPay]);
 
   // const openSocial = () => {
   //   setIsSocial(!isSocial)
   // }
 
   return (
+    <>
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.btn} onClick={openMenu}>
@@ -52,17 +64,6 @@ export default function Header() {
           <div className={styles.line}></div>
           <div className={styles.line}></div>
         </div>
-        {/* <Link href="/" style={{ position: "relative", zIndex: "11" }}>
-            <Image
-              src={logo}
-              alt="Logo"
-              priority={true}
-              loading="eager"
-              quality={100}
-              // style={isHeroCards ? { marginTop: "10%" } : {}}
-              className={styles.logo}
-            />
-          </Link> */}
         <div style={{display: "none"}}>
           <Menu setIsMenu={ setIsMenu } />
         </div>
@@ -73,7 +74,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <Menu setIsMenu={setIsMenu} />
+              <Menu setIsMenu={setIsMenu} setIsPay={setIsPay} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -103,6 +104,8 @@ export default function Header() {
           </div>
         </Link>
       </div>} */}
-    </section>
+      </section>
+      {isPay && <Pay setIsPay={setIsPay} storedItems={storedItems} setStoredItems={setStoredItems} />}
+      </>
   );
 }
