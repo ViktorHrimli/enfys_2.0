@@ -29,7 +29,7 @@ const LiqpayCheckout = ({ props, html, ...rest }) => {
       dangerouslySetInnerHTML={{ __html: func() }}
       style={{
         display: "flex",
-        marginTop: "50px",
+        // marginTop: "50px",
       }}
     ></section>
   );

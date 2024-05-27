@@ -12,7 +12,7 @@ import cornerRightMob from '@/assets/svg/corner-right-mob.svg';
 import logo from "@/assets/svg/logo.svg";
 
 
-export default function Menu({ setIsMenu}) {
+export default function Menu({ setIsMenu, setIsPay}) {
   return (
     <div className={styles.menu}>
       <div className={styles.corner_left_mob}>
@@ -43,7 +43,7 @@ export default function Menu({ setIsMenu}) {
         />
       </div>
 
-      <Nav setIsMenu={setIsMenu} />
+      <Nav setIsMenu={setIsMenu} setIsPay={setIsPay} />
       
       <div className={styles.logo}>
         <Image

@@ -122,21 +122,22 @@ const NovaPostA = () => {
   return (
     <section
       style={{
-        width: "100vw",
-        height: "50vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
+        // width: "100vw",
+        // height: "50vh",
+        // display: "flex",
+        // justifyContent: "center",
+        // alignItems: "center",
+        // flexDirection: "column",
       }}
     >
-      <h1>
+      {/* <h1>
         <strong style={{ color: "black" }}>NovaPostA</strong>
-      </h1>
+      </h1> */}
 
       <div
         style={{
           display: "flex",
+          gap: "10px",
           flexDirection: "column",
           marginBottom: "100px",
           color: "black",
@@ -158,8 +159,11 @@ const NovaPostA = () => {
               marginTop: "30px",
               height: "150px",
               display: "flex",
+              gap: "10px",
               flexDirection: "column",
               overflow: "scroll",
+              position: "absolute",
+              background: "#fff",
             }}
           >
             <DropDownWrapper
@@ -191,6 +195,7 @@ const NovaPostA = () => {
               marginTop: "30px",
               height: "150px",
               display: "flex",
+              gap: "10px",
               flexDirection: "column",
               overflow: "scroll",
             }}

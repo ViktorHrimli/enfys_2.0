@@ -37,12 +37,13 @@ const social = [
 
 import {shop, strollers, furniture, accessories, transport, textile, toys, backpacks} from '@/shared/list'
 
-export default function Nav({ setIsMenu }) {
+export default function Nav({ setIsMenu, setIsPay }) {
   const [isStrollers, setIsStrollers] = useState(false);
   const [isFurniture, setIsFurniture] = useState(false);
   const [isAccessories, setIsAccessories] = useState(false);
   const [isTransport, setIsTransport] = useState(false);
   const [isTextile, setIsTextile] = useState(false);
+
 
 
   const strollersArrow = () => {
@@ -86,6 +87,7 @@ export default function Nav({ setIsMenu }) {
   }
 
   return (
+    <>
     <div className={styles.container}>
       {/* shop */}
       
@@ -283,7 +285,7 @@ export default function Nav({ setIsMenu }) {
           </div>
         </li>
         <li>
-          <div style={{position: "relative", cursor: "pointer"}}>
+          <div style={{position: "relative", cursor: "pointer"}} onClick={()=> setIsPay(true) & setIsMenu(false)}>
             <Image 
                 src={convenience}
                 alt="convenience"
@@ -303,6 +305,7 @@ export default function Nav({ setIsMenu }) {
           <input type="text" className={styles.input} placeholder="шукайте товари" />
         </div>
       </div>
-    </div>
+      </div>
+      </>
   );
 }
