@@ -1,14 +1,17 @@
 "use client"
-import styles from './pay.module.scss'
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { Liqpay } from '@/libs/components/liqpay/Liqpay';
-import { NovaPostList } from '@/libs/components/nova-post-api/NovaPostList';
 import { MeMoNovaPost } from '@/libs/components/nova-post-api/NovaPostA';
+
+import styles from './pay.module.scss'
+import PayModal from '@/libs/modal/modal-pay/modal-pay';
 
 
 export default function Pay() {
   const [storedItems, setStoredItems] = useState([]);
+  const [isPay, setIsPay] = useState(false);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -39,6 +42,7 @@ export default function Pay() {
   }, 0);
 
   return (
+    <>
     <section className={styles.section}>
       <div className={styles.container}>
       <div className={styles.container_form}>
@@ -104,7 +108,7 @@ export default function Pay() {
               <p className={styles.item_text}>Сума</p>
             </div> 
             <ul className={styles.list}>
-              {storedItems.map(({ImageCards, TitleCards, PriceCards}, id) => (
+              {storedItems.map(({ImageCards, TitleCards, PriceCards, QuantityCards}, id) => (
                 <li key={id} className={styles.item}>
                   <Image
                     src={ImageCards}
@@ -116,17 +120,15 @@ export default function Pay() {
                     height={100}
                     className={styles.item_img}
                     />
-                <p className={styles.item_title}>{TitleCards}</p>
-                <div className={styles.item_quantity}>
-
-                  <div className={styles.container_quantity}>
-                    {/* <span className={styles.quantity} onClick={()=> setIsQuantity(isQuantity - 1)}>-</span> */}
-                      {/* <p className={styles.quantity}>{isQuantity}</p> */}
-                    {/* <span className={styles.quantity} onClick={()=> setIsQuantity(isQuantity + 1)}>+</span> */}
+                  <p className={styles.item_title}>{TitleCards}</p>
+                  <div className={styles.item_quantity}>
+                    <div className={styles.container_quantity}>
+                        <p className={styles.text}>{QuantityCards}</p>
+                    </div>
                   </div>
-                </div>
-                {/* <p className={styles.price}>{PriceCards * isQuantity} гривень</p> */}
-
+                  <div className={styles.item_container_price}>
+                    <p className={styles.price}>{PriceCards} гривень</p>
+                  </div>
               </li>
               ))}
 
@@ -139,10 +141,16 @@ export default function Pay() {
 
           <div className={styles.container_btn}>
             <Liqpay />
-            <button className={styles.btn_edit}>редагувати замовлення</button>
+            <button className={styles.btn_edit} onClick={()=> setIsPay(true)}>редагувати замовлення</button>
           </div>
         </div>
       </div>
     </section>
+      {isPay && <PayModal
+        setIsPay={setIsPay}
+        storedItems={storedItems}
+        setStoredItems={setStoredItems}
+      />}
+    </>
   )
 }
