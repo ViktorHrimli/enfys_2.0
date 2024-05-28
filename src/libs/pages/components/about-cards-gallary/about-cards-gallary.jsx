@@ -8,7 +8,7 @@ import { getFormById } from "@/shared/getFormById";
 
 import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
-import Pay from "@/libs/modal/modal-pay/modal-pay";
+import PayModal from "@/libs/modal/modal-pay/modal-pay";
 
 export default function AboutCardsGallery({ data, dollar }) {
   const [isGallery, setIsGallery] = useState(
@@ -22,8 +22,6 @@ export default function AboutCardsGallery({ data, dollar }) {
   const [isPay, setIsPay] = useState(false);
 
   const [storedItems, setStoredItems] = useState([]);
-
-
 
   const ulRef = useRef(null);
 
@@ -70,8 +68,8 @@ export default function AboutCardsGallery({ data, dollar }) {
 
   const ImageCard = `https://www.admin-enfys.space${data[0].attributes.gallery.data[0].attributes.url}`;
   const TitleCards = data[keyId].attributes.title;
-  const PriceCards = Math.floor(data[keyId].attributes.price * dollar);
   const QuantityCards = 1;
+  const PriceCards = Math.floor(data[keyId].attributes.price * dollar) * QuantityCards;
 
   useEffect(() => {
     var localeData = JSON.parse(localStorage.getItem("storedItems"));
@@ -202,10 +200,11 @@ export default function AboutCardsGallery({ data, dollar }) {
         />
       )}
       {isPay &&(
-        <Pay
+        <PayModal
           setIsPay={setIsPay}
           storedItems={storedItems}
           setStoredItems={setStoredItems}
+          QuantityCards={QuantityCards}
         />)}
     </>
   );
