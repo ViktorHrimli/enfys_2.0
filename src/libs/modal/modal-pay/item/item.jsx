@@ -1,61 +1,47 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import styles from '../modal-pay.module.scss'
+import styles from "../modal-pay.module.scss";
 
-
-export default function Item(
-  { storedItems,
-    setStoredItems,
-    ImageCards,
-    TitleCards,
-    PriceCards,
-    QuantityCards,
-    id,
-  }) {
-  
+export default function Item({
+  storedItems,
+  setStoredItems,
+  ImageCards,
+  TitleCards,
+  PriceCards,
+  QuantityCards,
+  id,
+}) {
   const [isQuantity, setIsQuantity] = useState(QuantityCards);
-  const [isData, setIsData] = useState([]);
-
-  console.log(isQuantity);
 
   useEffect(() => {
-    const localeData = JSON.parse(localStorage.getItem("storedItems"));
+    var theFuckingBigData = JSON.parse(localStorage.getItem("storedItems")).map(
+      (card, cardId) =>
+        cardId === id ? { ...card, QuantityCards: isQuantity } : card
+    );
 
-    if (localeData) {
-      setIsData(localeData);
-    }
-  }, [isQuantity])
-  
+    localStorage.setItem("storedItems", JSON.stringify(theFuckingBigData));
+  }, [isQuantity]);
+
   function quantityUp() {
-    setIsQuantity(isQuantity + 1);
+    setIsQuantity((prev) => ++prev);
   }
 
   function quantityDown() {
-    setIsQuantity(isQuantity - 1);
+    setIsQuantity((prev) => --prev);
 
-    if (isQuantity < 2 ) {
-      setIsQuantity(1)
+    if (isQuantity < 2) {
+      setIsQuantity(1);
     }
   }
 
-  function up(idCard) {
-    quantityUp()
-    handleUpdate(idCard);
+  function up() {
+    quantityUp();
   }
 
-  function down(idCard) {
-    quantityDown()
-    handleUpdate(idCard);
+  function down() {
+    quantityDown();
   }
-
-  const handleUpdate = (idCard) => {
-    const data = isData[idCard].QuantityCards = isQuantity;
-    setIsData(data);
-    
-  localStorage.setItem("storedItems", JSON.stringify(isData));
-  };
-
 
   const handleDelete = (idCard) => {
     const deleteCard = storedItems.filter((_, id) => id !== idCard);
@@ -79,15 +65,15 @@ export default function Item(
       <p className={styles.item_title}>{TitleCards}</p>
       <div className={styles.item_quantity}>
         <div className={styles.container_quantity}>
-          <span
-            className={styles.quantity}
-            onClick={() => down(id)}>-</span>
-          
+          <span className={styles.quantity} onClick={() => down(id)}>
+            -
+          </span>
+
           <p className={styles.quantity}>{isQuantity}</p>
-          
-          <span
-            className={styles.quantity}
-            onClick={()=> up(id)}>+</span>
+
+          <span className={styles.quantity} onClick={() => up(id)}>
+            +
+          </span>
         </div>
       </div>
       <p className={styles.price}>{PriceCards * isQuantity} гривень</p>
