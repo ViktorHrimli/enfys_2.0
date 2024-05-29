@@ -11,6 +11,7 @@ export default function Item({
   PriceCards,
   QuantityCards,
   id,
+  setIsTotalPrice,
 }) {
   const [isQuantity, setIsQuantity] = useState(QuantityCards);
 
@@ -21,7 +22,14 @@ export default function Item({
     );
 
     localStorage.setItem("storedItems", JSON.stringify(theFuckingBigData));
-  }, [isQuantity]);
+
+    const updatePrice = theFuckingBigData.reduce((accumulator, item) => {
+        return accumulator + parseFloat(item.PriceCards * item.QuantityCards);
+    }, 0)
+
+    setIsTotalPrice(updatePrice ? updatePrice : 0);
+
+  }, [isQuantity, storedItems]);
 
   function quantityUp() {
     setIsQuantity((prev) => ++prev);
@@ -48,10 +56,29 @@ export default function Item({
 
     setStoredItems(deleteCard);
     localStorage.setItem("storedItems", JSON.stringify(deleteCard));
+    setIsTotalPrice(0)
   };
 
   return (
     <>
+      <div style={{width: "100%"}}>
+        <div className={styles.adaptive_mob}> 
+          <p className={styles.item_title}>{TitleCards}</p>
+          <div className={styles.del} onClick={() => handleDelete(id)}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="black"
+            d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"
+          />
+        </svg>
+        </div>
+        </div>
+        <div style={{display: "flex"}}>
       <Image
         src={ImageCards}
         alt="Image"
@@ -62,7 +89,7 @@ export default function Item({
         height={100}
         className={styles.item_img}
       />
-      <p className={styles.item_title}>{TitleCards}</p>
+          <p className={`${styles.item_title} ${styles.mob_none}`}>{TitleCards}</p>
       <div className={styles.item_quantity}>
         <div className={styles.container_quantity}>
           <span className={styles.quantity} onClick={() => down(id)}>
@@ -78,7 +105,7 @@ export default function Item({
       </div>
       <p className={styles.price}>{PriceCards * isQuantity} гривень</p>
 
-      <div className={styles.del} onClick={() => handleDelete(id)}>
+          <div className={`${styles.del} ${styles.mob_none}`} onClick={() => handleDelete(id)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"
@@ -90,6 +117,8 @@ export default function Item({
             d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"
           />
         </svg>
+        </div>
+      </div>
       </div>
     </>
   );

@@ -120,50 +120,55 @@ const NovaPostA = () => {
   }, [state[objectStateKeys.POST_OFFICE]]);
 
   return (
-    <section
+    <div
       style={{
-        // width: "100vw",
-        // height: "50vh",
-        // display: "flex",
-        // justifyContent: "center",
-        // alignItems: "center",
-        // flexDirection: "column",
+        width: "290px",
       }}
     >
-      {/* <h1>
-        <strong style={{ color: "black" }}>NovaPostA</strong>
-      </h1> */}
+      <h3>
+        <strong style={{color: "#F92D2D"}}>Нова Пошта</strong>
+      </h3>
 
       <div
         style={{
           display: "flex",
-          gap: "10px",
+          gap: "23px",
           flexDirection: "column",
-          marginBottom: "100px",
+          // marginBottom: "100px",
           color: "black",
-          paddingTop: "100px",
+          paddingTop: "25px",
         }}
       >
+        <div style={{position: "relative"}}>
         <NovaPostInput
           onClick={() => setIsToggle(!isToggle)}
           value={state[objectStateKeys.REGION_NAME]}
+          placeholder={"Виберіть область"}
           readOnly={true}
         >
-          Виберіть область
         </NovaPostInput>
 
         {Boolean(state[objectStateKeys.DATA_REGION].length) && isToggle && (
           <ul
             key="listRegion"
-            style={{
-              marginTop: "30px",
-              height: "150px",
+              style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              width: "290px",
+              height: "196px",
               display: "flex",
               gap: "10px",
               flexDirection: "column",
-              overflow: "scroll",
+              overflowY: "scroll",
               position: "absolute",
               background: "#fff",
+              border: "1px solid #209487",
+              borderRadius: "8px",
+              paddingLeft: "26px",
+              paddingTop: "16px",
+              paddingBottom: "16px",
+                zIndex: "2",
             }}
           >
             <DropDownWrapper
@@ -173,11 +178,14 @@ const NovaPostA = () => {
               classname={style}
             />
           </ul>
-        )}
+          )}
+          </div>
+        <div style={{position: "relative"}}>
 
         <NovaPostInput
           onClick={() => setIsOpen(true)}
           value={state[objectStateKeys.CITY_NAME]}
+          placeholder={"Місто"}
           onChange={(event) => {
             dispatch({
               data: event.currentTarget.value,
@@ -185,19 +193,30 @@ const NovaPostA = () => {
             });
           }}
         >
-          Місто
+          
         </NovaPostInput>
 
         {Boolean(state[objectStateKeys.DATA_CITY].length) && isOpen && (
           <ul
             key="listCity"
             style={{
-              marginTop: "30px",
-              height: "150px",
+              position: "absolute",
+              top: "40px",
+              left: "0",
+              width: "290px",
+              height: "196px",
               display: "flex",
               gap: "10px",
               flexDirection: "column",
-              overflow: "scroll",
+              overflowY: "scroll",
+              background: "#fff",
+              border: "1px solid #209487",
+              borderRadius: "8px",
+              paddingLeft: "26px",
+              paddingTop: "16px",
+              paddingBottom: "16px",
+              zIndex: "2",
+
             }}
           >
             <DropDownWrapper
@@ -207,10 +226,14 @@ const NovaPostA = () => {
             />
           </ul>
         )}
-
+        </div>
+        <div style={{position: "relative"}}>
+        
         <NovaPostInput
           value={state[objectStateKeys.POST_OFFICE]}
           onClick={() => setIsOpenOffice(true)}
+          placeholder={"Вибрати відділення"}
+
           onChange={(event) =>
             dispatch({
               data: event.currentTarget.value,
@@ -218,31 +241,44 @@ const NovaPostA = () => {
             })
           }
         >
-          Вибрати відділення
+          
         </NovaPostInput>
 
         {Boolean(state[objectStateKeys.POST_OFFICE_DATA].length) &&
           isOpenOffice && (
             <ul
               key="listOffice"
+            
               style={{
-                marginTop: "30px",
-                height: "150px",
+                position: "absolute",
+                top: "40px",
+                left: "0",
+                width: "290px",
+                height: "196px",
                 display: "flex",
+                gap: "10px",
                 flexDirection: "column",
-                overflow: "scroll",
+                overflowY: "scroll",
+                background: "#fff",
+                border: "1px solid #209487",
+                borderRadius: "8px",
+                paddingLeft: "26px",
+                paddingTop: "16px",
+                paddingBottom: "16px",
+                zIndex: "2",
               }}
             >
               <DropDownWrapper
                 dataMap={state[objectStateKeys.POST_OFFICE_DATA]}
                 onEvent={onClickOnPostOffice}
                 key="dropDownOffice"
-                classname=""
+                classname="drop"
               />
             </ul>
-          )}
+            )}
+          </div>
       </div>
-    </section>
+    </div>
   );
 };
 

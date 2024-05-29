@@ -6,6 +6,7 @@ import { MeMoNovaPost } from "@/libs/components/nova-post-api/NovaPostA";
 
 import styles from "./pay.module.scss";
 import PayModal from "@/libs/modal/modal-pay/modal-pay";
+import checked from "@/assets/svg/check.svg";
 
 export default function Pay() {
   const [storedItems, setStoredItems] = useState([]);
@@ -36,12 +37,12 @@ export default function Pay() {
   // Обработчик отправки формы
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted data:", formData);
+    // console.log("Submitted data:", formData);
     // Тут можно добавить логику для отправки данных на сервер
   };
 
   const totalCardPrice = storedItems.reduce((accumulator, item) => {
-    return accumulator + parseFloat(item.PriceCards);
+    return accumulator + parseFloat(item.PriceCards * item.QuantityCards);
   }, 0);
 
   return (
@@ -93,11 +94,28 @@ export default function Pay() {
                 />
               </div>
               <div className={styles.delivery}>
-                <p className={styles.title}>Доставка</p>
-                <p className={styles.title}>Спосіб оплати</p>
+                <p className={styles.text_delivery}>Доставка</p>
+                <p className={`${styles.text_delivery} ${styles.tab}`}>Спосіб оплати</p>
               </div>
-              <div>
+              <div className={styles.container_radio}>
                 <MeMoNovaPost />
+                <div className={styles.container_radio_adaptive}>
+                  <div className={`${styles.delivery} ${styles.mob}`}>
+                    <p className={styles.text_delivery}>Спосіб оплати</p>
+                  </div>
+                  <div className={styles.radio}>
+                    <input type="radio" id="radio-site" className={styles.check} />
+                    <label htmlFor="radio-site" className={styles.label_radio}>
+                      Оплата на сайті
+                    </label>
+                  </div>
+                  <div className={styles.radio}>
+                    <input type="radio" id="radio-post" className={styles.check} />
+                    <label htmlFor="radio-post" className={styles.label_radio}>
+                      Наложенний платіж
+                    </label>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
