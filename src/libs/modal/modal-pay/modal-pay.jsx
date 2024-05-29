@@ -5,9 +5,7 @@ import Item from "./item/item";
 import { useState, useEffect } from "react";
 
 export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
-  const totalCardPrice = storedItems.reduce((accumulator, item) => {
-    return accumulator + parseFloat(item.PriceCards);
-  }, 0);
+  const [isTotalPrice, setIsTotalPrice] = useState(null);
 
   function closed() {
     setIsPay(false);
@@ -48,6 +46,7 @@ export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
                       TitleCards={TitleCards}
                       PriceCards={PriceCards}
                       QuantityCards={QuantityCards}
+                      setIsTotalPrice={setIsTotalPrice}
                     />
                   </li>
                 );
@@ -57,7 +56,7 @@ export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
         </div>
         <div className={styles.result}>
           <p className={styles.text}>Підсумок</p>
-          <p className={styles.text}>{totalCardPrice} гривень</p>
+          <p className={styles.text}>{isTotalPrice} гривень</p>
         </div>
         <Link
           href="/oformlennya-zamovlennya"

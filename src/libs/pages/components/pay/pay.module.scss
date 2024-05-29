@@ -5,25 +5,90 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (min-width: 1440px) {
+    height: 740px;
+    justify-content: space-between;
+  }
 }
 
 .container_form {
-  padding-left: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-top: 50px;
   padding-bottom: 50px;
-  width: 720px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    width: 720px;
+  }
+  @media (min-width: 1440px) {
+    padding-left: 80px;
+    padding-right: 0;
+  }
+}
+
+.container_radio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 60px;
+  width: 290px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.container_radio_adaptive {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    padding-top: 50px;
+  }
+}
+
+.label_radio {
+  width: 290px;
+  display: block;
+  font-family: "Mariupol", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 19.26px;
+  text-align: start;
+  color: #171717;
+}
+
+.radio {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.check {
+  width: 18px;
+  height: 18px;
 }
 
 .container_cards {
-  width: 561px;
-  height: 505px;
   background: #209487;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 42px;
-  padding-bottom: 18px;
+  padding-bottom: 48px;
+  width: 100%;
+
+  @media (min-width: 1440px) {
+    width: 561px;
+  }
 }
 
 .title {
@@ -34,18 +99,38 @@
   text-align: start;
   color: #171717;
   margin-bottom: 24px;
+  // width: 262px;
+  margin-top: 30px;
+
+}
+
+.text_delivery {
+  font-family: "Mariupol", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 26.96px;
+  text-align: start;
+  color: #171717;
   width: 262px;
 }
 
 .form {
+  width: 290px;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  @media (min-width: 768px) {
+    width: 624px;
+  }
+  @media (min-width: 1440px) {
+    width: 100%;
+  }
 }
 
 .container_input {
   display: flex;
-  gap: 60px;
+  flex-wrap: wrap;
+  gap: 23px;
 }
 
 .input {
@@ -61,9 +146,23 @@
   gap: 90px;
 }
 
+.mob {
+  display: none;
+  @media (max-width: 767px) {
+    display: block;
+  }
+}
+
+.tab {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
 .container_contant {
-  width: 511px;
-  height: 235px;
+  width: 320px;
+  height: 320px;
   background: #FAF7F1;
   border-radius: 4px;
   padding-left: 16px;
@@ -74,6 +173,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  @media (min-width: 768px) {
+    width: 511px;
+    height: 100%;
+  }
 }
 
 .content {
@@ -85,6 +188,13 @@
 
 .list {
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (min-width: 768px) {
+    gap: 0px;
+  }
 }
 
 .item {
@@ -96,7 +206,13 @@
   width: 50px;
   height: 58px;
   object-fit: cover;
-  margin-right: 24px;
+  margin-right: 10px;
+  margin-top: 6px;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    margin-right: 24px;
+  }
 }
 
 .item_title {
@@ -109,7 +225,11 @@
   text-align: left;
   color: #171717;
   margin-top: 10px;
-  margin-right: 48px;
+  margin-right: 5px;
+
+  @media (min-width: 768px) {
+    margin-right: 48px;
+  }
 }
 
 .item_text {
@@ -124,10 +244,14 @@
 
 .item_description {
   display: flex;
-  margin-left: 270px;
-  gap: 90px;
   position: absolute;
   top: 10px;
+  margin-left: 178px;
+  gap: 31px;
+  @media (min-width: 768px) {
+    margin-left: 270px;
+    gap: 90px;
+  }
 }
 
 .container_price {
@@ -143,8 +267,9 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 13.48px;
-  text-align: left;
+  text-align: right;
   color: #F92D2D;
+
 }
 
 .text {
@@ -165,7 +290,13 @@
   line-height: 11.55px;
   text-transform: uppercase;
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
   gap: 32px;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .container_quantity {
@@ -179,7 +310,7 @@
 .item_container_price {
   width: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   margin-left: auto;
 }

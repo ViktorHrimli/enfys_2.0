@@ -21,7 +21,7 @@ export default function ContactForm({setIsThenkyou}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Отправка данных формы
-    console.log(formData);
+    // console.log(formData);
     setIsThenkyou(true);
     setFormData({
       name: '',

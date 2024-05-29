@@ -15,7 +15,6 @@ export default async function PageCard({ params }) {
   var name = params.name;
   const digits = name.match(/\d+/g).join('-').toString();
   var card = data.filter(product => product.attributes.articl === digits);
-  console.log(digits);
   return (
     <>
       <HeroCards selectedCategory={selectedCategory} />
