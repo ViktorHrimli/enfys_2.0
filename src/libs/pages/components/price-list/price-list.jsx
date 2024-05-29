@@ -5,12 +5,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-import styles from './price-list.module.scss';
-import Filter from '@/libs/modal/filter/filter';
+import styles from "./price-list.module.scss";
+import Filter from "@/libs/modal/filter/filter";
 
-import PartnersIcon from '@/shared/icons/partners';
-import { slugify } from 'transliteration';
-
+import PartnersIcon from "@/shared/icons/partners";
+import { slugify } from "transliteration";
 
 export default function PriceList({ data, dollar }) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
@@ -50,6 +49,7 @@ export default function PriceList({ data, dollar }) {
               const ukrainianArt = item.attributes.articl;
               const nameArt = slugify(ukrainianArt);
 
+              console.log(item.attributes.gallery.data[0].attributes.url);
               // const ukrainianName = item.attributes.title;
               // const name = slugify(ukrainianName);
 
@@ -66,30 +66,36 @@ export default function PriceList({ data, dollar }) {
                         priority={true}
                         loading="eager"
                         fill
-                        sizes='100%'
+                        sizes="100%"
                         quality={100}
                         className={styles.img}
                       />
                     </div>
                     <h2 className={styles.title}>{item.attributes.title}</h2>
                     <div className={styles.price_container}>
-                      {data[id].attributes.inStock === "в наявності"
-                        ?
+                      {data[id].attributes.inStock === "в наявності" ? (
                         <p className={styles.price}>
-                          {Math.floor(data[id].attributes.price * dollar)} ГРИВЕНЬ
-                          <span className={styles.old_price}>{Math.floor(data[id].attributes.oldPrice * dollar)} ГРИВЕНЬ</span>
+                          {Math.floor(data[id].attributes.price * dollar)}{" "}
+                          ГРИВЕНЬ
+                          <span className={styles.old_price}>
+                            {Math.floor(data[id].attributes.oldPrice * dollar)}{" "}
+                            ГРИВЕНЬ
+                          </span>
                         </p>
-                        :
-                        data[id].attributes.inStock === "очікуємо" ?
-                          <p className={styles.price}>{data[id].attributes.inStock}</p>
-                          :
-                          <p className={styles.price}>{data[id].attributes.inStock}</p>
-                      }
+                      ) : data[id].attributes.inStock === "очікуємо" ? (
+                        <p className={styles.price}>
+                          {data[id].attributes.inStock}
+                        </p>
+                      ) : (
+                        <p className={styles.price}>
+                          {data[id].attributes.inStock}
+                        </p>
+                      )}
                     </div>
                   </Link>
                   <button className={styles.btn_card}>купити</button>
                 </li>
-              )
+              );
             })}
           </ul>
         </div>

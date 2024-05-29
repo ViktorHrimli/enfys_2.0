@@ -43,8 +43,7 @@ export default function AboutCardsGallery({ data, dollar }) {
 
       document.body.style.overflow = "hidden";
       document.body.style.maxHeight = "100vh";
-    }
-    else if (isPay) {
+    } else if (isPay) {
       setIsScroll(window.scrollY);
 
       document.body.style.overflow = "hidden";
@@ -69,7 +68,8 @@ export default function AboutCardsGallery({ data, dollar }) {
   const ImageCard = `https://www.admin-enfys.space${data[0].attributes.gallery.data[0].attributes.url}`;
   const TitleCards = data[keyId].attributes.title;
   const QuantityCards = 1;
-  const PriceCards = Math.floor(data[keyId].attributes.price * dollar) * QuantityCards;
+  const PriceCards =
+    Math.floor(data[keyId].attributes.price * dollar) * QuantityCards;
 
   useEffect(() => {
     var localeData = JSON.parse(localStorage.getItem("storedItems"));
@@ -87,7 +87,7 @@ export default function AboutCardsGallery({ data, dollar }) {
       PriceCards: PriceCards,
       QuantityCards: QuantityCards,
     };
-    
+
     const updatedData = [...existingData, newCardData];
     setStoredItems(updatedData);
     localStorage.setItem("storedItems", JSON.stringify(updatedData));
@@ -134,7 +134,7 @@ export default function AboutCardsGallery({ data, dollar }) {
                     className={styles.items}
                     onClick={() =>
                       setIsGallery(
-                        `https://www.admin-enfys.space${data[keyId].attributes.gallery.data[id].attributes.url}`
+                        `https://www.admin-enfys.space${data[keyId].attributes.gallery.data[id].attributes.url}?format=png`
                       ) &
                       setIsBacground(id) &
                       scrollToPosition(event, { id })
@@ -144,7 +144,7 @@ export default function AboutCardsGallery({ data, dollar }) {
                       className={id === isBacground ? "" : styles.bacground}
                     ></div>
                     <Image
-                      src={`https://www.admin-enfys.space${item.attributes.url}`}
+                      src={`https://www.admin-enfys.space${item.attributes.url}?format=png`}
                       alt="item"
                       priority={true}
                       loading="eager"
@@ -185,8 +185,9 @@ export default function AboutCardsGallery({ data, dollar }) {
               {data[keyId].attributes.description}....
               <a onClick={handleClickOnDescription}> читати повний опис</a>
             </p>
-            <button className={styles.btn} onClick={handleClick}>купити</button>
-
+            <button className={styles.btn} onClick={handleClick}>
+              купити
+            </button>
           </div>
         </div>
       </section>
@@ -199,13 +200,14 @@ export default function AboutCardsGallery({ data, dollar }) {
           setIsGallery={setIsGallery}
         />
       )}
-      {isPay &&(
+      {isPay && (
         <PayModal
           setIsPay={setIsPay}
           storedItems={storedItems}
           setStoredItems={setStoredItems}
           QuantityCards={QuantityCards}
-        />)}
+        />
+      )}
     </>
   );
 }
