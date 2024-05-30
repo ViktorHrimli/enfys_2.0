@@ -216,6 +216,36 @@
   }
 }
 
+.list_colors {
+  margin-top: 20px;
+  width: 100%;
+  height: 84px;
+  display: flex;
+  gap: 20px;
+}
+
+.item_colors {
+  border: 1px solid #209487 ;
+  border-radius: 8px;
+  width: 55px;
+  height: 75px;
+  overflow: hidden;
+}
+
+.item_colors_link {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+
+  img {
+    position: absolute;
+    width: 55px;
+    height: 75px;
+    object-fit: cover;
+  }
+}
+
 .btn {
   width: 144px;
   height: 40px;

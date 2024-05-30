@@ -12,7 +12,7 @@ export default function New({ color, dollar, newArrivals }) {
         const ukrainianText = newArrivals[id].attributes.category;
         const path = slugify(ukrainianText);
         
-        const ukrainianName = item.attributes.articl;
+        const ukrainianName = item.attributes.title;
         const name = slugify(ukrainianName);
 
         return (

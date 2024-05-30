@@ -14,6 +14,8 @@ import { slugify } from 'transliteration';
 
 export default function PriceList({ data, dollar }) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
+  const [isData, setIsData] = useState([]);
+
 
   const [isScroll, setIsScroll] = useState(
     typeof window !== "undefined" ? window.scrollY : 0
@@ -37,6 +39,21 @@ export default function PriceList({ data, dollar }) {
     };
   }, [isOpenFilter]);
 
+  useEffect(() => {
+    const updatedData = data.map(item => {
+      const ukrainianName = item.attributes.title;
+      const name = slugify(ukrainianName);
+      return {
+        ...item,
+        attributes: {
+          ...item.attributes,
+          link: name
+        }
+      };
+    });
+    setIsData(updatedData);
+  }, []);
+
   return (
     <>
       <section className={styles.section}>
@@ -46,16 +63,12 @@ export default function PriceList({ data, dollar }) {
           </button>
 
           <ul className={styles.card_container}>
-            {data.map((item, id) => {
-              const ukrainianArt = item.attributes.articl;
-              const nameArt = slugify(ukrainianArt);
-
-              // const ukrainianName = item.attributes.title;
-              // const name = slugify(ukrainianName);
-
+            {isData.map((item, id) => {
+              const ukrainianName = item.attributes.link;
+              
               return (
                 <li key={id} className={styles.content}>
-                  <Link className={styles.link} href={`/${path}/${nameArt}`}>
+                  <Link className={styles.link} href={`/${path}/${ukrainianName}`}>
                     <div className={styles.partners_icon}>
                       <PartnersIcon />
                     </div>

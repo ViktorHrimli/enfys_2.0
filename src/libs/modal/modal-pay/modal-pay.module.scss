@@ -166,25 +166,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 15px;
+  
+  @media (min-width: 768px) {
+    margin-top: 20px;
+  }
 }
 
 .container_quantity {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   @media (min-width: 768px) {
     margin-right: 76px;
+    gap: 4px;
   }
 }
 
 .quantity {
   color: #171717;
   font-family: "Mariupol", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 13.48px;
   text-align: left;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
 }
 
 .result {
@@ -208,13 +224,17 @@
 
 .price {
   font-family: "Mariupol", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 13.48px;
   text-align: left;
   color:  #FF8A00;
   margin-top: 20px;
   margin-left: auto;
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
 }
 
 .text {

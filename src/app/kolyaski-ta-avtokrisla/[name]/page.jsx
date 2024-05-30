@@ -5,7 +5,7 @@ import Card from "@/libs/pages/components/card-about-colors/card";
 import Conditions from "@/libs/pages/components/conditions/conditions";
 import HeroCards from "@/libs/pages/components/hero-cards/hero-cards";
 import TableCards from "@/libs/pages/components/table-cards/table-cards";
-
+import { slugify } from 'transliteration';
 
 export default async function PageCard({ params }) {
   var { data } = await (
@@ -23,10 +23,21 @@ export default async function PageCard({ params }) {
     })
   ).json();
 
-
   var name = params.name;
-  const digits = name.match(/\d+/g).join('-').toString();
-  var card = data.filter(product => product.attributes.articl === digits);
+
+  var updatedData = data.map(item => {
+      const ukrainianName = item.attributes.title;
+      const name = slugify(ukrainianName);
+      return {
+        ...item,
+        attributes: {
+          ...item.attributes,
+          link: name
+        }
+      };
+  });
+  
+  var card = updatedData.filter(product => product.attributes.link === name);
 
 
   return (
