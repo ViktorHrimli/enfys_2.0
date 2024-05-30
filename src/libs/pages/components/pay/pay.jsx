@@ -57,8 +57,8 @@ export default function Pay() {
                 <input
                   className={styles.input}
                   type="text"
-                  id="firstName"
-                  name="firstName"
+                  id="lastName"
+                  name="lastName"
                   placeholder="Ім’я"
                   value={formData.firstName}
                   onChange={handleChange}
@@ -66,8 +66,8 @@ export default function Pay() {
                 <input
                   className={styles.input}
                   type="text"
-                  id="lastName"
-                  name="lastName"
+                  id="firstName"
+                  name="firstName"
                   placeholder="Прізвище"
                   value={formData.lastName}
                   onChange={handleChange}

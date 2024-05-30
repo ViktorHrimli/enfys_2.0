@@ -55,15 +55,20 @@
 // ------- card
 
 .card_container {
+  width: 320px;
   display: flex;
   flex-wrap: wrap;
   gap: 40px 8px;
   width: 286px;
   margin-left: auto;
   margin-right: auto;
+
   @media (min-width: 768px) {
-    width: 100%;
+    width: 584px;
     gap: 40px 20px;
+  }
+  @media (min-width: 1440px) {
+    width: 1188px;
   }
 }
 
@@ -96,6 +101,10 @@
     box-sizing: border-box;
     box-shadow: 0px 12px 27px 0px rgba(112, 112, 112, 0.1), 0px 48px 48px 0px rgba(112, 112, 112, 0.09), 0px 109px 65px 0px rgba(112, 112, 112, 0.05), 0px 193px 77px 0px rgba(112, 112, 112, 0.01), 0px 302px 85px 0px rgba(112, 112, 112, 0);
     background: rgb(32, 148, 135);
+  }
+
+  &:last-child {
+    margin-right: auto;
   }
 }
 

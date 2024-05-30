@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./about-cards-gallary.module.scss";
 import { getFormById } from "@/shared/getFormById";
+import { slugify } from 'transliteration';
+
 
 import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
@@ -185,6 +187,34 @@ export default function AboutCardsGallery({ data, dollar }) {
               {data[keyId].attributes.description}....
               <a onClick={handleClickOnDescription}> читати повний опис</a>
             </p>
+            {data[0].attributes.articleCards.length &&
+            <div>
+              <p className={styles.text}>Інщі кольори</p>
+              <ul className={styles.list_colors}>
+                {data[0].attributes.articleCards.map(({ colorsData, colorsImage }, id) => {
+                  const category = data[0].attributes.category;
+
+                  const link = slugify(category);
+                  const name = slugify(colorsData);
+
+                  return (
+                    <li key={id} className={styles.item_colors}>
+                      <Link href={`/${link}/${name}`} className={styles.item_colors_link}>
+                        {/* <Image
+                          src={`https://www.admin-enfys.space${colorsImage.attributes.url}`}
+                          alt="image"
+                          priority={true}
+                          loading="eager"
+                          quality={100}
+                          width={100}
+                          height={100}
+                        /> */}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>}
             <button className={styles.btn} onClick={handleClick}>купити</button>
 
           </div>

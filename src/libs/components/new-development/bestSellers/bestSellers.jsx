@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { slugify } from 'transliteration';
 
-
 export default function Top({ color, dollar, bestSellers }) { 
   
   return (
@@ -11,7 +10,7 @@ export default function Top({ color, dollar, bestSellers }) {
       {bestSellers.map((item, id) => {
         const ukrainianText = bestSellers[id].attributes.category;
         const path = slugify(ukrainianText);
-        const ukrainianName = bestSellers[id].attributes.articl;
+        const ukrainianName = bestSellers[id].attributes.title;
         const name = slugify(ukrainianName);
 
         return(

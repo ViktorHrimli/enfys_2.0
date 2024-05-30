@@ -63,7 +63,8 @@ export default function Header() {
           <div className={styles.line}></div>
           <div className={styles.line}></div>
           <div className={styles.line}></div>
-        </div>
+        </div> 
+        <Link href="/" className={styles.home}></Link>
         <div style={{display: "none"}}>
           <Menu setIsMenu={ setIsMenu } />
         </div>
