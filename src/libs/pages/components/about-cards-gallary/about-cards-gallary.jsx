@@ -11,8 +11,9 @@ import { slugify } from 'transliteration';
 import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
 import PayModal from "@/libs/modal/modal-pay/modal-pay";
+import FilterItem from "./filters-color/filter-item";
 
-export default function AboutCardsGallery({ data, dollar }) {
+export default function AboutCardsGallery({ data, dollar, dataBase }) {
   const [isGallery, setIsGallery] = useState(
     `https://www.admin-enfys.space${data[0].attributes.gallery.data[0].attributes.url}`
   );
@@ -110,7 +111,7 @@ export default function AboutCardsGallery({ data, dollar }) {
                 alt="image"
                 priority={true}
                 loading="eager"
-                quality={100}
+                // quality={100}
                 width={100}
                 height={100}
                 className={styles.gallery_img}
@@ -181,42 +182,34 @@ export default function AboutCardsGallery({ data, dollar }) {
                 <p className={styles.price}>{data[keyId].attributes.inStock}</p>
               )}
 
-              <PartnersIcon />
+              <PartnersIcon data={data} name={data[keyId].attributes.title} />
             </div>
             <p className={styles.text}>
               {data[keyId].attributes.description}....
               <a onClick={handleClickOnDescription}> читати повний опис</a>
             </p>
-            {data[0].attributes.articleCards.length &&
+            {data[0].attributes.articleCards &&
             <div>
               <p className={styles.text}>Інщі кольори</p>
-              <ul className={styles.list_colors}>
-                {data[0].attributes.articleCards.map(({ colorsData, colorsImage }, id) => {
-                  const category = data[0].attributes.category;
+              
+                <ul className={styles.list_colors}>
+                  {data[0].attributes.articleCards.map(({ title }, id) => {
+                    const name = slugify(title);
 
-                  const link = slugify(category);
-                  const name = slugify(colorsData);
-
-                  return (
-                    <li key={id} className={styles.item_colors}>
-                      <Link href={`/${link}/${name}`} className={styles.item_colors_link}>
-                        {/* <Image
-                          src={`https://www.admin-enfys.space${colorsImage.attributes.url}`}
-                          alt="image"
-                          priority={true}
-                          loading="eager"
-                          quality={100}
-                          width={100}
-                          height={100}
-                        /> */}
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>}
+                    return (
+                      <li key={id} className={styles.item_colors}>
+                          <FilterItem
+                            dataBase={dataBase}
+                            name={name}
+                          />
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+              }
+            
             <button className={styles.btn} onClick={handleClick}>купити</button>
-
           </div>
         </div>
       </section>
