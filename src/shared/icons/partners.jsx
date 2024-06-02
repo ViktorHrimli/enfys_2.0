@@ -8,9 +8,20 @@ import enfysProductBadgeBest from "@/assets/svg/icons/enfys_product_badge_best.s
 import payPart from "@/assets/svg/icons/paypart.svg";
 import enfysProductBadgeWarranty from "@/assets/svg/icons/enfys_product_badge_warranty.svg"
 
-export default function PartnersIcon() { 
+export default function PartnersIcon({ data, name }) { 
+  var filter = data.filter(product => product.attributes.title === name);
+
+  var dataIcon = filter[0].attributes.icons[0];
+
+  var bestsellerIcon = dataIcon.bestseller;
+  var newIcon = dataIcon.new;
+  var free_shippingIcon = dataIcon.free_shipping;
+  var guaranteeIcon = dataIcon.guarantee;
+  var payment_in_installmentsIcon = dataIcon.payment_in_installments;
+
   return (
     <ul className={styles.list}>
+      {newIcon && 
       <li className={styles.items}>
         <div className={styles.background}></div>
         <Image 
@@ -22,29 +33,34 @@ export default function PartnersIcon() {
           style={{ objectFit: "cover", position: "absolute", zIndex: "1"}}
         />
       </li>
-      <li className={styles.items}>
-        <div className={styles.background}></div>
-        <Image 
-          src={enfysProductBadgeDelivery}
-          alt="Delivery"
-          priority={true}
-          loading="eager"
-          quality={100}
-          style={{ objectFit: "cover", position: "absolute", zIndex: "1"}}
-
-        />
-      </li>
-      <li className={styles.items}>
-        <div className={styles.background}></div>
-        <Image 
-          src={enfysProductBadgeBest}
-          alt="Best"
-          priority={true}
-          loading="eager"
-          quality={100}
-          style={{ objectFit: "cover", position: "absolute", zIndex: "1"}}
-        />
-      </li>
+      }
+      {free_shippingIcon &&
+        <li className={styles.items}>
+          <div className={styles.background}></div>
+          <Image
+            src={enfysProductBadgeDelivery}
+            alt="Delivery"
+            priority={true}
+            loading="eager"
+            quality={100}
+            style={{ objectFit: "cover", position: "absolute", zIndex: "1" }}
+          />
+        </li>
+      }
+      {bestsellerIcon &&
+        <li className={styles.items}>
+          <div className={styles.background}></div>
+          <Image
+            src={enfysProductBadgeBest}
+            alt="Best"
+            priority={true}
+            loading="eager"
+            quality={100}
+            style={{ objectFit: "cover", position: "absolute", zIndex: "1" }}
+          />
+        </li>
+      }
+      {guaranteeIcon && 
       <li className={styles.items}>
         <div className={styles.background}></div>
         <Image 
@@ -53,9 +69,11 @@ export default function PartnersIcon() {
           priority={true}
           loading="eager"
           quality={100}
-          style={{ objectFit: "cover", position: "absolute", zIndex: "1", marginTop: "1px", width: "32px", height: "32px"}}
+          style={{ objectFit: "cover", position: "absolute", zIndex: "1", marginTop: "1px"}}
         />
-      </li>
+        </li>
+      }
+      {payment_in_installmentsIcon &&
       <li className={styles.items}>
         <div className={styles.background}></div>
         <Image 
@@ -66,7 +84,8 @@ export default function PartnersIcon() {
           quality={100}
           style={{ objectFit: "cover", position: "absolute", zIndex: "1"}}
         />
-      </li>
+        </li>
+      }
     </ul>
   )
 } 
