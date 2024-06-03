@@ -2,12 +2,50 @@ import styles from './filter.module.scss'
 import Image from 'next/image';
 import checked from "@/assets/svg/check.svg";
 
+import cornerRightOrange from '@/assets/svg/corner-right-green.svg';
+import cornerLeftOrange from '@/assets/svg/corner-left-green.svg';
+import starsLeft from '@/assets/svg/stars-left.svg';
+import starsRight from '@/assets/svg/stars-right.svg';
+
+
 export default function Filter({ setIsOpenFilter }) {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
+      <div className={styles.corner_left}>
+          <Image
+            src={cornerLeftOrange}
+            alt="pay"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.corner_right}>
+          <Image
+            src={cornerRightOrange}
+            alt="pay"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.stars_left}>
+          <Image
+            src={starsLeft}
+            alt="stars"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.stars_right}>
+          <Image
+            src={starsRight}
+            alt="stars"
+            priority={true}
+            loading="eager"
+          />
+        </div>
       <div className={styles.closed} onClick={()=> setIsOpenFilter(false)}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"/></svg>
+        <svg className={styles.closed_svg} xmlns="http://www.w3.org/2000/svg"  width="30" height="30"  viewBox="0 0 24 24"><path fill="white" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"/></svg>
       </div>
         <div className={styles.container_filter}>
           <div className={styles.left_box}>
