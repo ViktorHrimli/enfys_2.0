@@ -39,7 +39,16 @@
   bottom: 0;
   right: 0;
 }
-
+.stars_left{
+  position: absolute;
+  top: 22px;
+  left: 19px;
+}
+.stars_right{
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+}
 
 .closed {
   position: absolute;
