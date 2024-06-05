@@ -71,7 +71,9 @@ export default function PriceList({ data, dollar }) {
                     <div className={styles.partners_icon}>
                       <PartnersIcon data={data} name={item.attributes.title} />
                     </div>
-                    <div className={styles.img_container}>
+                        
+                    <div className={styles.img_container}  >
+                      
                       <Image
                         src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}`}
                         alt="image"
@@ -81,6 +83,7 @@ export default function PriceList({ data, dollar }) {
                         sizes='100%'
                         quality={100}
                         className={styles.img}
+                        // style={{mixBlendMode: "multiply"}}
                       />
                     </div>
                     <h2 className={styles.title}>{item.attributes.title}</h2>
