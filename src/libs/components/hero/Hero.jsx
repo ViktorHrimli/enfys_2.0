@@ -16,6 +16,7 @@ import ImgPrice from "@/assets/svg/hero-price.png";
 import logo from "@/assets/svg/logo.svg";
 
 import Line from "@/shared/line";
+import useScrollPosition from "@/shared/hook/useScrollPosition";
 
 const homeText = "НАСОЛОДЖУЙСЯ МАТЕРИНСТВОМ з ENFyS";
 const aboutText = "ENFyS - це ідеальне поєднання ціни та якості";
@@ -31,9 +32,10 @@ export default function Hero() {
   const [isHeroText, setIsHeroText] = useState(homeText);
   const [isHeroCards, setIsHeroCards] = useState(false);
 
-
+  const home = "homePage";
+  useScrollPosition(home);
   const path = usePathname().replace("/", "");
-
+  
   const priceCard = path.includes("price");
 
   useEffect(() => {
@@ -88,7 +90,6 @@ export default function Hero() {
               priority={true}
               loading="eager"
               quality={100}
-              // style={isHeroCards ? { marginTop: "10%" } : {}}
               className={style.logo}
             />
           </Link>

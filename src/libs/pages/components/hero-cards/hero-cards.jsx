@@ -9,6 +9,7 @@ import style from "./hero-cards.module.scss";
 import ImgPrice from "@/assets/svg/hero-price.png";
 import logo from "@/assets/svg/logo.svg";
 import Line from "@/shared/line";
+import useScrollPosition from "@/shared/hook/useScrollPosition";
 
 
 
@@ -17,6 +18,8 @@ export default function HeroCards({ selectedCategory }) {
   const [isHeroText, setIsHeroText] = useState(selectedCategory);
 
   const path = usePathname().replace("/", "");
+  useScrollPosition(path);
+
 
   const aksesuari = path.includes("aksesuari");
   const mebli = path.includes("mebli");
