@@ -14,20 +14,41 @@
   margin-left: auto;
   margin-right: auto;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .corner_left {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
+  width: 131px;
+  height: 88px;
+  transform: scale(1, -1);
+  @media (min-width: 768px) {
+    width: 234px;
+    height: 184px;
+    top: 0;
+  left: 0;
+  transform: scale(1,1);
+    
+  }
+
 }
 
 .corner_right {
   position: absolute;
   top: 0;
   right: 0;
+  width: 131px;
+  height: 88px;
+  @media (min-width: 768px) {
+    width: 234px;
+    height: 184px;
+    
+  }
+
 }
 
 
@@ -69,27 +90,29 @@
   }
 }
 
-.btn {
+.btn {  
   transition: 0.5s;
-  display: inline-flex;
-  padding: 20px 111px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   border-radius: 8px;
-  background: #FFF;
+  color: #FFF;
   border: none;
-
-  color: #F92D2D;
-  font-family: "Mariupol", sans-serif;
-  font-size: 20px;
+  width: 190px;
+  height: 40px;
+  background: #F92D2D;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
-
-  &:hover {
-    background:#F92D2D;
-    color: #FFF;
-  }
+  @media (min-width:768px){
+  width: 360px;
+  height: 70px;
+  font-size: 20px;
+}
+&:hover {
+  color:#F92D2D;
+  background: #FFF;
+}
 }

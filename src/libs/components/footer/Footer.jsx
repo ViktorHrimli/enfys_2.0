@@ -39,7 +39,7 @@ const social = [
 
 export default function Footer() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} style={{ background: "#FAF7F1" }}>
       <div style={{position: "absolute", top: "0"}}>
           <Line />
         </div>

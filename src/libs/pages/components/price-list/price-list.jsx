@@ -15,7 +15,7 @@ import { slugify } from 'transliteration';
 export default function PriceList({ data, dollar }) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isData, setIsData] = useState([]);
-
+  const [isFilters, setIsFilters] = useState([]);
   const [isScroll, setIsScroll] = useState(
     typeof window !== "undefined" ? window.scrollY : 0
   );
@@ -51,18 +51,19 @@ export default function PriceList({ data, dollar }) {
       };
     });
     setIsData(updatedData);
+    setIsFilters(updatedData);
   }, []);
 
   return (
     <>
-      <section className={styles.section}>
+      <section className={styles.section} style={{ background: "#FAF7F1" }}>
         <div className={styles.container}>
           <button className={styles.btn} onClick={() => setIsOpenFilter(true)}>
             ФІЛЬТРИ
           </button>
 
           <ul className={styles.card_container}>
-            {isData.map((item, id) => {
+            {isFilters.map((item, id) => {
               const ukrainianName = item.attributes.link;
 
               return (
@@ -88,28 +89,30 @@ export default function PriceList({ data, dollar }) {
                     </div>
                     <h2 className={styles.title}>{item.attributes.title}</h2>
                     <div className={styles.price_container}>
-                      {data[id].attributes.inStock === "в наявності"
+                      {isFilters[id].attributes.inStock === "в наявності"
                         ?
                         <p className={styles.price}>
-                          {Math.floor(data[id].attributes.price * dollar)} ГРИВЕНЬ
-                          <span className={styles.old_price}>{Math.floor(data[id].attributes.oldPrice * dollar)} ГРИВЕНЬ</span>
+                          {Math.floor(isFilters[id].attributes.price * dollar)} ГРИВЕНЬ
+                          <span className={styles.old_price}>{Math.floor(isFilters[id].attributes.oldPrice * dollar)} ГРИВЕНЬ</span>
                         </p>
                         :
-                        data[id].attributes.inStock === "очікуємо" ?
-                          <p className={styles.price}>{data[id].attributes.inStock}</p>
+                        isFilters[id].attributes.inStock === "очікуємо" ?
+                          <p className={styles.price}>{isFilters[id].attributes.inStock}</p>
                           :
-                          <p className={styles.price}>{data[id].attributes.inStock}</p>
+                          <p className={styles.price}>{isFilters[id].attributes.inStock}</p>
                       }
                     </div>
-                  </Link>
                   <button className={styles.btn_card}>купити</button>
+                  </Link>
                 </li>
               )
             })}
           </ul>
         </div>
       </section>
-      {isOpenFilter && <Filter setIsOpenFilter={setIsOpenFilter} />}
+      <div style={isOpenFilter ?{zIndex: "99"} : {zIndex: "-1"}}>
+        <Filter setIsOpenFilter={setIsOpenFilter} isData={isData} dollar={dollar} isFilters={isFilters} setIsFilters={setIsFilters} />
+      </div>
     </>
   );
 }

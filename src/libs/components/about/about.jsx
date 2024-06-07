@@ -7,6 +7,7 @@ import cornerLeftGreen from '@/assets/svg/corner-left-green.svg';
 
 import styles from './about.module.scss'
 
+
 export default function About() {
   return (
     <section className={styles.section}>
@@ -27,7 +28,6 @@ export default function About() {
           />
         </div>
       <div className={styles.container}>
-
         <h2 className={styles.title}>Enfys.com.ua – найнеобхідніші дитячі товари</h2>
         <div className={styles.container_text}>
           <p className={styles.text}>{"Народження малюка – радісна подія. Але вона пов'язана з безліччю турбот, які в основному полягають в необхідності закупити велику кількість речей для догляду за новонародженим."}</p>
@@ -36,6 +36,8 @@ export default function About() {
         </div>
 
         <button className={styles.btn}>ПРО МАГАЗИН</button>
+       
+    
       </div>
     </section>
   )}
