@@ -13,6 +13,34 @@
     justify-content: space-between;
   }
 }
+.corner_left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 71px;
+  width: 90px;
+}
+
+.corner_right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: scale(1,-1);
+  height: 71px;
+  width: 90px;
+}
+
+.stars_left{
+  position: absolute;
+  top: 22px;
+  left: 19px;
+}
+.stars_right{
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+}
+
 
 .container_form {
   padding-left: 10px;
@@ -85,6 +113,7 @@
   padding-top: 42px;
   padding-bottom: 48px;
   width: 100%;
+  position: relative;
 
   @media (min-width: 1440px) {
     width: 561px;
