@@ -2,7 +2,14 @@
 import styles from "./modal-pay.module.scss";
 import Link from "next/link";
 import Item from "./item/item";
+import Image from 'next/image';
 import { useState, useEffect } from "react";
+
+import cornerRightOrange from '@/assets/svg/corner-right-green.svg';
+import cornerLeftOrange from '@/assets/svg/corner-left-green.svg';
+import starsLeft from '@/assets/svg/stars-left.svg';
+import starsRight from '@/assets/svg/stars-right.svg';
+
 
 export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
   const [isTotalPrice, setIsTotalPrice] = useState(null);
@@ -14,8 +21,40 @@ export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
+      <div className={styles.corner_left}>
+          <Image
+            src={cornerLeftOrange}
+            alt="pay"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.corner_right}>
+          <Image
+            src={cornerRightOrange}
+            alt="pay"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.stars_left}>
+          <Image
+            src={starsLeft}
+            alt="stars"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.stars_right}>
+          <Image
+            src={starsRight}
+            alt="stars"
+            priority={true}
+            loading="eager"
+          />
+        </div>
         <div className={styles.closed} onClick={() => setIsPay(false)}>
-          <svg
+          <svg className={styles.closed_svg}
             xmlns="http://www.w3.org/2000/svg"
             width="30"
             height="30"
