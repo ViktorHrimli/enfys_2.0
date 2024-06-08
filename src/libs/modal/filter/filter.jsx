@@ -19,8 +19,9 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
   const [isNINOSChack, setIsNINOSChack] = useState(true);
 
   // filters price state
-  const [isMin, setIsMin] = useState(0);
-  const [isMax, setIsMax] = useState(100000);
+  const [isSort, setIsSort] = useState([]);
+  const [isMin, setIsMin] = useState();
+  const [isMax, setIsMax] = useState();
 
   // filters brands state
   const [isCarrello, setIsCarrello] = useState([]);
@@ -29,9 +30,9 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
   const [isBabyZz, setIsBabyZz] = useState([]);
   const [isNINOS, setIsNINOS] = useState([]);
 
-  // filters price filters
-  const minPrice = isData.filter(product => product.attributes.price * dollar > isMin);
+  const minPrice = isSort.filter(product => product.attributes.price * dollar > isMin);
   const price = minPrice.filter(product => product.attributes.price * dollar < isMax);
+
 
   // filters brands filters
   const Carrelo = price.filter(product => product.attributes.brand === "Carrello");
@@ -39,31 +40,43 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
   const Tilly = price.filter(product => product.attributes.brand === "Tilly");
   const BabyZz = price.filter(product => product.attributes.brand === "BabyZz");
   const NINOS = price.filter(product => product.attributes.brand === "NINOS");
-
+  
   useEffect(() => {
+    
     if (isFilters) {
+      setIsSort(isData);
       setIsCarrello(Carrelo);
       setIsLorelli(Lorelli);
       setIsTilly(Tilly);
       setIsBabyZz(BabyZz);
       setIsNINOS(NINOS);
     }
-  }, [isFilters, isMin, isMax])
-  
+  }, [isFilters, isMin, isMax, isSort])
+
 
   // filters DATA 
   var data = [...isCarrello, ...isLorelli, ...isTilly, ...isBabyZz, ...isNINOS];
 
-  console.log("data", data);
-
 
   // functions 
+  const handleSort = () => {
+      setIsSort(isData.reverse());
+  };
+
   const handleMinChange = (event) => {
     setIsMin(event.target.value);
+
+    if (!event.target.value) {
+      setIsMin(0);
+    }
   };
 
   const handleMaxChange = (event) => {
     setIsMax(event.target.value);
+
+    if (!event.target.value) {
+      setIsMax(1000000);
+    }
   };
 
   const handleCheckboxCarrelo = (event) => {
@@ -134,6 +147,8 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
     setIsNINOS(NINOS);
     setIsMin(0);
     setIsMax(100000);
+    setIsSort(isData);
+
   }
 
   return (
@@ -178,18 +193,18 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
           <div className={styles.left_box}>
             <div className={styles.sorting_box}>
               <p className={styles.sorting_text}>СОРТУВАТИ ЗА</p>
-              <select id="sortings" className={`${styles.select} ${styles.style_input}`}>
-                <option value="від дешевих додорогих">від дешевих додорогих</option>
-                <option value="від дорогих до дешевих">від дорогих до дешевих</option>
+              <select id="sortings" className={`${styles.select} ${styles.style_input}`} onClick={handleSort}>
+                <option value="від дешевих до дорогих" >від дешевих до дорогих</option>
+                <option value="від дорогих до дешевих" >від дорогих до дешевих</option>
               </select>
             </div>
             <p className={styles.sorting_text}>ЦІНА</p>
             <div className={styles.price_box}>
               <div className={styles.price}>
-                <input className={styles.style_input} type="number" placeholder='від' value={isMin} onChange={handleMinChange} />
+                <input className={styles.style_input} type="number" placeholder='від'   onChange={handleMinChange} />
               </div>
               <div className={styles.price}>
-                <input className={styles.style_input} type="number" placeholder='до' value={isMax} onChange={handleMaxChange} />
+                <input className={styles.style_input} type="number" placeholder='до'   onChange={handleMaxChange} />
               </div>
             </div>
             </div>

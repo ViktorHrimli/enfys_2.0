@@ -50,8 +50,8 @@ export default function PriceList({ data, dollar }) {
         }
       };
     });
-    setIsData(updatedData);
-    setIsFilters(updatedData);
+    setIsData(updatedData.sort((a, b) => a.attributes.price - b.attributes.price));
+    setIsFilters(updatedData.sort((a, b) => a.attributes.price - b.attributes.price));
   }, []);
 
   return (
