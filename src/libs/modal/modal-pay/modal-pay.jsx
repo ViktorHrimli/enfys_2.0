@@ -2,8 +2,10 @@
 import styles from "./modal-pay.module.scss";
 import Link from "next/link";
 import Item from "./item/item";
+
 import Image from 'next/image';
 import { useState, useEffect } from "react";
+
 
 import cornerRightOrange from '@/assets/svg/corner-right-green.svg';
 import cornerLeftOrange from '@/assets/svg/corner-left-green.svg';
@@ -86,6 +88,7 @@ export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
                       PriceCards={PriceCards}
                       QuantityCards={QuantityCards}
                       setIsTotalPrice={setIsTotalPrice}
+                      closed={closed}
                     />
                   </li>
                 );

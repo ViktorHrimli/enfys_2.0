@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+
 
 import styles from './price-list.module.scss';
 import Filter from '@/libs/modal/filter/filter';
@@ -110,9 +112,12 @@ export default function PriceList({ data, dollar }) {
           </ul>
         </div>
       </section>
-      <div style={isOpenFilter ?{zIndex: "99"} : {zIndex: "-1"}}>
-        <Filter setIsOpenFilter={setIsOpenFilter} isData={isData} dollar={dollar} isFilters={isFilters} setIsFilters={setIsFilters} />
-      </div>
+      <motion.div
+        animate={{ zIndex: isOpenFilter ? "100" : "-1" } }
+        transition={{ duration: 5 }}
+        >
+          <Filter setIsOpenFilter={setIsOpenFilter} isData={isData} dollar={dollar} isFilters={isFilters} setIsFilters={setIsFilters} />
+      </motion.div>
     </>
   );
 }

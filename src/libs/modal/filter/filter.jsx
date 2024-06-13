@@ -8,20 +8,26 @@ import cornerRightOrange from '@/assets/svg/corner-right-green.svg';
 import cornerLeftOrange from '@/assets/svg/corner-left-green.svg';
 import starsLeft from '@/assets/svg/stars-left.svg';
 import starsRight from '@/assets/svg/stars-right.svg';
+import { motion } from "framer-motion";
+import { event } from 'jquery';
 
 
 export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, setIsFilters }) {
   //  chackbox chacked state
+  const [isValue, setIsValue] = useState("не обрано");
+  const [isAnimationsInput, setIsAnimationsInput] = useState(false);
+
   const [isCarrelloChack, setIsCarrelloChack] = useState(true);
   const [isLorelliChack, setIsLorelliChack] = useState(true);
   const [isTillyChack, setIsTillyChack] = useState(true);
   const [isBabyZzChack, setIsBabyZzChack] = useState(true);
   const [isNINOSChack, setIsNINOSChack] = useState(true);
+  
 
   // filters price state
-  const [isSort, setIsSort] = useState([]);
-  const [isMin, setIsMin] = useState();
-  const [isMax, setIsMax] = useState();
+  const [isSort, setIsSort] = useState([]); 
+  const [isMin, setIsMin] = useState(0);
+  const [isMax, setIsMax] = useState(100000);
 
   // filters brands state
   const [isCarrello, setIsCarrello] = useState([]);
@@ -30,7 +36,7 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
   const [isBabyZz, setIsBabyZz] = useState([]);
   const [isNINOS, setIsNINOS] = useState([]);
 
-  const minPrice = isSort.filter(product => product.attributes.price * dollar > isMin);
+  const minPrice = isSort.filter(product => product.attributes.price * dollar > isMin); 
   const price = minPrice.filter(product => product.attributes.price * dollar < isMax);
 
 
@@ -42,26 +48,27 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
   const NINOS = price.filter(product => product.attributes.brand === "NINOS");
   
   useEffect(() => {
-    
-    if (isFilters) {
       setIsSort(isData);
       setIsCarrello(Carrelo);
       setIsLorelli(Lorelli);
       setIsTilly(Tilly);
       setIsBabyZz(BabyZz);
       setIsNINOS(NINOS);
-    }
-  }, [isFilters, isMin, isMax, isSort])
-
-
-  // filters DATA 
-  var data = [...isCarrello, ...isLorelli, ...isTilly, ...isBabyZz, ...isNINOS];
+  }, [isFilters, isMin, isMax, isSort, isValue])
 
 
   // functions 
-  const handleSort = () => {
-      setIsSort(isData.reverse());
+  const fromCheapToExpensive = () => {
+    setIsSort(isData.sort((a, b) => a.attributes.price - b.attributes.price));
+    setIsValue("від дешевих до дорогих");
+    setIsAnimationsInput(false);
   };
+
+  const fromExpensiveToCheap = () => {
+    setIsSort(isData.sort((a, b) => b.attributes.price - a.attributes.price));
+    setIsValue("від дорогих до дешевих");
+    setIsAnimationsInput(false);
+  }
 
   const handleMinChange = (event) => {
     setIsMin(event.target.value);
@@ -78,6 +85,10 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
       setIsMax(1000000);
     }
   };
+
+  const clearValue = (event) => {
+    event.target.value = "";
+  }
 
   const handleCheckboxCarrelo = (event) => {
     const { checked } = event.target;
@@ -131,7 +142,7 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
   };
 
   const confirm = () => {
-    setIsFilters(data);
+    setIsFilters([...isCarrello, ...isLorelli, ...isTilly, ...isBabyZz, ...isNINOS]);
 
     const timeoutId = setTimeout(() => {
       setIsOpenFilter(false);
@@ -145,10 +156,17 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
     setIsTilly(Tilly);
     setIsBabyZz(BabyZz);
     setIsNINOS(NINOS);
+    setIsCarrelloChack(true);
+    setIsLorelliChack(true);
+    setIsTillyChack(true);
+    setIsBabyZzChack(true);
+    setIsNINOSChack(true);
     setIsMin(0);
     setIsMax(100000);
     setIsSort(isData);
-
+    setIsValue("не обрано");
+    document.getElementById('valueMin').value = '';
+    document.getElementById('valueMax').value = '';
   }
 
   return (
@@ -199,18 +217,37 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
           <div className={styles.left_box}>
             <div className={styles.sorting_box}>
               <p className={styles.sorting_text}>СОРТУВАТИ ЗА</p>
-              <select id="sortings" className={`${styles.select} ${styles.style_input}`} onClick={handleSort}>
-                <option value="від дешевих до дорогих" >від дешевих до дорогих</option>
-                <option value="від дорогих до дешевих" >від дорогих до дешевих</option>
-              </select>
+              <motion.div
+                  animate={{ height: isAnimationsInput ? "100%" : "" }}
+                  transition={{ duration: 0.3 }}
+                  className={styles.select}
+                >
+                <motion.div
+                  animate={{ rotate: isAnimationsInput ? "180deg" : "0deg" }}
+                  transition={{ duration: 0.3 }}
+                  className={styles.select_arrow}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 1024 1024"
+                  >
+                    <path fill="currentColor" d="M8.2 275.4c0-8.6 3.4-17.401 10-24.001c13.2-13.2 34.8-13.2 48 0l451.8 451.8l445.2-445.2c13.2-13.2 34.8-13.2 48 0s13.2 34.8 0 48L542 775.399c-13.2 13.2-34.8 13.2-48 0l-475.8-475.8c-6.8-6.8-10-15.4-10-24.199" /></svg>
+                </motion.div>
+                <input onClick={()=> setIsAnimationsInput(!isAnimationsInput)} type="text" className={`${styles.select} ${styles.style_input}`} style={{border: "none"}} value={isValue} readOnly />
+                <ul style={{paddingLeft: "15px"}}>
+                  <li onClick={fromCheapToExpensive}>від дешевих до дорогих</li>
+                  <li onClick={fromExpensiveToCheap}>від дорогих до дешевих</li>
+                </ul>
+              </motion.div>
             </div>
             <p className={styles.sorting_text}>ЦІНА</p>
             <div className={styles.price_box}>
               <div className={styles.price}>
-                <input className={styles.style_input} type="number" placeholder='від'   onChange={handleMinChange} />
+                <input className={styles.style_input} type="number" id='valueMin' placeholder='від' onChange={handleMinChange} />
               </div>
               <div className={styles.price}>
-                <input className={styles.style_input} type="number" placeholder='до'   onChange={handleMaxChange} />
+                <input className={styles.style_input} type="number" id='valueMax' placeholder='до' onChange={handleMaxChange} />
               </div>
             </div>
             </div>

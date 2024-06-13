@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./about-cards-gallary.module.scss";
 import { getFormById } from "@/shared/getFormById";
 import { slugify } from 'transliteration';
@@ -201,6 +200,7 @@ export default function AboutCardsGallery({ data, dollar, dataBase }) {
                           <FilterItem
                             dataBase={dataBase}
                             name={name}
+                            key={id}
                           />
                       </li>
                     )
