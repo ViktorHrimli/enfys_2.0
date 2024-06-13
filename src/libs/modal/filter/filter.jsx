@@ -205,7 +205,13 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
           />
         </div>
       <div className={styles.closed} onClick={()=> setIsOpenFilter(false)}>
-        <svg className={styles.closed_svg} xmlns="http://www.w3.org/2000/svg"  width="30" height="30"  viewBox="0 0 24 24"><path fill="white" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"/></svg>
+        <svg className={styles.closed_svg} 
+        xmlns="http://www.w3.org/2000/svg"  
+        width="30" 
+        height="30"  
+        viewBox="0 0 24 24">
+          <path fill="white" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"/>
+          </svg>
       </div>
         <div className={styles.container_filter}>
           <div className={styles.left_box}>

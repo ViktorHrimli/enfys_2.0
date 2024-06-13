@@ -8,6 +8,13 @@ import styles from "./pay.module.scss";
 import PayModal from "@/libs/modal/modal-pay/modal-pay";
 import checked from "@/assets/svg/check.svg";
 
+import cornerRightOrange from '@/assets/svg/corner-right-green.svg';
+import cornerLeftOrange from '@/assets/svg/corner-left-green.svg';
+import starsLeft from '@/assets/svg/stars-left.svg';
+import starsRight from '@/assets/svg/stars-right.svg';
+
+
+
 export default function Pay() {
   const [storedItems, setStoredItems] = useState([]);
   const [isPay, setIsPay] = useState(false);
@@ -120,6 +127,38 @@ export default function Pay() {
             </form>
           </div>
           <div className={styles.container_cards}>
+        <div className={styles.corner_left}>
+          <Image
+            src={cornerLeftOrange}
+            alt="pay"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.corner_right}>
+          <Image
+            src={cornerRightOrange}
+            alt="pay"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.stars_left}>
+          <Image
+            src={starsLeft}
+            alt="stars"
+            priority={true}
+            loading="eager"
+          />
+        </div>
+        <div className={styles.stars_right}>
+          <Image
+            src={starsRight}
+            alt="stars"
+            priority={true}
+            loading="eager"
+          />
+        </div>
             <h2
               className={styles.title}
               style={{ color: "#FAF7F1", paddingBottom: "33px" }}
