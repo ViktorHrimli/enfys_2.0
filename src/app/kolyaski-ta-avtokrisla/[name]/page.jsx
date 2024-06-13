@@ -47,10 +47,8 @@ export default async function PageCard({ params }) {
       <Conditions />
       <AboutCards data={card} id={name} dollar={dollar} />
       {/* <Advantages /> */}
-
       <TableCards data={card} id={name} />
-
-      <Card />
+      <Card dataBase={updatedData}/>
     </>
   );
 }

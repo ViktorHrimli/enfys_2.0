@@ -44,12 +44,12 @@ export default async function PageCard({ params }) {
     return (
     <>
       <HeroCards selectedCategory={selectedCategory} />
-      <AboutCardsGallery data={card} id={name} dollar={dollar} />
+      <AboutCardsGallery data={card} id={name} dollar={dollar} dataBase={updatedData} />
       <Conditions />
       <AboutCards data={card} id={name} dollar={dollar} />
       {/* <Advantages /> */}
       <TableCards data={card} id={name} />
-      <Card />
+      <Card dataBase={updatedData}/>
     </>
   );
 }

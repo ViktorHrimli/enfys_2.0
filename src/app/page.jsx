@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <NewDevelopment newArrivals={newArrivals} bestSellers={bestSellers} dollar={dollar} />
+      <NewDevelopment newArrivals={newArrivals} bestSellers={bestSellers} dollar={dollar} dataBase={data} />
       <About />
       <Partners />
       <Description />

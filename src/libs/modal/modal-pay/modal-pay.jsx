@@ -2,7 +2,7 @@
 import styles from "./modal-pay.module.scss";
 import Link from "next/link";
 import Item from "./item/item";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
   const [isTotalPrice, setIsTotalPrice] = useState(null);
@@ -14,7 +14,7 @@ export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
-        <div className={styles.closed} onClick={() => setIsPay(false)}>
+        <div className={styles.closed} onClick={closed}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -47,6 +47,7 @@ export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
                       PriceCards={PriceCards}
                       QuantityCards={QuantityCards}
                       setIsTotalPrice={setIsTotalPrice}
+                      closed={closed}
                     />
                   </li>
                 );

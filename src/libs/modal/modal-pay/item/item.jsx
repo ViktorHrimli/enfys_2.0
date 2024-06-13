@@ -12,6 +12,7 @@ export default function Item({
   QuantityCards,
   id,
   setIsTotalPrice,
+  closed
 }) {
   const [isQuantity, setIsQuantity] = useState(QuantityCards);
 
@@ -57,6 +58,15 @@ export default function Item({
     setStoredItems(deleteCard);
     localStorage.setItem("storedItems", JSON.stringify(deleteCard));
     setIsTotalPrice(0)
+
+    const closedModal = localStorage.getItem("storedItems", JSON.stringify()).length;
+
+    if (closedModal === 2) {
+      const timeoutId = setTimeout(() => {
+        closed();
+        clearTimeout(timeoutId);
+      }, 300);
+    }
   };
 
   return (

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../about-cards-gallary.module.scss";
 
-export default function FilterItem({ dataBase, name}) {
+export default function FilterItem({ dataBase, name }) {
   var filter = dataBase.filter(product => product.attributes.link === name);
   
   return (

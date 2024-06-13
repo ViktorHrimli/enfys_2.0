@@ -17,7 +17,7 @@ import Top from "./bestSellers/bestSellers";
 
 
 
-export default function NewDevelopment({dollar, newArrivals, bestSellers}) {
+export default function NewDevelopment({ dollar, newArrivals, bestSellers }) {
   const [isChangeOne, setIsChangeOne] = useState(false);
   const [isChangeTwo, setIsChangeTwo] = useState(false);
 
@@ -84,10 +84,10 @@ export default function NewDevelopment({dollar, newArrivals, bestSellers}) {
 
               {isChangeTwo && <p className={styles.title_after}>не пропусти</p>}
               {isChangeTwo && <div className={styles.gallery_right}>
-                <Top color={"#F92D2D"} bestSellers={bestSellers} dollar={dollar}/>
+                <Top color={"#F92D2D"} bestSellers={bestSellers} dollar={dollar}  />
               </div>}
               <div className={styles.gallery_right_tel}>
-                <Top color={"#F92D2D"} bestSellers={bestSellers} dollar={dollar}/>
+                <Top color={"#F92D2D"} bestSellers={bestSellers} dollar={dollar}  />
               </div>
               <div className={isChangeTwo ? styles.display_none : styles.img_animation}>
                 <Image
