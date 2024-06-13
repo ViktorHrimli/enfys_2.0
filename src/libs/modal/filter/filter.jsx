@@ -1,5 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+
 import styles from './filter.module.scss'
 import Image from 'next/image';
 import checked from "@/assets/svg/check.svg";
@@ -8,9 +10,6 @@ import cornerRightOrange from '@/assets/svg/corner-right-green.svg';
 import cornerLeftOrange from '@/assets/svg/corner-left-green.svg';
 import starsLeft from '@/assets/svg/stars-left.svg';
 import starsRight from '@/assets/svg/stars-right.svg';
-import { motion } from "framer-motion";
-import { event } from 'jquery';
-
 
 export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, setIsFilters }) {
   //  chackbox chacked state

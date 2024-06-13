@@ -130,6 +130,19 @@
   }
 }
 
+
+.style_input::-webkit-outer-spin-button,
+.style_input::-webkit-inner-spin-button {
+  -webkit-appearance: none; // Yeah, yeah everybody write about it
+}
+.style_input,
+.style_input:hover,
+.style_input:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+
 .adaptive {
   display: none;
   @media (min-width: 768px) {
@@ -180,6 +193,7 @@
   border: #FAF7F1 solid 1px;
   border-radius: 8px;
   position: relative;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     width: 300px;
@@ -192,9 +206,7 @@
   top: 4px;
   width: 18px;
   height: 18px;
-  cursor: pointer;
 }
-
 
 // custom check 
 
