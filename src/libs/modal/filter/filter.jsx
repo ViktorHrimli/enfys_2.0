@@ -35,8 +35,8 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
   const [isBabyZz, setIsBabyZz] = useState([]);
   const [isNINOS, setIsNINOS] = useState([]);
 
-  const minPrice = isSort.filter(product => product.attributes.price * dollar > isMin); 
-  const price = minPrice.filter(product => product.attributes.price * dollar < isMax);
+  const minPrice = isSort.filter(product => product.attributes.price * dollar >= isMin); 
+  const price = minPrice.filter(product => product.attributes.price * dollar <= isMax);
 
 
   // filters brands filters
@@ -84,10 +84,6 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
       setIsMax(1000000);
     }
   };
-
-  const clearValue = (event) => {
-    event.target.value = "";
-  }
 
   const handleCheckboxCarrelo = (event) => {
     const { checked } = event.target;

@@ -1,0 +1,60 @@
+.section {
+  width: 100%;
+  height: auto;
+  background: #FF8A00;
+}
+
+.container {
+  display: flex;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 16px;
+  padding-bottom: 6px;
+  color: #FAF7F1;
+
+  font-family: "Mariupol", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 13.48px;
+    
+  @media (min-width: 768px) {
+    padding-top: 10px;
+    align-items: center;
+    height: 50px;
+    padding-left: 120px;
+    padding-right: 120px;
+    font-size: 14px;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  min-width: 150px;
+  @media (min-width: 768px) {
+  min-width: 216px;
+  }
+}
+
+.svg_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 16px;
+  height: 16px;
+  @media (min-width: 768px) {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.svg {
+  width: 12px;
+  height: 12px;
+  @media (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
+  
+}

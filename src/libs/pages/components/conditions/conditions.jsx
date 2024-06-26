@@ -7,13 +7,13 @@ export default function Conditions() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-
-       <div className={styles.corner_left}>
+        <div className={styles.corner_left}>
           <Image
             src={cornerLeftOrange}
             alt="cornerLeft"
             priority={true}
             loading="eager"
+            className={styles.img}
           />
         </div>
         <div className={styles.corner_right}>
@@ -22,6 +22,7 @@ export default function Conditions() {
             alt="cornerRight"
             priority={true}
             loading="eager"
+            className={styles.img}
           />
         </div>
 

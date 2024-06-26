@@ -234,6 +234,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 768px) {
+      width: 75px;
+      height: 55px;
+    }
 }
 
 .item_colors_link {
@@ -249,6 +253,10 @@
     width: 55px;
     height: 70px;
     object-fit: cover;
+    @media (min-width: 768px) {
+      width: 75px;
+      height: 55px;
+    }
   }
 }
 

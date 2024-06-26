@@ -12,6 +12,7 @@ import Filter from '@/libs/modal/filter/filter';
 
 import PartnersIcon from '@/shared/icons/partners';
 import { slugify } from 'transliteration';
+import BreadCrumbs from "../bread-crumbs/bread_crumbs";
 
 
 export default function PriceList({ data, dollar }) {
