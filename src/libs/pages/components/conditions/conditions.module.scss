@@ -11,8 +11,10 @@
   padding: 110px 14px;
   gap: 40px;
   @media (min-width: 768px) {
-    gap: 124px;
     flex-direction: row;
+  }
+  @media (min-width: 1024px) {
+    gap: 124px;
   }
 }
 .corner_left {
@@ -20,6 +22,8 @@
   top: 0;
   left: 0;
   z-index: 1;
+  width: 180px;
+  height: 141px;
 }
 
 .corner_right {
@@ -27,9 +31,6 @@
   top: 0;
   right: 0;
   z-index: 1;
-}
-
-.img {
   width: 180px;
   height: 141px;
 }

@@ -11,7 +11,7 @@ import cornerLeftOrange from '@/assets/svg/corner-left-green.svg';
 import starsLeft from '@/assets/svg/stars-left.svg';
 import starsRight from '@/assets/svg/stars-right.svg';
 
-export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, setIsFilters }) {
+export default function Filter({ setIsOpenFilter, isOpenFilter, isData, dollar, isFilters, setIsFilters }) {
   //  chackbox chacked state
   const [isValue, setIsValue] = useState("не обрано");
   const [isAnimationsInput, setIsAnimationsInput] = useState(false);
@@ -165,7 +165,7 @@ export default function Filter({ setIsOpenFilter, isData, dollar, isFilters, set
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={isOpenFilter ? {background: "#3C372A99"} : {display: "none"}}>
       <div className={styles.modal}>
       <div className={styles.corner_left}>
           <Image
