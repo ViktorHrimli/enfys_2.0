@@ -6,24 +6,27 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-
 import styles from './price-list.module.scss';
 import Filter from '@/libs/modal/filter/filter';
 
 import PartnersIcon from '@/shared/icons/partners';
 import { slugify } from 'transliteration';
-import BreadCrumbs from "../bread-crumbs/bread_crumbs";
-
 
 export default function PriceList({ data, dollar }) {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isData, setIsData] = useState([]);
   const [isFilters, setIsFilters] = useState([]);
+  const [isClient, setIsClient] = useState(false);
+
   const [isScroll, setIsScroll] = useState(
     typeof window !== "undefined" ? window.scrollY : 0
   );
 
   const path = usePathname().replace("/", "");
+
+  useEffect(() => {
+    setIsClient(true);
+  }, [])
 
   useEffect(() => {
     if (isOpenFilter) {
@@ -113,12 +116,14 @@ export default function PriceList({ data, dollar }) {
           </ul>
         </div>
       </section>
-      <motion.div
-        animate={{ zIndex: isOpenFilter ? "100" : "-1" } }
-        transition={{ duration: 5 }}
+      {isClient &&
+        <motion.div
+          animate={{ zIndex: isOpenFilter ? "100" : "-1" }}
+          transition={{ duration: 5 }}
         >
-          <Filter setIsOpenFilter={setIsOpenFilter} isData={isData} dollar={dollar} isFilters={isFilters} setIsFilters={setIsFilters} />
-      </motion.div>
+          <Filter setIsOpenFilter={setIsOpenFilter} isOpenFilter={isOpenFilter} isData={isData} dollar={dollar} isFilters={isFilters} setIsFilters={setIsFilters} />
+        </motion.div>
+      }
     </>
   );
 }

@@ -32,8 +32,8 @@ export default function Hero() {
   const [isHeroText, setIsHeroText] = useState(homeText);
   const [isHeroCards, setIsHeroCards] = useState(false);
 
-  const home = "homePage";
-  useScrollPosition(home);
+  useScrollPosition(usePathname());
+
   const path = usePathname().replace("/", "");
   
   const priceCard = path.includes("price");
