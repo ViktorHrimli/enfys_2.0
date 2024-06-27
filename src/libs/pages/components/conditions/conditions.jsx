@@ -13,6 +13,7 @@ export default function Conditions() {
             alt="cornerLeft"
             priority={true}
             loading="eager"
+            fill
             className={styles.img}
           />
         </div>
@@ -22,6 +23,7 @@ export default function Conditions() {
             alt="cornerRight"
             priority={true}
             loading="eager"
+            fill
             className={styles.img}
           />
         </div>
