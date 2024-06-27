@@ -11,6 +11,7 @@ import PartnersIcon from "@/shared/icons/partners";
 import Preview from "./preview/preview";
 import PayModal from "@/libs/modal/modal-pay/modal-pay";
 import FilterItem from "./filters-color/filter-item";
+import BreadCrumbs from "../bread-crumbs/bread_crumbs";
 
 export default function AboutCardsGallery({ data, dollar, dataBase }) {
   const [isGallery, setIsGallery] = useState(
@@ -97,6 +98,8 @@ export default function AboutCardsGallery({ data, dollar, dataBase }) {
 
   return (
     <>
+      <BreadCrumbs data={data}/>
+      
       <section className={styles.section}>
         <div className={styles.container}>
           {/* gallery */}
@@ -190,11 +193,9 @@ export default function AboutCardsGallery({ data, dollar, dataBase }) {
             {data[0].attributes.articleCards &&
             <div>
               <p className={styles.text}>Інщі кольори</p>
-              
                 <ul className={styles.list_colors}>
                   {data[0].attributes.articleCards.map(({ title }, id) => {
                     const name = slugify(title);
-
                     return (
                       <li key={id} className={styles.item_colors}>
                           <FilterItem
@@ -205,10 +206,9 @@ export default function AboutCardsGallery({ data, dollar, dataBase }) {
                       </li>
                     )
                   })}
-                </ul>
-              </div>
+                  </ul>
+                </div>
               }
-            
             <button className={styles.btn} onClick={handleClick}>купити</button>
           </div>
         </div>

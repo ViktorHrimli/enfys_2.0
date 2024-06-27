@@ -13,7 +13,7 @@ export default function Card({ dataBase }) {
       <div className={styles.box}>
         <div className={styles.left_box}>
           <div className={styles.left_green}>
-            <Image 
+            <Image
               src={`https://www.admin-enfys.space${card[0].attributes.animationsItem.Image.data.attributes.url}`}
               alt="image"
               priority={true}
@@ -28,7 +28,7 @@ export default function Card({ dataBase }) {
           </div>
 
           <div className={styles.left_orange}>
-            <Image 
+            <Image
               src={`https://www.admin-enfys.space${card[0].attributes.animationsItem.image_4.data.attributes.url}`}
               alt="image"
               priority={true}
@@ -42,7 +42,7 @@ export default function Card({ dataBase }) {
             </div>
           </div>
           <div className={styles.left_red}>
-              <Image 
+              <Image
                 src={`https://www.admin-enfys.space${card[0].attributes.animationsItem.image_7.data.attributes.url}`}
                 alt="image"
                 priority={true}
@@ -59,7 +59,7 @@ export default function Card({ dataBase }) {
         
         <div className={styles.right_box}>
           <div className={styles.right_red}>
-            <Image 
+            <Image
               src={`https://www.admin-enfys.space${card[0].attributes.animationsItem.image_2.data.attributes.url}`}
               alt="image"
               priority={true}
@@ -73,7 +73,7 @@ export default function Card({ dataBase }) {
             </div>
           </div>
           <div className={styles.right_yello}>
-            <Image 
+            <Image
               src={`https://www.admin-enfys.space${card[0].attributes.animationsItem.image_3.data.attributes.url}`}
               alt="image"
               priority={true}
@@ -87,7 +87,7 @@ export default function Card({ dataBase }) {
             </div>
           </div>
           <div className={styles.right_green}>
-            <Image 
+            <Image
               src={`https://www.admin-enfys.space${card[0].attributes.animationsItem.image_5.data.attributes.url}`}
               alt="image"
               priority={true}
@@ -101,7 +101,7 @@ export default function Card({ dataBase }) {
             </div>
           </div>
           <div className={styles.right_yello_bottom}>
-            <Image 
+            <Image
               src={`https://www.admin-enfys.space${card[0].attributes.animationsItem.image_6.data.attributes.url}`}
               alt="image"
               priority={true}

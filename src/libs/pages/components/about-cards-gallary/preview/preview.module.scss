@@ -21,6 +21,25 @@
   overflow: hidden;
 }
 
+.text_container {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  padding: 10px;
+}
+
+.text {
+  color: red;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 10.41px;
+  text-align: left;
+  
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
 .closed {
   position: absolute;
   top: 24px;
