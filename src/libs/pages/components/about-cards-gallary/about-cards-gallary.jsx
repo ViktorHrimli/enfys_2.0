@@ -14,6 +14,8 @@ import FilterItem from "./filters-color/filter-item";
 import BreadCrumbs from "../bread-crumbs/bread_crumbs";
 
 export default function AboutCardsGallery({ data, dollar, dataBase }) {
+
+  // console.log("data:",data[49]);
   const [isGallery, setIsGallery] = useState(
     `https://www.admin-enfys.space${data[0].attributes.gallery.data[0].attributes.url}`
   );
