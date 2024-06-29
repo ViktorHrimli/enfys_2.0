@@ -69,20 +69,20 @@ export default function HeroCards({ selectedCategory }) {
 
   return (
     <>
-      {isClient && <section className={style.section}>
+      <section className={style.section}>
         <div className={style.container} style={{ height: "240px" }}>
           <h1 className={style.title} style={{ display: "none" }}>ENFYS</h1>
           <div className={style.hero_line_color_green}></div>
           <div className={style.hero_line_color_red}></div>
           <div className={style.hero_line_color_yellow}></div>
           <Link href="/" className={style.logo_container}>
-            <Image
+            {isClient && <Image
               src={logo}
               alt="Logo"
               priority={true}
               loading="eager"
               quality={100}
-            />
+            />}
           </Link>
           <p className={style.description} style={{ marginBottom: "0px" }}>{isHeroText}</p>
           <div className={style.bacground} style={{ height: "240px" }}></div>
@@ -102,7 +102,7 @@ export default function HeroCards({ selectedCategory }) {
         <div style={{ position: 'absolute' }} >
           <Line />
         </div>
-      </section>}
+      </section>
     </>
   );
 }

@@ -11,7 +11,7 @@ import enfysProductBadgeWarranty from "@/assets/svg/icons/enfys_product_badge_wa
 export default function PartnersIcon({ data, name }) { 
   var filter = data.filter(product => product.attributes.title === name);
 
-  var dataIcon = filter[0].attributes.icons[0];
+  var dataIcon = filter[0].attributes.icons;
 
   var bestsellerIcon = dataIcon.bestseller;
   var newIcon = dataIcon.new;
