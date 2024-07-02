@@ -1,3 +1,4 @@
+import NotFound from "@/app/not-found";
 import AboutCardsGallery from "@/libs/pages/components/about-cards-gallary/about-cards-gallary";
 import AboutCards from "@/libs/pages/components/about-cards/about-cards";
 import Advantages from "@/libs/pages/components/advantages/advantages";
@@ -9,10 +10,12 @@ import { slugify } from 'transliteration';
 
 export default async function PageCard({ params }) {
   var { data } = await (
-    await fetch("https://www.admin-enfys.space/api/tests?populate=*", {
+    await fetch("https://www.admin-enfys.space/api/tests?populate=*&pagination[pageSize]=100", {
       cache: "no-cache",
     })
   ).json();
+
+
   var {
     data: {
       attributes: { dollar },
@@ -41,13 +44,19 @@ export default async function PageCard({ params }) {
 
   return (
     <>
-      <HeroCards />
-      <AboutCardsGallery data={card} id={name} dollar={dollar} dataBase={updatedData} />
-      <Conditions />
-      <AboutCards data={card} id={name} dollar={dollar} />
-      {/* <Advantages /> */}
-      <TableCards data={card} id={name} />
-      <Card dataBase={updatedData}/>
+      {card.length !== 0 ?
+        <>
+          <HeroCards />
+          <AboutCardsGallery data={card} id={name} dollar={dollar} dataBase={updatedData} />
+          <Conditions />
+          <AboutCards data={card} id={name} dollar={dollar} />
+          {/* <Advantages /> */}
+          <TableCards data={card} id={name} />
+          <Card dataBase={updatedData} />
+        </>
+        :
+        <NotFound />
+      }
     </>
   );
 }

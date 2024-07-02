@@ -90,6 +90,8 @@ export default function Hero() {
               priority={true}
               loading="eager"
               quality={100}
+              width={500}
+              height={500}
               className={style.logo}
             />}
           </Link>

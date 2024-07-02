@@ -22,7 +22,7 @@ export default function PriceList({ data, dollar }) {
     typeof window !== "undefined" ? window.scrollY : 0
   );
 
-  const path = usePathname().replace("/", "");
+  const path = usePathname().replace("/", ""); 
 
   useEffect(() => {
     setIsClient(true);
@@ -48,6 +48,7 @@ export default function PriceList({ data, dollar }) {
     const updatedData = data.map(item => {
       const ukrainianName = item.attributes.title;
       const name = slugify(ukrainianName);
+      
       return {
         ...item,
         attributes: {
@@ -78,9 +79,7 @@ export default function PriceList({ data, dollar }) {
                     <div className={styles.partners_icon}>
                       <PartnersIcon data={data} name={item.attributes.title} />
                     </div>
-                        
-                    <div className={styles.img_container}  >
-                      
+                    <div className={styles.img_container}>
                       <Image
                         src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}`}
                         alt="image"

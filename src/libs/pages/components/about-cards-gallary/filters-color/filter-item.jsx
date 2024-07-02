@@ -9,7 +9,7 @@ export default function FilterItem({ dataBase, name }) {
     <Link href={`${name}`} className={styles.item_colors_link}>
       {filter.length > 0 && 
       <Image
-        src={`https://www.admin-enfys.space${filter[0].attributes.gallery.data[0].attributes.url}`}
+        src={`https://www.admin-enfys.space/uploads/${filter[0].attributes.gallery.data[0].attributes.url}`}
         alt="item"
         priority={true}
         loading="eager"
