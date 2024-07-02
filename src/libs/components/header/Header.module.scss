@@ -126,8 +126,12 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    @media screen and (min-width: 768px) {
+        right: 40px;
+        bottom: 120px;
+    }
     @media screen and (min-width: 1024px) {
-        right: 50px;
+        right: 76px;
         bottom: 120px;
     }
 }
@@ -140,7 +144,6 @@
         right: 10px;
         bottom: 10px;
         cursor: pointer;
-        z-index: 5;
 
         border-radius: 25%;
         // transition: all 0.2s ease-in-out;
