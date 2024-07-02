@@ -39,8 +39,8 @@ export default function Preview({data, keyId, setIsPreview, galleryLength, setIs
           priority={true}
           loading="eager"
           quality={100}
-          width={100}
-          height={100}
+          width={200}
+          height={200}
           style={{objectFit: "contain", width: "100%", height: "100%"}}
         />
         <div className={styles.text_container}>

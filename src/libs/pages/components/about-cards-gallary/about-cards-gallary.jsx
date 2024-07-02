@@ -14,8 +14,6 @@ import FilterItem from "./filters-color/filter-item";
 import BreadCrumbs from "../bread-crumbs/bread_crumbs";
 
 export default function AboutCardsGallery({ data, dollar, dataBase }) {
-
-  // console.log("data:",data[49]);
   const [isGallery, setIsGallery] = useState(
     `https://www.admin-enfys.space${data[0].attributes.gallery.data[0].attributes.url}`
   );
@@ -41,6 +39,7 @@ export default function AboutCardsGallery({ data, dollar, dataBase }) {
       }
     }
   };
+
 
   useEffect(() => {
     if (isPreview) {
@@ -115,9 +114,9 @@ export default function AboutCardsGallery({ data, dollar, dataBase }) {
                 alt="image"
                 priority={true}
                 loading="eager"
-                // quality={100}
-                width={100}
-                height={100}
+                quality={100}
+                width={200}
+                height={200}
                 className={styles.gallery_img}
               />
               <svg
@@ -192,24 +191,29 @@ export default function AboutCardsGallery({ data, dollar, dataBase }) {
               {data[keyId].attributes.description}....
               <a onClick={handleClickOnDescription}> читати повний опис</a>
             </p>
-            {data[0].attributes.articleCards &&
-            <div>
-              <p className={styles.text}>Інщі кольори</p>
-                <ul className={styles.list_colors}>
-                  {data[0].attributes.articleCards.map(({ title }, id) => {
-                    const name = slugify(title);
-                    return (
-                      <li key={id} className={styles.item_colors}>
-                          <FilterItem
-                            dataBase={dataBase}
-                            name={name}
-                            key={id}
-                          />
-                      </li>
-                    )
-                  })}
-                  </ul>
-                </div>
+            {data[0].attributes.articleCards.length !== 0 ?
+              <div>
+                  <p className={styles.text}>Інщі кольори</p>
+                  <div className={styles.scroll}>
+                    <ul className={styles.list_colors}>
+                      {data[0].attributes.articleCards.map(({ title }, id) => {
+                        const name = slugify(title);
+
+                        return (
+                          <li key={id} className={styles.item_colors}>
+                              <FilterItem
+                                dataBase={dataBase}
+                                name={name}
+                                key={id}
+                              />
+                          </li>
+                        )
+                      })}
+                      </ul>
+                    </div>
+              </div>
+              :
+              ""
               }
             <button className={styles.btn} onClick={handleClick}>купити</button>
           </div>
