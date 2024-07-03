@@ -1,5 +1,9 @@
 export const shop = [
   {
+    title: "на головну",
+    link: "/",
+  },
+  {
     title: "про магазин",
     link: "/about",
   },

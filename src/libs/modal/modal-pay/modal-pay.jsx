@@ -4,7 +4,7 @@ import Link from "next/link";
 import Item from "./item/item";
 
 import Image from 'next/image';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 
 import cornerRightOrange from '@/assets/svg/corner-right-green.svg';
@@ -13,10 +13,15 @@ import starsLeft from '@/assets/svg/stars-left.svg';
 import starsRight from '@/assets/svg/stars-right.svg';
 
 
-export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
-  const [isTotalPrice, setIsTotalPrice] = useState(null);
+export default function PayModal({ setIsPay, setIsMenu, storedItems, setStoredItems }) {
+  const [isTotalPrice, setIsTotalPrice] = useState(0);
 
   function closed() {
+    setIsPay(false);
+  }
+
+  function options() {
+    setIsMenu(true);
     setIsPay(false);
   }
 
@@ -98,15 +103,27 @@ export default function PayModal({ setIsPay, storedItems, setStoredItems }) {
         </div>
         <div className={styles.result}>
           <p className={styles.text}>Підсумок</p>
-          <p className={styles.text}>{isTotalPrice} гривень</p>
+          <p className={styles.text}>
+            {isTotalPrice} {"гривень"}
+          </p>
         </div>
-        <Link
-          href="/oformlennya-zamovlennya"
-          className={styles.btn}
-          onClick={closed}
-        >
-          оформити замовлення
-        </Link>
+        {storedItems.length !== 0 ?
+          <Link
+            href="/oformlennya-zamovlennya"
+            className={styles.btn}
+            onClick={closed}
+          >
+            оформити замовлення
+          </Link>
+          :
+          <div
+            style={{cursor: "pointer"}}
+            className={styles.btn}
+            onClick={options}
+          >
+            обрати категорію
+          </div>
+          }
       </div>
     </div>
   );

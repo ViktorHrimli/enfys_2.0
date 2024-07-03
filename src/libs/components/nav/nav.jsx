@@ -44,7 +44,11 @@ export default function Nav({ setIsMenu, setIsPay }) {
   const [isTransport, setIsTransport] = useState(false);
   const [isTextile, setIsTextile] = useState(false);
 
+  const theFuckingBigData = JSON.parse(localStorage.getItem("storedItems"));
 
+  const updatePrice = theFuckingBigData.reduce((accumulator, item) => {
+        return accumulator + parseFloat(item.QuantityCards);
+  }, 0)
 
   const strollersArrow = () => {
     setIsStrollers(!isStrollers);
@@ -291,7 +295,13 @@ export default function Nav({ setIsMenu, setIsPay }) {
                 alt="convenience"
                 priority={true}
                 loading="eager"
-              />
+                />
+                {updatePrice !== 0 ? <div className={styles.quantyti_item}>
+                  <p style={{ fontSize: "4px", fontWeight: "700" }}>{updatePrice}</p>
+                </div>
+                :
+                ""
+              }
           </div>
         </li>
         </ul>

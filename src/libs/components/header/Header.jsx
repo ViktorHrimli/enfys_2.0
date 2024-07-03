@@ -128,6 +128,7 @@ export default function Header() {
           setIsPay={setIsPay}
           storedItems={storedItems}
           setStoredItems={setStoredItems}
+          setIsMenu={setIsMenu}
         />
       }
       </>
