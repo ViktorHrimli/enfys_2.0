@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./nav.module.scss"
 
@@ -44,7 +44,19 @@ export default function Nav({ setIsMenu, setIsPay }) {
   const [isTransport, setIsTransport] = useState(false);
   const [isTextile, setIsTextile] = useState(false);
 
+  const [updatePrice, setUpdatePrice] = useState(0);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const theFuckingBigData = JSON.parse(localStorage.getItem("storedItems")) || [];
+
+      const price = theFuckingBigData.reduce((accumulator, item) => {
+        return accumulator + parseFloat(item.QuantityCards);
+      }, 0);
+
+      setUpdatePrice(price);
+    }
+  }, []);
 
   const strollersArrow = () => {
     setIsStrollers(!isStrollers);
@@ -291,7 +303,13 @@ export default function Nav({ setIsMenu, setIsPay }) {
                 alt="convenience"
                 priority={true}
                 loading="eager"
-              />
+                />
+                {updatePrice !== 0 ? <div className={styles.quantyti_item}>
+                  <p style={{ fontSize: "4px", fontWeight: "700" }}>{updatePrice}</p>
+                </div>
+                :
+                ""
+              }
           </div>
         </li>
         </ul>

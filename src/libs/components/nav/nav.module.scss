@@ -176,3 +176,16 @@
     margin-left: 0;
   }
 }
+
+.quantyti_item {
+  position: absolute;
+  right: 2px;
+  bottom: -2px;
+  width: 10px;
+  height: 10px;
+  background: #F92D2D;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
