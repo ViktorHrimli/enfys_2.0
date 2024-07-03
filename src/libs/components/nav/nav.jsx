@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./nav.module.scss"
 
@@ -44,11 +44,19 @@ export default function Nav({ setIsMenu, setIsPay }) {
   const [isTransport, setIsTransport] = useState(false);
   const [isTextile, setIsTextile] = useState(false);
 
-  const theFuckingBigData = JSON.parse(localStorage.getItem("storedItems"));
+  const [updatePrice, setUpdatePrice] = useState(0);
 
-  const updatePrice = theFuckingBigData.reduce((accumulator, item) => {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const theFuckingBigData = JSON.parse(localStorage.getItem("storedItems")) || [];
+
+      const price = theFuckingBigData.reduce((accumulator, item) => {
         return accumulator + parseFloat(item.QuantityCards);
-  }, 0)
+      }, 0);
+
+      setUpdatePrice(price);
+    }
+  }, []);
 
   const strollersArrow = () => {
     setIsStrollers(!isStrollers);
