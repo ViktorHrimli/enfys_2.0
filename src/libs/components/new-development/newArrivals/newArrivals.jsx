@@ -17,7 +17,7 @@ export default function New({ color, dollar, newArrivals }) {
 
         return (
           <li key={id} className={styles.content}>
-            <Link href={`/${path}/${name}`}>
+            <Link href={`/${path}/${name}`} className={styles.link}>
               <div className={styles.img}>
                 <Image
                   src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}`}
