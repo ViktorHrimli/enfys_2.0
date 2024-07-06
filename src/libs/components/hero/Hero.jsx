@@ -84,30 +84,32 @@ export default function Hero() {
           <div className={style.hero_line_color_red}></div>
           <div className={style.hero_line_color_yellow}></div>
           <Link href={"/"} style={{ position: "relative", zIndex: "11" }}>
-            {isClient && <Image
+            <Image
               src={logo}
               alt="Logo"
               priority={true}
               loading="eager"
               quality={100}
-              width={500}
-              height={500}
               className={style.logo}
-            />}
+            />
           </Link>
           <p className={style.description} style={isHeroCards ? { marginBottom: "0px" } : {}}>{isHeroText}</p>
           <div className={style.bacground} style={isHeroCards ? { height: "240px" } : {}}></div>
 
           <div className={style.bacground_img} style={isHeroCards ? { height: "240px" } : {}}>
-            <Image
-              src={isHero}
-              alt="Image"
-              fill
-              priority={true}
-              loading="eager"
-              quality={100}
-              className={style.img}
-            />
+            {isClient &&
+              <Image
+                src={isHero}
+                alt="Image"
+                fill
+                priority={true}
+                loading="eager"
+                quality={100}
+                width={500}
+                height={500}
+                className={style.img}
+              />
+            }
           </div>
         </div>
         <div style={{ position: 'absolute' }} >

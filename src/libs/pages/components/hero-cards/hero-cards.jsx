@@ -76,27 +76,29 @@ export default function HeroCards({ selectedCategory }) {
           <div className={style.hero_line_color_red}></div>
           <div className={style.hero_line_color_yellow}></div>
           <Link href="/" className={style.logo_container}>
-            {isClient && <Image
+            <Image
               src={logo}
               alt="Logo"
               priority={true}
               loading="eager"
               quality={100}
-            />}
+            />
           </Link>
           <p className={style.description} style={{ marginBottom: "0px" }}>{isHeroText}</p>
           <div className={style.bacground} style={{ height: "240px" }}></div>
 
           <div className={style.bacground_img} style={{ height: "240px" }}>
-            <Image
-              src={ImgPrice}
-              alt="Logo"
-              fill
-              priority={true}
-              loading="eager"
-              quality={100}
-              className={style.img}
-            />
+            {isClient &&
+              <Image
+                src={ImgPrice}
+                alt="Logo"
+                fill
+                priority={true}
+                loading="eager"
+                quality={100}
+                className={style.img}
+              />
+            }
           </div>
         </div>
         <div style={{ position: 'absolute' }} >
