@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { slugify } from 'transliteration';
 
-
 export default function New({ color, dollar, newArrivals }) { 
 
   return (
@@ -19,6 +18,7 @@ export default function New({ color, dollar, newArrivals }) {
           <li key={id} className={styles.content}>
             <Link href={`/${path}/${name}`} className={styles.link}>
               <div className={styles.img}>
+                
                 <Image
                   src={`https://www.admin-enfys.space${item.attributes.gallery.data[0].attributes.url}`}
                   alt="image"
