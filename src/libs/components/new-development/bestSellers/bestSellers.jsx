@@ -3,7 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { slugify } from 'transliteration';
 
-export default function Top({ color, dollar, bestSellers}) { 
+
+export default function Top({ color, dollar, bestSellers }) { 
   
   return (
     <ul className={styles.list}>

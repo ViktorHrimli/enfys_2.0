@@ -16,9 +16,8 @@ import New from "./newArrivals/newArrivals";
 import Top from "./bestSellers/bestSellers";
 
 
-
 export default function NewDevelopment({ dollar, newArrivals, bestSellers }) {
-  const [isChangeOne, setIsChangeOne] = useState(true);
+  const [isChangeOne, setIsChangeOne] = useState(false);
   const [isChangeTwo, setIsChangeTwo] = useState(false);
 
   return (
