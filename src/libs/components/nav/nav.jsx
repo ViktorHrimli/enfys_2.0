@@ -35,7 +35,7 @@ const social = [
 ];
 
 
-import {shop, strollers, furniture, accessories, transport, textile, toys, backpacks} from '@/shared/list'
+import { shop, strollers, furniture, accessories, transport, textile, toys, backpacks } from '@/shared/list';
 
 export default function Nav({ setIsMenu, setIsPay }) {
   const [isStrollers, setIsStrollers] = useState(false);
